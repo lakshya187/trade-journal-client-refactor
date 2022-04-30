@@ -1,0 +1,42 @@
+.signupContainer {
+  display: flex;
+  height: 100vh;
+}
+.signupLeft {
+  flex: 0.7;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.8)),
+    url("./../../assets/images/signupImage.jpg") no-repeat fixed;
+  color: rgba(0, 0, 0, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.signupText {
+  color: white;
+  font-size: 40px;
+  line-height: 60px;
+  text-align: left;
+}
+.signupText span {
+  color: #66e3c4;
+  font-weight: bold;
+}
+.signupLeft p {
+  color: white;
+  font-size: 18px;
+  line-height: 30px;
+}
+.signupRight {
+  background: linear-gradient(45deg, #7474bf, #348ac7);
+  flex: 0.3;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.signupRight p {
+  color: white;
+  font-size: 18px;
+}

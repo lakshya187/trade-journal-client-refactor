@@ -1,0 +1,23 @@
+.closeTradeForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+}
+.closeTradeSubmit {
+  margin-top: 40px;
+}
+.closeTradeFields {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.closeTradeBtnContainer {
+  display: flex;
+  justify-content: space-between;
+}
+.hide {
+  display: hidden;
+}

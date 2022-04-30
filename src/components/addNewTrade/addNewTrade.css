@@ -1,0 +1,40 @@
+.addNewTrade {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 40px;
+}
+.addNewTradeContainer {
+  display: flex;
+
+  background-color: white;
+  border-radius: 10px;
+  padding: 0 20px 20px 20px;
+}
+.addNewTradeDescription {
+  text-align: center;
+  color: #2d2d2d;
+  font-size: 18px;
+  font-weight: bold;
+}
+.addNewTradeIcon {
+  padding: 40px;
+  border: 2px soild black;
+}
+.addNewTradeHeading {
+  text-align: center;
+  font-size: 18px;
+  color: #c0c0c0;
+  padding-top: 30px;
+}
+.addNewTradeContainer:hover {
+  box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.1);
+}
+@media only screen and (max-width: 600px) {
+  .addNewTrade {
+    flex-direction: column;
+  }
+  .addNewTradeContainer {
+    margin-top: 30px;
+  }
+}

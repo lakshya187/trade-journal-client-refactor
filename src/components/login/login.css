@@ -1,0 +1,44 @@
+.loginContainer {
+  display: flex;
+  height: 100vh;
+}
+.loginLeft {
+  flex: 0.5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.loginLeft img {
+  width: 60%;
+}
+.loginRight {
+  flex: 0.5;
+  background: linear-gradient(45deg, #7474bf, #348ac7);
+  display: flex;
+  justify-content: center;
+
+  flex-direction: column;
+  align-items: center;
+}
+.loginText h1 {
+  font-size: 84px;
+  color: white;
+  font-weight: bold;
+}
+.loginText p {
+  font-size: 18px;
+  color: white;
+}
+.loginFormField input {
+  width: 320px;
+  height: 50px;
+  margin-top: 30px;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+}
+.loginBtnContainer {
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+}
