@@ -12,6 +12,7 @@ import history from "../utils/history";
 import AddTradeManually from "./addNewTradeManually/addNewTradeManually";
 import Signup from "./signup/signup";
 import Login from "./login/login";
+import AddNewTradesExcel from "./addNewTradeExcel/addNewTradesExcel";
 import "./app.css";
 const App = () => {
   return (
@@ -31,6 +32,11 @@ const App = () => {
           <Route path={"/:id/close-trade"} exact component={CloseTrade}></Route>
           <Route path={"/login"} exact component={Login}></Route>
           <Route path={"/signup"} exact component={Signup}></Route>
+          <Route
+            path={"/add-excel"}
+            exact
+            component={AddNewTradesExcel}
+          ></Route>
         </Switch>
       </Router>
     </div>

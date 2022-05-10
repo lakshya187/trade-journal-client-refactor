@@ -40,7 +40,7 @@ class MainDashboard extends React.Component {
     this.authorizeUser();
   }
   getData = async () => {
-    const response = await axios.get("http://localhost:5000/trades/", {
+    const response = await axios.get("http://localhost:5000/trades", {
       headers: {
         Authorization: `Bearer ${getLocalStorage()}`,
       },

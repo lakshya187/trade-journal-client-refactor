@@ -1,0 +1,44 @@
+.uploadExcelContainer {
+  display: flex;
+
+  height: 100vh;
+}
+.uploadExcelLeft img {
+  width: 100%;
+}
+.uploadExcelLeft {
+  flex: 0.6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 50px;
+}
+.uploadExcelRight {
+  flex: 0.4;
+  background: linear-gradient(45deg, #7474bf, #348ac7);
+  padding: 50px;
+}
+.uploadExcelRight h2 {
+  font-size: 40px;
+  color: white;
+}
+.uploadExcelRight span {
+  color: #66e3c4;
+}
+.uploadExcelRight p {
+  color: white;
+}
+.uploadExcelRight input {
+  margin-top: 50px;
+  color: white;
+}
+.uploadExcelRight hr {
+  margin-top: 50px;
+}
+.uploadExcelRight form {
+  display: flex;
+  flex-direction: column;
+}
+.uploadExcelRight form button {
+  margin-top: 50px;
+}
