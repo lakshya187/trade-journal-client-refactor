@@ -15,7 +15,6 @@ class TradeDetails extends Component {
     if (!this.props.trade) {
       console.log("loading");
     }
-    console.log(this.props.trade);
 
     return (
       <div className="tradeDetail">

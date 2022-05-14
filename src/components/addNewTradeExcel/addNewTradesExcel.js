@@ -24,7 +24,7 @@ class AddNewTradesExcel extends Component {
           Authorization: `Bearer ${getLocalStorage()}`,
         },
       });
-      console.log(response);
+      // console.log(response);
     } catch (e) {
       console.log(e);
     }

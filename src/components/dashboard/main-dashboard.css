@@ -76,3 +76,29 @@
   background: linear-gradient(45deg, #2bfcc8, #66e3c4);
   transition: 400ms;
 }
+@media only screen and (max-width: 900px) {
+  .tradeCard {
+    flex-direction: column;
+    align-items: center;
+  }
+  .tradeCardLeft {
+    flex-direction: column;
+  }
+  .tradeCardRight {
+    margin-left: 0px;
+    margin-top: 20px;
+  }
+  .tradeCardLeftTextContainer {
+    margin-left: -52px;
+  }
+  .tradeCardContainer {
+    flex: 1;
+  }
+  .textMain {
+    text-align: left;
+    margin-top: 20px;
+  }
+  .tradeCardType {
+    margin-bottom: 20px;
+  }
+}

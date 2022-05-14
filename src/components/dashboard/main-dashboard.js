@@ -5,40 +5,20 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { server_url } from "../../config";
 
-import { setLocalStorage } from "../../helperFunctions/localstorage";
+import authorizeUser from "../../helperFunctions/authorizeUser";
 import { getLocalStorage } from "../../helperFunctions/localstorage";
 import history from "../../utils/history";
 import Modal from "../../modal/modal";
-import { getTrades } from "../../actions";
+import { getTrades, authorizedUser } from "../../actions";
 import "./main-dashboard.css";
+import { LinearProgress } from "@mui/material";
 class MainDashboard extends React.Component {
   state = {
     trades: null,
   };
-  authorizeUser = async () => {
-    try {
-      const token = getLocalStorage();
-      if (!token) {
-        history.push("/login");
-      }
 
-      const response = await axios.post(
-        `${server_url}/users/authorize`,
-        {},
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-      console.log(response);
-    } catch (err) {
-      history.push("/login");
-    }
-  };
   componentDidMount() {
-    this.getData();
-    this.authorizeUser();
+    this.props.getTrades();
   }
   getData = async () => {
     const response = await axios.get(`${server_url}/trades`, {
@@ -53,7 +33,7 @@ class MainDashboard extends React.Component {
   };
 
   renderTradeCards() {
-    return this.state.trades.map((el) => {
+    return this.props.trades.map((el) => {
       return (
         <Link to={`/trade/${el._id}`} key={el._id}>
           <div className="tradeCard">
@@ -67,7 +47,7 @@ class MainDashboard extends React.Component {
               </div>
               <div className="tradeCardLeftTextContainer">
                 <p className=" textMain cardField">
-                  <span className="textDescription">Open price :</span>{" "}
+                  <span className="textDescription ">Open price :</span>{" "}
                   {!el.openPrice ? "Not defined" : ` $${el.openPrice}`}
                 </p>
                 <p className=" textMain cardField">
@@ -87,9 +67,9 @@ class MainDashboard extends React.Component {
                 <p
                   className={`${
                     el.profitLoss > 0 ? "colorGreen" : "colorRed"
-                  } cardField`}
+                  } cardField textMain`}
                 >
-                  <span className="textDescription">P/L:</span>{" "}
+                  <span className="textDescription textMain">P/L:</span>{" "}
                   {!el.profitLoss ? 0 : `$${el.profitLoss.toFixed(2)}`}
                 </p>
               </div>
@@ -126,10 +106,10 @@ class MainDashboard extends React.Component {
     });
   }
   render() {
-    if (!this.state.trades) {
-      return <div>User not logged in click here to login</div>;
+    if (!this.props.trades) {
+      return <LinearProgress color="inherit" />;
     }
-
+    console.log(this.props.user);
     return (
       <div>
         <div className="createNewTradeContainer">
@@ -155,6 +135,9 @@ class MainDashboard extends React.Component {
 const mapStateToProps = (state) => {
   return {
     user: state.currentUser,
+    trades: state.getAllTrades,
   };
 };
-export default connect(mapStateToProps, { getTrades })(MainDashboard);
+export default connect(mapStateToProps, { getTrades, authorizedUser })(
+  MainDashboard
+);

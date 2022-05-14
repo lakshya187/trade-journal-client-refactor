@@ -81,7 +81,7 @@ class AddNewtradeForm extends Component {
           },
         }
       );
-      this.setState({ error: true });
+      this.setState({ error: false });
       this.setState({ success: true });
       setTimeout(() => history.push("/"), 4000);
     } catch (e) {

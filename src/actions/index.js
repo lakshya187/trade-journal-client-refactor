@@ -8,7 +8,11 @@ import {
 import { server_url } from "../config";
 export const getTrades = () => {
   return async (dispatch) => {
-    const response = await axios.get(`${server_url}/trades`);
+    const response = await axios.get(`${server_url}/trades`, {
+      headers: {
+        Authorization: `Bearer ${getLocalStorage()}`,
+      },
+    });
     dispatch({ type: "GET_ALL_TRADES", payload: response.data.data.trades });
   };
 };
@@ -48,7 +52,13 @@ export const login = (formData) => {
     history.push("/");
   };
 };
-
+export const authorizedUser = (user) => {
+  console.log(user);
+  return {
+    type: "CURRENT_USER",
+    payload: user,
+  };
+};
 export const signup = (formData) => {
   return async (dispatch) => {
     const response = await axios.post(

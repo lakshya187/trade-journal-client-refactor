@@ -21,3 +21,11 @@
 .header-left {
   color: #003c62;
 }
+.headerRight {
+  display: flex;
+  align-items: center;
+}
+.welcomeText {
+  margin-right: 20px;
+  font-size: 16px;
+}

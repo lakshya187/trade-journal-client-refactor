@@ -40,3 +40,19 @@
   color: white;
   font-size: 18px;
 }
+
+@media only screen and (max-width: 900px) {
+  .signupContainer {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 100px;
+    background: linear-gradient(45deg, #7474bf, #348ac7);
+  }
+  .signupLeft {
+    display: none;
+  }
+  .signupRight {
+    height: 100%;
+  }
+}
