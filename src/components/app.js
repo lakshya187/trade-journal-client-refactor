@@ -1,4 +1,3 @@
-/* jshint ignore:start */
 import React from "react";
 import Header from "./header/header";
 import { Router, Route, Switch } from "react-router-dom";

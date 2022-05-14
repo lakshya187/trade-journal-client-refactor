@@ -2,7 +2,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./header.css";
-
+import { clearLocalStorage } from "../../helperFunctions/localstorage";
 import { connect } from "react-redux";
 
 class Header extends Component {
@@ -15,6 +15,9 @@ class Header extends Component {
       </>
     );
   };
+  logout = () => {
+    clearLocalStorage();
+  };
   render() {
     return (
       <div className="header">
@@ -26,9 +29,16 @@ class Header extends Component {
           <span>Help</span>
           <span>About</span>
         </div>
-        <Link className="btn primaryBtn" to="/login">
-          Sign In
-        </Link>
+
+        {!this.props.user ? (
+          <Link className="btn primaryBtn" to="/login">
+            Sign In
+          </Link>
+        ) : (
+          <Link className="btn secondryBtn" to="/login" onClick={this.logout}>
+            Logout
+          </Link>
+        )}
       </div>
     );
   }

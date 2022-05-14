@@ -2,17 +2,32 @@ import axios from "axios";
 import React, { Component } from "react";
 import uploadExcel from "../../assets/illustrations/upload excel.svg";
 import "./addNewTradeExcel.css";
+import { server_url } from "./../../config";
+import { getLocalStorage } from "./../../helperFunctions/localstorage";
 class AddNewTradesExcel extends Component {
   state = {
     data: null,
   };
+
   onSubmit = async (e) => {
-    e.preventDefault();
-    const uploadedFile = await axios.post(
-      "http://localhost:5000/trades/uploadExcel",
-      {}
-    );
-    console.log(uploadedFile);
+    try {
+      e.preventDefault();
+      //  `${server_url}/trades/uploadExcel`
+      let formData = new FormData();
+      formData.append("file", this.state.data);
+      const response = await axios({
+        method: "post",
+        url: `${server_url}/trades/uploadExcel`,
+        data: formData,
+        headers: {
+          "Content-Type": "multipart/form-data",
+          Authorization: `Bearer ${getLocalStorage()}`,
+        },
+      });
+      console.log(response);
+    } catch (e) {
+      console.log(e);
+    }
   };
   onChange = (e) => {
     console.log(e.target.files[0]);

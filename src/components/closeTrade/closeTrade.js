@@ -6,6 +6,7 @@ import axios from "axios";
 import history from "../../utils/history";
 import { getSingleTrade } from "../../actions";
 import "./closeTrade.css";
+import { server_url } from "../../config";
 class CloseTrade extends Component {
   state = {
     price: this.props.trade.openPrice,
@@ -17,7 +18,7 @@ class CloseTrade extends Component {
   onFormSubmit = async () => {
     try {
       const updatedTrade = await axios.patch(
-        `http://localhost:5000/trades/updateClosing/${this.props.trade._id}`,
+        `${server_url}/trades/updateClosing/${this.props.trade._id}`,
         {
           data: { ...this.state },
         }

@@ -3,6 +3,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { server_url } from "../../config";
 
 import { setLocalStorage } from "../../helperFunctions/localstorage";
 import { getLocalStorage } from "../../helperFunctions/localstorage";
@@ -20,9 +21,9 @@ class MainDashboard extends React.Component {
       if (!token) {
         history.push("/login");
       }
-      console.log(token);
+
       const response = await axios.post(
-        "http://localhost:5000/users/authorize",
+        `${server_url}/users/authorize`,
         {},
         {
           headers: {
@@ -32,7 +33,7 @@ class MainDashboard extends React.Component {
       );
       console.log(response);
     } catch (err) {
-      console.log(err);
+      history.push("/login");
     }
   };
   componentDidMount() {
@@ -40,7 +41,7 @@ class MainDashboard extends React.Component {
     this.authorizeUser();
   }
   getData = async () => {
-    const response = await axios.get("http://localhost:5000/trades", {
+    const response = await axios.get(`${server_url}/trades`, {
       headers: {
         Authorization: `Bearer ${getLocalStorage()}`,
       },
@@ -59,7 +60,7 @@ class MainDashboard extends React.Component {
             <div className="tradeCardLeft">
               <div
                 className={`tradeCardType ${
-                  el.typeOfTrade === "long" ? "green" : "red"
+                  el.typeOfTrade === "Long" ? "green" : "red"
                 }`}
               >
                 {el.typeOfTrade.toUpperCase()}
@@ -128,7 +129,6 @@ class MainDashboard extends React.Component {
     if (!this.state.trades) {
       return <div>User not logged in click here to login</div>;
     }
-    console.log(this.state.trades);
 
     return (
       <div>
@@ -137,7 +137,6 @@ class MainDashboard extends React.Component {
             to={"/add-new-trade"}
             className="createANewTradeBtn"
             onClick={(e) => {
-              console.log(e);
               return this.renderModal();
             }}
           >

@@ -3,8 +3,15 @@ import { Field, formValues, reduxForm } from "redux-form";
 import "./addNewTradeManuallyForm.css";
 import connect from "react-redux";
 import axios from "axios";
-
+import { getLocalStorage } from "../../helperFunctions/localstorage";
+import { server_url } from "../../config";
+import history from "../../utils/history";
+import { Alert } from "@mui/material";
 class AddNewtradeForm extends Component {
+  state = {
+    success: false,
+    error: false,
+  };
   renderInputString({ input, label, meta }) {
     return (
       <div className="formField">
@@ -61,8 +68,25 @@ class AddNewtradeForm extends Component {
       </div>
     );
   }
-  onFormSubmit = (formData) => {
-    this.props.onSubmit(formData);
+  onFormSubmit = async (formData) => {
+    try {
+      const response = await axios.post(
+        `${server_url}/trades/`,
+        {
+          ...formData,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${getLocalStorage()}`,
+          },
+        }
+      );
+      this.setState({ error: true });
+      this.setState({ success: true });
+      setTimeout(() => history.push("/"), 4000);
+    } catch (e) {
+      this.setState({ error: true });
+    }
   };
   render() {
     return (
@@ -70,6 +94,20 @@ class AddNewtradeForm extends Component {
         onSubmit={this.props.handleSubmit(this.onFormSubmit)}
         className={"addTradeForm"}
       >
+        {this.state.success ? (
+          <Alert severity="success">
+            Your Trade has been created sucessfully!
+          </Alert>
+        ) : (
+          ""
+        )}
+        {this.state.error ? (
+          <Alert severity="error">
+            Something went wrong, try again or contact the admin.
+          </Alert>
+        ) : (
+          ""
+        )}
         <p className="addNewTradeHeading">Add A new Trade</p>
         <Field
           name="stockTicker"

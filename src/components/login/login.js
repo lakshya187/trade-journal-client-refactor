@@ -8,13 +8,17 @@ import { login } from "../../actions";
 import "./login.css";
 import Signup from "../signup/signup";
 import { Link } from "react-router-dom";
+import { Alert } from "@mui/material";
 class Login extends Component {
-  state = { email: "", password: "" };
+  state = { email: "", password: "", error: false };
   onFormSubmit() {
-    this.props.login(this.state);
+    try {
+      this.props.login(this.state);
+    } catch (e) {
+      this.setState({ error: true });
+    }
   }
 
-  componentDidMount() {}
   render() {
     return (
       <div className="login">
@@ -24,6 +28,13 @@ class Login extends Component {
           </div>
           <div className="loginRight">
             <div className="loginText">
+              {this.state.error ? (
+                <Alert severity="error">
+                  Your credentials do not match, please try again 😓
+                </Alert>
+              ) : (
+                ""
+              )}
               <h1>Welcome</h1>
               <p>Please log into your account to get started</p>
             </div>
