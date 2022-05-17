@@ -109,7 +109,7 @@ class MainDashboard extends React.Component {
     if (!this.props.trades) {
       return <LinearProgress color="inherit" />;
     }
-    console.log(this.props.user);
+
     return (
       <div>
         <div className="createNewTradeContainer">

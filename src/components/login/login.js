@@ -28,7 +28,7 @@ class Login extends Component {
           </div>
           <div className="loginRight">
             <div className="loginText">
-              {this.state.error ? (
+              {this.props.error ? (
                 <Alert severity="error">
                   Your credentials do not match, please try again 😓
                 </Alert>
@@ -80,6 +80,7 @@ class Login extends Component {
 const mapPropsToState = (state) => {
   return {
     user: state.currentUser,
+    error: state.error,
   };
 };
 export default connect(mapPropsToState, { login })(Login);

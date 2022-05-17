@@ -1,15 +1,17 @@
 /*jshint esversion: 6 */
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import axios from "axios";
+
+import { logout } from "../../actions";
 import "./header.css";
 import { clearLocalStorage } from "../../helperFunctions/localstorage";
-import { connect } from "react-redux";
-
-import axios from "axios";
 import { getLocalStorage } from "../../helperFunctions/localstorage";
 import { server_url } from "../../config";
 import { authorizedUser } from "../../actions";
 import history from "../../utils/history";
+
 class Header extends Component {
   authorizeUser = async () => {
     try {
@@ -28,14 +30,17 @@ class Header extends Component {
         }
       );
       this.props.authorizedUser(response.data.user);
-      console.log(response);
+
+      this.setState({ user: response.data.user });
     } catch (err) {
+      clearLocalStorage();
       history.push("/login");
     }
   };
   componentDidMount() {
     this.authorizeUser();
   }
+
   renderSignIn = () => {
     return (
       <>
@@ -45,8 +50,17 @@ class Header extends Component {
       </>
     );
   };
-  logout = () => {
-    clearLocalStorage();
+  logout = (e) => {
+    this.props.logout();
+    history.push("/login");
+  };
+  renderGreetText = () => {
+    if (!this.props.user) {
+      return <div></div>;
+    } else
+      return (
+        <div className="welcomeText">Welcome, {this.props.user.name}🙂</div>
+      );
   };
 
   render() {
@@ -56,20 +70,16 @@ class Header extends Component {
         <div className="header-left">
           <div>Trade Journal</div>
         </div>
-        <div className="header-center">
-          <div className="welcomeText">
-            {this.props.user ? `Welcome, ${this.props.user.name}🙂` : ""}
-          </div>
-        </div>
+        <div className="header-center">{this.renderGreetText()}</div>
         <div className="headerRight">
           {!this.props.user ? (
             <Link className="btn primaryBtn" to="/login">
               Sign In
             </Link>
           ) : (
-            <Link className="btn secondryBtn" to="/login" onClick={this.logout}>
+            <button className="btn secondryBtn" onClick={this.logout}>
               Logout
-            </Link>
+            </button>
           )}
         </div>
       </div>
@@ -77,9 +87,10 @@ class Header extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, store) => {
   return {
     user: state.currentUser,
+    store: store,
   };
 };
-export default connect(mapStateToProps, { authorizedUser })(Header);
+export default connect(mapStateToProps, { authorizedUser, logout })(Header);

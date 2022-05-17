@@ -35,13 +35,17 @@ class CloseTrade extends Component {
     }
     return (
       <div className="closeTradeForm">
-        <div
-          className={`tradeCardType ${
-            this.props.trade.typeOfTrade === "Long" ? "green" : "red"
-          }`}
-        >
-          {this.props.trade.typeOfTrade.toUpperCase()}
-        </div>
+        {!this.props.trade.typeOfTrade ? (
+          <div></div>
+        ) : (
+          <div
+            className={`tradeCardType ${
+              this.props.trade.typeOfTrade === "Long" ? "green" : "red"
+            }`}
+          >
+            {this.props.trade.typeOfTrade.toUpperCase()}
+          </div>
+        )}
         <div className="closeTradeFields">
           <div className=" textMain cardField">
             Current Holdings :{" "}

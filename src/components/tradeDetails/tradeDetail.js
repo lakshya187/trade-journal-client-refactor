@@ -24,13 +24,17 @@ class TradeDetails extends Component {
           </div>
         </div>
         <div className="tradeDetailBadge">
-          <div
-            className={`tradeCardType ${
-              this.props.trade.typeOfTrade === "Long" ? "green" : "red"
-            } `}
-          >
-            {this.props.trade.typeOfTrade}
-          </div>
+          {!this.props.trade.typeOfTrade ? (
+            <div></div>
+          ) : (
+            <div
+              className={`tradeCardType ${
+                this.props.trade.typeOfTrade === "Long" ? "green" : "red"
+              }`}
+            >
+              {this.props.trade.typeOfTrade.toUpperCase()}
+            </div>
+          )}
         </div>
         <div className="editBtnContainer">
           <Link

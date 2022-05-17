@@ -2,6 +2,7 @@ import TradeJournalAPI from "./../apis/TradeJournalAPI";
 import axios from "axios";
 import history from "../utils/history";
 import {
+  clearLocalStorage,
   getLocalStorage,
   setLocalStorage,
 } from "../helperFunctions/localstorage";
@@ -44,16 +45,20 @@ export const createNewTrade = (formData) => {
 
 export const login = (formData) => {
   return async (dispatch) => {
-    const response = await axios.post(`${server_url}/users/log-in`, {
-      ...formData,
-    });
-    setLocalStorage(response.data.token);
-    dispatch({ type: "CURRENT_USER", payload: response.data });
-    history.push("/");
+    try {
+      const response = await axios.post(`${server_url}/users/log-in`, {
+        ...formData,
+      });
+      console.log(response);
+      setLocalStorage(response.data.token);
+      dispatch({ type: "CURRENT_USER", payload: response.data.user });
+      history.push("/");
+    } catch (e) {
+      dispatch({ type: "ERROR" });
+    }
   };
 };
 export const authorizedUser = (user) => {
-  console.log(user);
   return {
     type: "CURRENT_USER",
     payload: user,
@@ -61,13 +66,17 @@ export const authorizedUser = (user) => {
 };
 export const signup = (formData) => {
   return async (dispatch) => {
-    const response = await axios.post(
-      `https://trade-journal-test.herokuapp.com/users/sign-up`,
-      {
-        ...formData,
-      }
-    );
+    const response = await axios.post(`${server_url}/users/sign-up`, {
+      ...formData,
+    });
     dispatch({ type: "CURRENT_USER", payload: response.data });
     history.push("/login");
+  };
+};
+
+export const logout = () => {
+  clearLocalStorage();
+  return {
+    type: "LOGOUT",
   };
 };
