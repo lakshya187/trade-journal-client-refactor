@@ -1,6 +1,7 @@
 import { combineReducers } from "redux";
 import { reducer as formReducer } from "redux-form";
 
+import statsReducer from "./statsReducer";
 import errorReducer from "./errorReducer";
 import logoutReducer from "./logoutReducer";
 import tradesReducer from "./tradesReducer";
@@ -14,6 +15,7 @@ export default combineReducers({
   newTrade: addNewTrade,
   currentUser: loginReducer,
   error: errorReducer,
+  stats: statsReducer,
 
   // logout: logoutReducer,
 });

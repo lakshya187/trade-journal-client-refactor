@@ -9,13 +9,28 @@
   font-family: "Montserrat", sans-serif;
 }
 body {
-  background-color: #f7f7f7;
+  --primaryColor: #2d2d2d;
+  --secondaryColor: #c0c0c0;
+  --blueColor: #ced1f4;
+  --lightblueColor: #e0e7ea;
+  --pinkColor: #e4c0cd;
+  --bodyCopy: 16px;
+  --subheading: 24px;
+  --heading: 32px;
+  --greenColor: #00e08e;
+  --redColor: #e10015;
+  --lightWhiteColor: #f7f7f7;
+  --borderColor: #c0c0c0;
+  --btnpadding: 10px 30px;
+  --shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+  --breadCrums: 14px;
+  --white: #ffffff;
 }
 a:hover {
   color: none;
 }
 .btn {
-  padding: 15px 30px;
+  padding: var(--btnpadding);
   border-radius: 5px;
 }
 .primaryBtn {
@@ -25,9 +40,10 @@ a:hover {
   cursor: pointer;
 }
 .secondryBtn {
-  border: 1px solid #c0c0c0;
+  border: 1px solid var(--borderColor);
   cursor: pointer;
-  color: #2d2d2d;
+  color: var(--primaryColor);
+  background-color: transparent;
 }
 .marginleft {
   margin-left: 20px;
@@ -45,9 +61,8 @@ a:hover {
   font-weight: bold;
 }
 input:focus {
-  border: none;
+  border: solid 1px var(--borderColor);
   outline: none;
-  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
 }
 .tertiaryBtn {
   background: transparent;
@@ -58,4 +73,25 @@ input:focus {
   color: #2c2c2c;
   cursor: pointer;
   background-color: white;
+}
+.input {
+  padding: 10px 50px 10px 5px;
+  border: solid 1px var(--borderColor);
+  border-radius: 5px;
+}
+.black {
+  background-color: var(--primaryColor);
+}
+.grey {
+  background-color: var(--secondaryColor);
+}
+.colorGreen {
+  color: var(--greenColor);
+}
+.colorRed {
+  color: var(--redColor);
+}
+.heading {
+  color: var(--primaryColor);
+  font-size: var(--heading);
 }

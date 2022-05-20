@@ -3,102 +3,113 @@ import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { server_url } from "../../config";
+import { LinearProgress } from "@mui/material";
 
+import PieChart from "../charts/piechart";
+import AddManually from "./../../assets/icons/AddNewTrade/addManually.svg";
+import ImportBroker from "./../../assets/icons/AddNewTrade/importBroker.svg";
+import ImportExcel from "./../../assets/icons/AddNewTrade/importExcel.svg";
+import Sidebar from "../sidebar/sidebar";
+import { server_url } from "../../config";
 import authorizeUser from "../../helperFunctions/authorizeUser";
 import { getLocalStorage } from "../../helperFunctions/localstorage";
 import history from "../../utils/history";
-import Modal from "../../modal/modal";
 import { getTrades, authorizedUser } from "../../actions";
 import "./main-dashboard.css";
-import { LinearProgress } from "@mui/material";
+import { getStats } from "../../actions";
+const labels = ["a", "b", "c", "d", "e", "f"];
+const data = {
+  labels: labels,
+  datasets: [
+    {
+      label: "My First Dataset",
+      data: [65, 59, 80, 81, 56, 55, 40],
+      backgroundColor: [
+        "rgba(255, 99, 132, 0.2)",
+        "rgba(255, 159, 64, 0.2)",
+        "rgba(255, 205, 86, 0.2)",
+        "rgba(75, 192, 192, 0.2)",
+        "rgba(54, 162, 235, 0.2)",
+        "rgba(153, 102, 255, 0.2)",
+        "rgba(201, 203, 207, 0.2)",
+      ],
+      borderColor: [
+        "rgb(255, 99, 132)",
+        "rgb(255, 159, 64)",
+        "rgb(255, 205, 86)",
+        "rgb(75, 192, 192)",
+        "rgb(54, 162, 235)",
+        "rgb(153, 102, 255)",
+        "rgb(201, 203, 207)",
+      ],
+      borderWidth: 1,
+    },
+  ],
+};
 class MainDashboard extends React.Component {
-  state = {
-    trades: null,
-  };
-
   componentDidMount() {
     this.props.getTrades();
+    // this.getStats();
+    this.props.getStats();
   }
-  getData = async () => {
-    const response = await axios.get(`${server_url}/trades`, {
-      headers: {
-        Authorization: `Bearer ${getLocalStorage()}`,
-      },
-    });
-    this.setState({ trades: response.data.data.trades });
-  };
-  renderModal = () => {
-    return <Modal title={"Add a new Trade"} content={"This is a modal"} />;
-  };
 
   renderTradeCards() {
     return this.props.trades.map((el) => {
       return (
         <Link to={`/trade/${el._id}`} key={el._id}>
           <div className="tradeCard">
-            <div className="tradeCardLeft">
+            <div className="tradeCardContainer">
               <div
                 className={`tradeCardType ${
-                  el.typeOfTrade === "Long" ? "green" : "red"
+                  el.typeOfTrade === "Long" ? "black" : "grey"
                 }`}
               >
                 {el.typeOfTrade.toUpperCase()}
               </div>
-              <div className="tradeCardLeftTextContainer">
+              <div className="dashboardCardText">
+                <p className=" textMain cardField tickerName">
+                  <span className={`textValue `}>
+                    {`${el.stockTicker}`}
+                    <br />
+                  </span>{" "}
+                  Stock Ticker
+                </p>
+
                 <p className=" textMain cardField">
-                  <span className="textDescription ">Open price :</span>{" "}
-                  {!el.openPrice ? "Not defined" : ` $${el.openPrice}`}
+                  <span className="textValue ">
+                    {!el.openPrice ? "Not defined" : ` $${el.openPrice}`}
+                  </span>
+                  <br /> Open price
                 </p>
                 <p className=" textMain cardField">
-                  <span className={`textDescription `}>Closing price :</span>{" "}
-                  {`$${
-                    !el.closingPriceCalculated ? " " : el.closingPriceCalculated
-                  }`}
+                  <span className={`textValue `}>
+                    {`$${
+                      !el.closingPriceCalculated
+                        ? " "
+                        : el.closingPriceCalculated
+                    }`}{" "}
+                    <br />
+                  </span>{" "}
+                  Closing price
                 </p>
                 <p className=" textMain cardField">
-                  <span className={`textDescription `}>Trade quantity :</span>{" "}
-                  {!el.tradeQuantity ? "not defined" : `${el.tradeQuantity}`}
+                  <span className={`textValue `}>
+                    {el.currentHoldings} <br />
+                  </span>{" "}
+                  Current holdings
                 </p>
-                <p className=" textMain cardField">
-                  <span className={`textDescription `}>Current holdings :</span>{" "}
-                  {el.currentHoldings}
-                </p>
-                <p
-                  className={`${
-                    el.profitLoss > 0 ? "colorGreen" : "colorRed"
-                  } cardField textMain`}
-                >
-                  <span className="textDescription textMain">P/L:</span>{" "}
-                  {!el.profitLoss ? 0 : `$${el.profitLoss.toFixed(2)}`}
+                <p className={`textMain`}>
+                  <span
+                    className={`${
+                      el.profitLoss > 0 ? "colorGreen" : "colorRed"
+                    } cardFieldtextValue textMain`}
+                  >
+                    {!el.profitLoss ? 0 : `$${el.profitLoss.toFixed(2)}`}
+                    <br />
+                  </span>{" "}
+                  P/L
                 </p>
               </div>
-            </div>
-            <div className="tradeCardRight">
-              <p className=" textMain cardField">
-                <span className={`textDescription `}>
-                  Name of the security :
-                </span>{" "}
-                {`${el.stockName}`}
-              </p>
-              <p className=" textMain cardField">
-                <span className={`textDescription `}>
-                  Ticker of the security :
-                </span>{" "}
-                {`$${el.stockTicker}`}
-              </p>
-              <p className=" textMain cardField">
-                <span className={`textDescription `}>Entry Date :</span>{" "}
-                {`${new Date(el.openDate).toDateString()}`}
-              </p>
-              <p className=" textMain cardField">
-                <span className={`textDescription `}>Closing Date :</span>{" "}
-                {`${!el.closeDate ? " - " : el.closeDate}`}
-              </p>
-              <p className=" textMain cardField">
-                <span className={`textDescription `}>Entry Date :</span>{" "}
-                {`${new Date(el.tradeCreatedOn).toDateString()}`}
-              </p>
             </div>
           </div>
         </Link>
@@ -106,25 +117,93 @@ class MainDashboard extends React.Component {
     });
   }
   render() {
+    console.log(this.props.stats);
     if (!this.props.trades) {
       return <LinearProgress color="inherit" />;
     }
-
     return (
-      <div>
-        <div className="createNewTradeContainer">
-          <Link
-            to={"/add-new-trade"}
-            className="createANewTradeBtn"
-            onClick={(e) => {
-              return this.renderModal();
-            }}
-          >
-            Create a new Trade +
-          </Link>
-          <div className="allTradesContainer">
-            <div className="tradeCardContainer">{this.renderTradeCards()}</div>
-            <div className="tradeAnalyticsContainer"></div>
+      <div className="dashboard">
+        <div className="dashboardContainer">
+          <div className="dashboardLeft">
+            <Sidebar />
+          </div>
+          <div className="dashboardCenter">
+            <div className="dashboardMainContainer">
+              <h1 className="dashboardGreeting heading">Hello,</h1>
+              <div className="dashboardFiltersContainer">
+                <input
+                  className="input"
+                  type="text"
+                  placeholder="Search for trades"
+                />
+                <button className="btn secondryBtn marginleft">Sort by</button>
+              </div>
+              <div className="dashboardInsight">
+                {/* <PieChart chartData={data} /> */}
+              </div>
+              <div className="dashboardAddNewTrades">
+                <div
+                  className="dashboardAddNewTradesItem"
+                  style={{ backgroundColor: "#E4C0CD" }}
+                >
+                  <img src={AddManually} />
+                  <p>Add Manually</p>
+                </div>
+                <div
+                  className="dashboardAddNewTradesItem"
+                  style={{ backgroundColor: "#E0E7EA" }}
+                >
+                  <img src={ImportExcel} />
+                  <p>Import an excel file</p>
+                </div>
+                <div
+                  className="dashboardAddNewTradesItem"
+                  style={{ backgroundColor: "#CED1F4" }}
+                >
+                  <img src={ImportBroker} />
+                  <p>Integrate with broker</p>
+                </div>
+              </div>
+              <div className="dashboardTradesEquityContainer">
+                <h1 className="heading">Equity Trades</h1>
+                {this.renderTradeCards()}
+              </div>
+            </div>
+          </div>
+          <div className="dashboardRight">
+            <h1 className="heading">Statistics</h1>
+            <div className="dashboardStatisticsContainer">
+              <div className="dashboardStatsItem">
+                <div className="dashboardStatsBullet"></div>
+                <div className="dashboardStatsDescription">Total Trades: </div>
+                <div className="dashboardStatsValue">0</div>
+              </div>
+              <div className="dashboardStatsItem">
+                <div className="dashboardStatsBullet"></div>
+                <div className="dashboardStatsDescription">Total Profit: </div>
+                <div className="dashboardStatsValue">0</div>
+              </div>
+              <div className="dashboardStatsItem">
+                <div className="dashboardStatsBullet"></div>
+                <div className="dashboardStatsDescription">Total Loss: </div>
+                <div className="dashboardStatsValue">0</div>
+              </div>
+              <div className="dashboardStatsItem">
+                <div className="dashboardStatsBullet"></div>
+                <div className="dashboardStatsDescription">Total Invested:</div>
+                <div className="dashboardStatsValue">0</div>
+              </div>
+              <div className="dashboardStatsItem">
+                <div className="dashboardStatsBullet"></div>
+                <div className="dashboardStatsDescription">Profit Trades: </div>
+                <div className="dashboardStatsValue">0</div>
+              </div>
+              <div className="dashboardStatsItem">
+                <div className="dashboardStatsBullet"></div>
+                <div className="dashboardStatsDescription">Loss Trades: </div>
+                <div className="dashboardStatsValue">0</div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -136,8 +215,7 @@ const mapStateToProps = (state) => {
   return {
     user: state.currentUser,
     trades: state.getAllTrades,
+    stats: state.stats,
   };
 };
-export default connect(mapStateToProps, { getTrades, authorizedUser })(
-  MainDashboard
-);
+export default connect(mapStateToProps, { getTrades, getStats })(MainDashboard);

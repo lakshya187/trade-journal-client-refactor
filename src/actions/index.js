@@ -80,3 +80,13 @@ export const logout = () => {
     type: "LOGOUT",
   };
 };
+export const getStats = () => {
+  return async (dispatch) => {
+    const { data } = await axios.get(`${server_url}/trades/getStats`, {
+      headers: {
+        Authorization: `Bearer ${getLocalStorage()}`,
+      },
+    });
+    dispatch({ type: "CURRENT_STATS", payload: data.data.trades[0] });
+  };
+};

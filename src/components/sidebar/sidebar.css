@@ -1,0 +1,24 @@
+.sidebarItem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px 60px 15px 20px;
+  color: var(--primaryColor);
+  border-radius: 5px;
+}
+.sidebarContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.sidebarItem:hover {
+  background-color: var(--secondaryColor);
+  cursor: pointer;
+}
+.sidebarItem p {
+  margin-left: 40px;
+  font-size: var(--breadCrums);
+}
+.sidebarItem img {
+  width: 20%;
+}
