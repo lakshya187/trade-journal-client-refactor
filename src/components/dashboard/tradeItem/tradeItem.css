@@ -1,0 +1,24 @@
+.closeEntriesContainer {
+  display: flex;
+  justify-content: center;
+}
+.closeEntries {
+  /* border-top: solid 1px var(--borderColor); */
+  padding-top: 20px;
+}
+.tradeItemCloseEntriesShow {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.tradeItemCloseEntriesContainer {
+  display: flex;
+  margin-top: 20px;
+}
+.closeEntriesShow {
+  margin-left: 10px;
+}
+.tradeItemBtnContainer {
+  display: flex;
+  flex-direction: column;
+}

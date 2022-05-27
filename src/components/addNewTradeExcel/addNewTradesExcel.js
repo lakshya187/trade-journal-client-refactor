@@ -4,6 +4,7 @@ import uploadExcel from "../../assets/illustrations/upload excel.svg";
 import "./addNewTradeExcel.css";
 import { server_url } from "./../../config";
 import { getLocalStorage } from "./../../helperFunctions/localstorage";
+import history from "../../utils/history";
 class AddNewTradesExcel extends Component {
   state = {
     data: null,
@@ -24,6 +25,8 @@ class AddNewTradesExcel extends Component {
           Authorization: `Bearer ${getLocalStorage()}`,
         },
       });
+      history.push("/");
+
       // console.log(response);
     } catch (e) {
       console.log(e);

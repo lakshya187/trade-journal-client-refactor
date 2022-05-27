@@ -90,78 +90,84 @@ class AddNewtradeForm extends Component {
   };
   render() {
     return (
-      <form
-        onSubmit={this.props.handleSubmit(this.onFormSubmit)}
-        className={"addTradeForm"}
-      >
-        {this.state.success ? (
-          <Alert severity="success">
-            Your Trade has been created sucessfully!
-          </Alert>
-        ) : (
-          ""
-        )}
-        {this.state.error ? (
-          <Alert severity="error">
-            Something went wrong, try again or contact the admin.
-          </Alert>
-        ) : (
-          ""
-        )}
-        <p className="addNewTradeHeading">Add A new Trade</p>
-        <Field
-          name="stockTicker"
-          component={this.renderInputString}
-          label="Stock Ticker"
-        />
-        <Field
-          name="stockName"
-          component={this.renderInputString}
-          label="Stock Name"
-        />
-        <div className="formField">
-          <label>
-            Type of trade
-            <Field
-              name="typeOfTrade"
-              component="input"
-              type="radio"
-              value="Short"
-            />{" "}
-            Short
-          </label>
-          <label>
-            <Field
-              name="typeOfTrade"
-              component="input"
-              type="radio"
-              value="Long"
-            />{" "}
-            Long
-          </label>
-        </div>
-        <Field
-          name="openPrice"
-          component={this.renderNumber}
-          label="Open price"
-        />
-        <Field
-          name="tradeQuantity"
-          component={this.renderNumber}
-          label="Quantity"
-        />
-        <Field name="openDate" component={this.renderDate} label="Open Date" />
-        <Field name="notes" component={this.renderTextArea} label="Notes" />
-        <div
-          style={{
-            marginTop: "20px",
-            display: "flex",
-            justifyContent: "center",
-          }}
+      <div className="addNewTradeForm">
+        <form
+          onSubmit={this.props.handleSubmit(this.onFormSubmit)}
+          className={"addTradeForm"}
         >
-          <button className="submitButton">Submit</button>
-        </div>
-      </form>
+          {this.state.success ? (
+            <Alert severity="success">
+              Your Trade has been created sucessfully!
+            </Alert>
+          ) : (
+            ""
+          )}
+          {this.state.error ? (
+            <Alert severity="error">
+              Something went wrong, try again or contact the admin.
+            </Alert>
+          ) : (
+            ""
+          )}
+          <p className="addNewTradeHeading">Add A new Trade</p>
+          <Field
+            name="stockTicker"
+            component={this.renderInputString}
+            label="Stock Ticker"
+          />
+          <Field
+            name="stockName"
+            component={this.renderInputString}
+            label="Stock Name"
+          />
+          <div className="formField">
+            <label>
+              Type of trade
+              <Field
+                name="typeOfTrade"
+                component="input"
+                type="radio"
+                value="Short"
+              />{" "}
+              Short
+            </label>
+            <label>
+              <Field
+                name="typeOfTrade"
+                component="input"
+                type="radio"
+                value="Long"
+              />{" "}
+              Long
+            </label>
+          </div>
+          <Field
+            name="openPrice"
+            component={this.renderNumber}
+            label="Open price"
+          />
+          <Field
+            name="tradeQuantity"
+            component={this.renderNumber}
+            label="Quantity"
+          />
+          <Field
+            name="openDate"
+            component={this.renderDate}
+            label="Open Date"
+          />
+          <Field name="notes" component={this.renderTextArea} label="Notes" />
+          <div
+            style={{
+              marginTop: "20px",
+              display: "flex",
+              justifyContent: "center",
+            }}
+          >
+            <button className="submitButton">Submit</button>
+          </div>
+        </form>
+      </div>
     );
   }
 }

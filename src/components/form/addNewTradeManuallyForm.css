@@ -44,3 +44,8 @@
     width: 75%;
   }
 }
+.addNewTradeForm {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}

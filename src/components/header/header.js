@@ -64,22 +64,30 @@ class Header extends Component {
   };
 
   render() {
-    console.log(this.props.user);
     return (
       <div className="header">
         <div className="header-left">
-          <div>Trade Journal</div>
+          <div>
+            Trade<span> Journal</span>
+          </div>
         </div>
-        <div className="header-center">{this.renderGreetText()}</div>
+        <div className="header-center">
+          <div>Journal</div>
+          <div>Feed</div>
+          <div>Help</div>
+          <div>Contact</div>
+        </div>
         <div className="headerRight">
           {!this.props.user ? (
             <Link className="btn primaryBtn" to="/login">
               Sign In
             </Link>
           ) : (
-            <button className="btn secondryBtn" onClick={this.logout}>
-              Logout
-            </button>
+            <div>
+              <div className="headerAvatar">
+                <div>{this.props.user.name.split(" ")[0].slice(0, 1)}</div>
+              </div>
+            </div>
           )}
         </div>
       </div>

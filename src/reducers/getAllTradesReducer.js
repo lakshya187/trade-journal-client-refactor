@@ -1,4 +1,4 @@
-export default (state = [], action) => {
+const getAllTradesReducer = (state = null, action) => {
   switch (action.type) {
     case "GET_ALL_TRADES":
       return action.payload;
@@ -6,3 +6,5 @@ export default (state = [], action) => {
       return state;
   }
 };
+
+export default getAllTradesReducer;

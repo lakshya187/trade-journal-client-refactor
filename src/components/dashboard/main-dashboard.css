@@ -1,12 +1,13 @@
 .dashboardContainer {
   display: flex;
-  padding: 30px 0;
+  padding: 150px 0;
 }
 .dashboardLeft {
-  flex: 0.2;
+  flex: 0.1;
 }
 .dashboardCenter {
-  flex: 0.6;
+  padding: 0 30px;
+  flex: 0.7;
 }
 .dashboardRight {
   flex: 0.2;
@@ -30,6 +31,7 @@
   align-items: flex-start;
   padding: 20px;
   border-radius: 5px;
+  color: var(--primaryColor);
   /* margin-left: 20px; */
 }
 .dashboardAddNewTradesItem img {
@@ -38,6 +40,7 @@
 .dashboardAddNewTradesItem:hover {
   cursor: pointer;
   box-shadow: var(--shadow);
+  color: var(--primaryColor);
 }
 .dashboardTradesEquityContainer h1 {
   font-size: var(--heading);
@@ -49,7 +52,7 @@
   border-top: 1px solid var(--borderColor);
   padding: 30px 0;
   align-items: center;
-  justify-content: start;
+  justify-content: space-evenly;
 }
 .tradeCardType {
   height: 70px;
@@ -70,9 +73,7 @@
   color: var(--primaryColor);
   font-weight: bold;
 }
-.tradeCardContainer:hover {
-  background-color: var(--lightWhiteColor);
-}
+
 .dashboardCardText {
   display: flex;
   align-items: center;
@@ -89,6 +90,8 @@
   flex-direction: column;
   justify-content: space-around;
   border-radius: 10px;
+  /* position: fixed; */
+  /* width: 100%; */
 }
 .dashboardRight {
   margin-left: 50px;
@@ -111,7 +114,23 @@
   color: var(--secondaryColor);
   font-size: var(--breadCrums);
 }
-..dashboardStatsValue {
+.dashboardStatsValue {
   color: var(--primaryColor);
   font-weight: bold;
+  margin-left: 5px;
+}
+.arrowDropDown:hover {
+  cursor: pointer;
+  /* background-color: var(--secondaryColor);/ */
+}
+.arrowDropDownRight {
+  transform: rotate(-90deg);
+}
+.closeEntriesShow:hover {
+  cursor: pointer;
+}
+.dashboardInsight {
+  height: 300px;
+  width: 300px;
+  padding: ;
 }

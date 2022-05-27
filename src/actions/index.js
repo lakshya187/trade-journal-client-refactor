@@ -14,6 +14,7 @@ export const getTrades = () => {
         Authorization: `Bearer ${getLocalStorage()}`,
       },
     });
+
     dispatch({ type: "GET_ALL_TRADES", payload: response.data.data.trades });
   };
 };

@@ -3,7 +3,7 @@ const statsReducer = (state = null, action) => {
     case "CURRENT_STATS":
       return action.payload;
     default:
-      return null;
+      return state;
   }
 };
 

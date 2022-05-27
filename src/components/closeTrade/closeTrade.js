@@ -7,6 +7,7 @@ import history from "../../utils/history";
 import { getSingleTrade } from "../../actions";
 import "./closeTrade.css";
 import { server_url } from "../../config";
+
 class CloseTrade extends Component {
   state = {
     price: this.props.trade.openPrice,
