@@ -21,11 +21,13 @@ body {
   --redColor: #e10015;
   --lightWhiteColor: #f7f7f7;
   --borderColor: #c0c0c0;
-  --btnpadding: 10px 30px;
+  --btnpadding: 15px 30px;
   --shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
   --breadCrums: 14px;
   --white: #ffffff;
+  --compPadding: 150px 0 0 0;
 }
+
 a:hover {
   color: none;
 }
@@ -64,6 +66,7 @@ a:hover {
 .mainValue {
   font-weight: bold;
 }
+
 input:focus {
   border: solid 1px var(--borderColor);
   outline: none;

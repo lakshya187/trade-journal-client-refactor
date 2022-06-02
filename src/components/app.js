@@ -2,6 +2,7 @@ import React from "react";
 import Header from "./header/header";
 import { Router, Route, Switch } from "react-router-dom";
 
+import AddOptionsForm from "./addOptions/addOptionsTradeForm";
 import CloseTrade from "./closeTrade/closeTrade";
 import EditTrade from "./editTrade/editTrade";
 import AddNewTrade from "./addNewTrade/addNewTrade";
@@ -12,6 +13,7 @@ import AddTradeManually from "./addNewTradeManually/addNewTradeManually";
 import Signup from "./signup/signup";
 import Login from "./login/login";
 import AddNewTradesExcel from "./addNewTradeExcel/addNewTradesExcel";
+import OptionsDashboard from "./optionsDashboard/optionsDashboard";
 import "./app.css";
 const App = () => {
   return (
@@ -32,10 +34,16 @@ const App = () => {
           <Route path={"/login"} exact component={Login}></Route>
           <Route path={"/signup"} exact component={Signup}></Route>
           <Route
+            path={"/options-dashboard"}
+            exact
+            component={OptionsDashboard}
+          ></Route>
+          <Route
             path={"/add-excel"}
             exact
             component={AddNewTradesExcel}
           ></Route>
+          <Route path={"/add-option"} exact component={AddOptionsForm}></Route>
         </Switch>
       </Router>
     </div>

@@ -1,7 +1,8 @@
 .dashboardContainer {
   display: flex;
-  padding: 150px 0;
+  padding: var(--compPadding);
 }
+
 .dashboardLeft {
   flex: 0.1;
 }

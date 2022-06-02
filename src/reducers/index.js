@@ -1,6 +1,8 @@
 import { combineReducers } from "redux";
 import { reducer as formReducer } from "redux-form";
 
+import createNewOptionsReducer from "./addNewOption";
+import getAllOptionsTradesReducer from "./getAllOptionsTradesReducer";
 import statsReducer from "./statsReducer";
 import errorReducer from "./errorReducer";
 import logoutReducer from "./logoutReducer";
@@ -16,6 +18,6 @@ export default combineReducers({
   currentUser: loginReducer,
   error: errorReducer,
   stats: statsReducer,
-
-  // logout: logoutReducer,
+  optionsTrades: getAllOptionsTradesReducer,
+  newOptionTrade: createNewOptionsReducer,
 });

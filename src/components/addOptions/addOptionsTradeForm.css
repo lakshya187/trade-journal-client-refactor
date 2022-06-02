@@ -1,0 +1,26 @@
+.addOptionsTradeForm {
+  padding: var(--compPadding);
+}
+.addOptionsTradeContainer {
+  /* background-color: rgba(0, 0, 0, 01); */
+  background: url(../../assets/images/addOptionsBackground.jpg);
+  display: flex;
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+.addOptionsTradeForm {
+  background-color: var(--white);
+  /* height: 25%; */
+  padding: 30px 50px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+.submitBtnContainer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+}

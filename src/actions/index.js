@@ -7,6 +7,7 @@ import {
   setLocalStorage,
 } from "../helperFunctions/localstorage";
 import { server_url } from "../config";
+import { CompressOutlined } from "@mui/icons-material";
 export const getTrades = () => {
   return async (dispatch) => {
     const response = await axios.get(`${server_url}/trades`, {
@@ -89,5 +90,25 @@ export const getStats = () => {
       },
     });
     dispatch({ type: "CURRENT_STATS", payload: data.data.trades[0] });
+  };
+};
+export const getAllOptions = () => {
+  return async (dispatch) => {
+    const { data } = await axios.get(`${server_url}/options`, {
+      headers: {
+        Authorization: `Bearer ${getLocalStorage()}`,
+      },
+    });
+    // console.log(data.data.allOptionsTrade);
+    dispatch({
+      type: "GET_ALL_OPTIONS",
+      payload: data.data.allOptionsTrade,
+    });
+  };
+};
+export const createOptionsTrade = (formData) => {
+  return {
+    type: "OPTIONS_DATA",
+    payload: formData,
   };
 };

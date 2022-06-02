@@ -1,5 +1,6 @@
 import React from "react";
 
+import { Link } from "react-router-dom";
 import "./sidebar.css";
 import reports from "./../../assets/icons/sidebar/reports.svg";
 import options from "./../../assets/icons/sidebar/options.svg";
@@ -9,14 +10,14 @@ const Sidebar = () => {
     <div>
       {" "}
       <div className="sidebarContainer">
-        <div className="sidebarItem ">
+        <Link to={"/"} className="sidebarItem ">
           <img src={equity} />
           <p>Equity</p>
-        </div>
-        <div className="sidebarItem ">
+        </Link>
+        <Link to="/options-dashboard" className="sidebarItem ">
           <img src={options} />
           <p>Options</p>
-        </div>
+        </Link>
         <div className="sidebarItem ">
           <img src={reports} />
           <p>Reports</p>

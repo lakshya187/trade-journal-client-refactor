@@ -1,0 +1,16 @@
+.optionsDashboard {
+  padding: var(--compPadding);
+}
+.optionsDashboardContainer {
+  display: flex;
+}
+.optionsDashbardLeft {
+  flex: 0.1;
+}
+.optionsDashbardCenter {
+  flex: 0.7;
+  padding: 0px 30px;
+}
+.optionsDashbardRight {
+  flex: 0.1;
+}
