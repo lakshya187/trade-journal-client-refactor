@@ -3,7 +3,8 @@
 }
 .addOptionsTradeContainer {
   /* background-color: rgba(0, 0, 0, 01); */
-  background: url(../../assets/images/addOptionsBackground.jpg);
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+    url(../../assets/images/addOptionsBackground.jpg);
   display: flex;
   background-position: center;
   background-size: cover;
@@ -15,7 +16,7 @@
 .addOptionsTradeForm {
   background-color: var(--white);
   /* height: 25%; */
-  padding: 30px 50px;
+  padding: 30px 100px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
 }
@@ -23,4 +24,45 @@
   display: flex;
   justify-content: space-between;
   margin-top: 30px;
+}
+.previewOptionsItem div {
+  color: var(--primaryColor);
+  font-size: var(--bodyCopy);
+  font-weight: bold;
+}
+.previewOptionsItem span {
+  color: var(--secondaryColor);
+  font-weight: normal;
+  font-size: var(--bodyCopy);
+}
+
+.previewOptionsTrade {
+  padding: var(--compPadding);
+  justify-content: center;
+  display: flex;
+  background: url(../../assets/images//previewtrade.jpg);
+  /* background-color: var(--borderColor); */
+  height: 100%;
+}
+.previewOptionHeadContainer {
+  display: flex;
+  align-items: center;
+}
+.previewOptionsTradeContainer {
+  max-width: 25%;
+  height: 100%;
+  padding: 25px 50px;
+  border-radius: 20px;
+  background-color: var(--white);
+  box-shadow: var(--shadow);
+  display: flex;
+  justify-content: center;
+  margin-bottom: 100px;
+}
+.previewOptionsItemContainer {
+  justify-content: center;
+}
+
+.addLegContainer {
+  padding: var(--compPadding);
 }

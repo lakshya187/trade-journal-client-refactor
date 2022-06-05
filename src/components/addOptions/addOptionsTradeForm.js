@@ -32,7 +32,6 @@ class AddOptionsForm extends Component {
     updated: false,
   };
   onFormSubmit = () => {
-    console.log(this.state);
     this.props.createOptionsTrade(this.state);
     this.setState({ currentView: "leg" });
   };
@@ -55,6 +54,7 @@ class AddOptionsForm extends Component {
       this.handleBackAction();
       return (
         <form>
+          <div className="subHeading marginBottom">Add an Options Trade!</div>
           <div className="formField">
             <label className="formFieldLabel">Underlying</label>
             <input

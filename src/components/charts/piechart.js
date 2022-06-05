@@ -11,7 +11,7 @@ class PieChart extends React.Component {
           options={{
             title: {
               display: true,
-              text: "Average Rainfall per month",
+
               fontSize: 16,
             },
             legend: {

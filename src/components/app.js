@@ -2,6 +2,7 @@ import React from "react";
 import Header from "./header/header";
 import { Router, Route, Switch } from "react-router-dom";
 
+import PreviewTrade from "./addOptions/previewTrade";
 import AddOptionsForm from "./addOptions/addOptionsTradeForm";
 import CloseTrade from "./closeTrade/closeTrade";
 import EditTrade from "./editTrade/editTrade";
@@ -42,6 +43,11 @@ const App = () => {
             path={"/add-excel"}
             exact
             component={AddNewTradesExcel}
+          ></Route>
+          <Route
+            path={"/preview-option-trade"}
+            exact
+            component={PreviewTrade}
           ></Route>
           <Route path={"/add-option"} exact component={AddOptionsForm}></Route>
         </Switch>
