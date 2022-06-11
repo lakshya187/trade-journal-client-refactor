@@ -115,11 +115,11 @@ const OptionsTradeItem = ({ trade }) => {
                   : `$${formatCash(Math.abs(trade.netProfitLoss))}`}
                 <br />
               </span>{" "}
-              Net Profit/Loss
+              M - M
             </p>
           </div>
           <div className="tradeItemBtnContainer">
-            <Link to={`/trade/${trade._id}`} className="btn primaryBtn">
+            <Link to={`/option/${trade._id}`} className="btn primaryBtn">
               View Trade
             </Link>
             <div

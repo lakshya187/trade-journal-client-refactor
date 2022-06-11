@@ -14,7 +14,7 @@ body {
   --blueColor: #ced1f4;
   --lightblueColor: #e0e7ea;
   --pinkColor: #e4c0cd;
-  --bodyCopy: 16px;
+  --bodyCopy: 15px;
   --subheading: 24px;
   --heading: 32px;
   --greenColor: #00e08e;
@@ -57,6 +57,7 @@ a:hover {
   display: flex;
   justify-content: center;
   font-size: var(--bodyCopy);
+  background-color: var(--white);
 }
 .marginleft {
   margin-left: 20px;
@@ -65,7 +66,7 @@ a:hover {
   color: var(--primaryColor);
   background: var(--white);
   border: 1px solid var(--borderColor);
-  transition: 259ms;
+  transition: 100ms;
   text-align: center;
   /* box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1); */
 }
@@ -104,9 +105,11 @@ input:focus {
 }
 .colorGreen {
   color: var(--greenColor);
+  font-weight: bold;
 }
 .colorRed {
   color: var(--redColor);
+  font-weight: bold;
 }
 .heading {
   color: var(--primaryColor);

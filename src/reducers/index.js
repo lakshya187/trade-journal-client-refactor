@@ -1,6 +1,8 @@
 import { combineReducers } from "redux";
 import { reducer as formReducer } from "redux-form";
 
+import closeOptionReducer from "./closeOptionData";
+import singleOptionsReducer from "./singleOptionReducer";
 import createNewOptionsReducer from "./addNewOption";
 import getAllOptionsTradesReducer from "./getAllOptionsTradesReducer";
 import statsReducer from "./statsReducer";
@@ -20,4 +22,6 @@ export default combineReducers({
   stats: statsReducer,
   optionsTrades: getAllOptionsTradesReducer,
   newOptionTrade: createNewOptionsReducer,
+  singleOptiontrade: singleOptionsReducer,
+  closeOption: closeOptionReducer,
 });

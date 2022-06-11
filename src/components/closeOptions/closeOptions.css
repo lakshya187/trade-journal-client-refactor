@@ -1,0 +1,20 @@
+.closeOption {
+  padding: var(--compPadding);
+  display: flex;
+  justify-content: center;
+}
+.formFieldIdentifyOptionContainer {
+  display: flex;
+  /* justify-content: center; */
+  flex-direction: column;
+  align-items: center;
+}
+.formFieldIdentifyOptionContainer div {
+  font-size: var(--bodyCopy);
+  margin-top: 20px;
+}
+.formFieldIdentifyOptionContainer div span {
+}
+.textDescription {
+  color: var(--secondaryColor);
+}

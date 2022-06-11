@@ -1,0 +1,51 @@
+.optionDetailContainer {
+  padding: var(--compPadding);
+  background: linear-gradient(to right, #50c9c3, #96deda);
+  /* background: linear-gradient(to right, #4b6cb7, #182848); */
+  padding-bottom: 50px;
+  /* margin-top: 300px; */
+}
+.optionDetail {
+}
+.optionDetailStratName {
+  display: flex;
+  justify-content: center;
+}
+.optionDetailStratName div {
+  padding: 40px;
+  color: var(--white);
+  background-color: var(--primaryColor);
+  border-radius: 10px;
+  font-size: var(--bodyCopy);
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.optionsDetailGeneralInfoContainer {
+  background-color: var(--white);
+  padding: 20px 10px;
+  width: 25%;
+  display: flex;
+  justify-content: center;
+  box-shadow: var(--shadow);
+  border-radius: 5px;
+}
+.optionsDEtailsGen {
+  justify-content: center;
+  display: flex;
+}
+.cardField {
+  font-size: var(--bodyCopy);
+}
+.textDescription {
+  color: var(--secondaryColor);
+}
+.optionDetailNotesContainer {
+  display: flex;
+  justify-content: center;
+}
+.optionDetailNotesContainer div {
+  font-size: var(--bodyCopy);
+  padding: 50px;
+  color: var(--primaryColor);
+  box-shadow: var(--shadow);
+}

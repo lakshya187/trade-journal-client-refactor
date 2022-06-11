@@ -1,8 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Select from "react-select";
+import axios from "axios";
 
-import backgroundImage from "../../assets/images/previewtrade.jpg";
+import { getLocalStorage } from "../../helperFunctions/localstorage";
+import { server_url } from "../../config";
+
 import history from "../../utils/history";
 import PreviewOptionsItem from "./previewOptionItem";
 
@@ -32,9 +35,19 @@ class PreviewTrade extends Component {
     });
   };
   // componentDidMount() {}
-  handleFormSubmit = (e) => {
+  handleFormSubmit = async (e) => {
     e.preventDefault();
-    console.log(this.props.trade);
+    try {
+      const res = await axios.post(`${server_url}/options`, this.props.trade, {
+        headers: {
+          Authorization: `Bearer ${getLocalStorage()}`,
+        },
+      });
+      console.log(res);
+      history.push("/options-dashboard");
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   render() {

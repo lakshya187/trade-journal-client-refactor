@@ -109,8 +109,6 @@ class MainDashboard extends React.Component {
       ],
     };
 
-    console.log(profitLoss);
-
     return <PieChart data={chart} />;
   };
   renderGreeting = () => {

@@ -12,6 +12,7 @@ const typeOfTrade = [
 ];
 
 const PreviewOptionsItem = ({ l, i, trade }) => {
+  console.log(trade);
   const [showLeg, setShowLeg] = useState(false);
   const renderItems = () => {
     return (
@@ -71,12 +72,21 @@ const PreviewOptionsItem = ({ l, i, trade }) => {
           />
         </div>
         <div className="formField">
-          <label className="formFieldLabel">Date</label>
+          <label className="formFieldLabel">Open Date</label>
           <input
             type="datetime-local"
             onChange={(e) => (trade.leg[i].date = +e.target.value)}
             align="right"
             defaultValue={l.openDate}
+          />
+        </div>
+        <div className="formField">
+          <label className="formFieldLabel">Expiry Date</label>
+          <input
+            type="date"
+            onChange={(e) => (trade.leg[i].expiryDate = +e.target.value)}
+            align="right"
+            defaultValue={l.expiryDate}
           />
         </div>
       </div>

@@ -1,4 +1,3 @@
-import axios from "axios";
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Select from "react-select";
@@ -6,8 +5,6 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { Link } from "react-router-dom";
 
 import { createOptionsTrade } from "../../actions";
-import { server_url } from "../../config";
-import { getLocalStorage } from "../../helperFunctions/localstorage";
 
 const options = [
   { value: "call", label: "Call" },
@@ -28,9 +25,9 @@ class Leg extends Component {
     typeOfTrade: "",
     openDate: "",
     formDone: false,
+    expiryDate: "",
   };
   handleFormSubmit = () => {
-    console.log("worked");
     if (this.props.preData.leg.length === 3) {
       return;
     }
@@ -42,6 +39,7 @@ class Leg extends Component {
       quantity: 0,
       strike: 0,
       openDate: "",
+      expiryDate: "",
     });
     console.log(this.props.preData);
   };
@@ -57,6 +55,7 @@ class Leg extends Component {
       quantity: 0,
       strike: 0,
       openDate: "",
+      expiryDate: "",
     });
     console.log(this.props.preData);
   };
@@ -120,6 +119,15 @@ class Leg extends Component {
             />
           </div>
           <div className="formField">
+            <label className="formFieldLabel">Expiry Date</label>
+            <input
+              type="date"
+              onChange={(e) => this.setState({ expiryDate: e.target.value })}
+              align="right"
+              value={this.state.expiryDate}
+            />
+          </div>
+          <div className="formField">
             <label className="formFieldLabel">Type of Trade</label>
             <Select
               options={typeOfTrade}
@@ -140,7 +148,6 @@ class Leg extends Component {
             <Link
               to={"/preview-option-trade"}
               onClick={(e) => {
-                e.preventDefault();
                 this.handleFormSubmit();
               }}
               className={"secondryBtn btn"}

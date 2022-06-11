@@ -112,3 +112,24 @@ export const createOptionsTrade = (formData) => {
     payload: formData,
   };
 };
+
+export const getSingleOptionsTrade = (id) => {
+  return async (dispatch) => {
+    const res = await axios.get(`${server_url}/options/${id}`, {
+      headers: {
+        Authorization: `Bearer ${getLocalStorage()}`,
+      },
+    });
+    dispatch({
+      type: "SINGLE_OPTION_TRADE",
+      payload: res.data.data,
+    });
+  };
+};
+
+export const closeOption = (formdata) => {
+  return {
+    type: "CLOSE_OPTION",
+    payload: formdata,
+  };
+};
