@@ -33,7 +33,10 @@ body {
 }
 
 a:hover {
-  color: none;
+  color: var(--primaryColor);
+}
+.active {
+  background-color: var(--);
 }
 .btn {
   padding: var(--btnpadding);
@@ -131,4 +134,7 @@ textarea:focus {
 }
 .marginTop {
   margin-top: 20px;
+}
+.bodyCopy {
+  font-size: var(--bodyCopy);
 }

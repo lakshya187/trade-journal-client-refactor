@@ -1,20 +1,61 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
-import { getSingleTrade } from "../../actions";
+import formatCash from "../../utils/formatCash";
+import { LinearProgress } from "@mui/material";
+import { getLocalStorage } from "../../helperFunctions/localstorage";
+import { server_url } from "../../config";
 import "./tradeDetail.css";
+import entryAnalysisFallBack from "../../assets/icons/analysis/entryAnalysis.svg";
+import exitAnalysisFallBack from "../../assets/icons/analysis/exitAnalysis.svg";
+import { getSingleTrade } from "../../actions";
 import history from "../../utils/history";
+import { async } from "@firebase/util";
 
 class TradeDetails extends Component {
+  state = {
+    trade: null,
+  };
   componentDidMount() {
-    this.props.getSingleTrade(this.props.match.params.id);
+    this.getData();
   }
-
+  renderAnalysis = (fallback, img) => {
+    return (
+      <div className="tradeAnalysisContainer marginTop">
+        <img
+          className={`tradeAnalysis ${
+            !img ? "tradeDetailAnalysisFallback" : ""
+          } `}
+          src={!img ? fallback : img}
+          alt={`analysis`}
+        />
+        {img ? (
+          ""
+        ) : (
+          <button className="btn secondryBtn marginTop">Upload</button>
+        )}
+      </div>
+    );
+  };
+  getData = async () => {
+    const response = await axios.get(
+      `${server_url}/trades/${this.props.match.params.id}`,
+      {
+        headers: {
+          Authorization: `Bearer ${getLocalStorage()}`,
+        },
+      }
+    );
+    console.log(response);
+    this.setState({ trade: response.data.data.trade });
+  };
   render() {
-    if (!this.props.trade) {
-      console.log("loading");
+    if (!this.state.trade) {
+      return <LinearProgress />;
     }
+    console.log(this.state.trade);
 
     return (
       <div className="tradeDetail">
@@ -24,27 +65,27 @@ class TradeDetails extends Component {
           </div>
         </div>
         <div className="tradeDetailBadge">
-          {!this.props.trade.typeOfTrade ? (
+          {!this.state.trade.typeOfTrade ? (
             <div></div>
           ) : (
             <div
               className={`tradeCardType ${
-                this.props.trade.typeOfTrade === "Long" ? "black" : "grey"
+                this.state.trade.typeOfTrade === "Long" ? "black" : "grey"
               }`}
             >
-              {this.props.trade.typeOfTrade.toUpperCase()}
+              {this.state.trade.typeOfTrade.toUpperCase()}
             </div>
           )}
         </div>
         <div className="editBtnContainer">
           <Link
-            to={`/${this.props.trade._id}/close-trade`}
+            to={`/${this.state.trade._id}/close-trade`}
             className="btn primaryBtn "
           >
             Close Trade
           </Link>
           <Link
-            to={`/${this.props.trade._id}/edit-trade`}
+            to={`/${this.state.trade._id}/edit-trade`}
             className="btn secondryBtn marginleft"
           >
             Edit Trade
@@ -61,37 +102,37 @@ class TradeDetails extends Component {
             <div className="tradeDetailsTextContainerLeft">
               <p className="cardField">
                 <span className="textDescription">Enrty price :</span>{" "}
-                {!this.props.trade.openPrice
+                {!this.state.trade.openPrice
                   ? "Not defined"
-                  : ` $${this.props.trade.openPrice}`}
+                  : ` $${formatCash(this.state.trade.openPrice)}`}
               </p>
               <p className="cardField">
                 <span className={`textDescription `}>Closing price :</span>{" "}
                 {`${
-                  !this.props.trade.closingPriceCalculated
+                  !this.state.trade.closingPriceCalculated
                     ? "-"
-                    : `$${this.props.trade.closingPriceCalculated}`
+                    : `$${formatCash(this.state.trade.closingPriceCalculated)}`
                 }`}
               </p>
               <p className="cardField">
                 <span className={`textDescription `}>Trade Quantity :</span>{" "}
-                {!this.props.trade.tradeQuantity
+                {!this.state.trade.tradeQuantity
                   ? "not defined"
-                  : `${this.props.trade.tradeQuantity}`}
+                  : `${this.state.trade.tradeQuantity}`}
               </p>
               <p className="cardField">
                 <span className={`textDescription `}>Current holding :</span>{" "}
-                {this.props.trade.currentHoldings}
+                {this.state.trade.currentHoldings}
               </p>
               <p
                 className={`${
-                  this.props.trade.profitLoss > 0 ? "colorGreen" : "colorRed"
+                  this.state.trade.profitLoss > 0 ? "colorGreen" : "colorRed"
                 } cardField`}
               >
                 <span className="textDescription">P/L:</span>{" "}
-                {!this.props.trade.profitLoss
+                {!this.state.trade.profitLoss
                   ? 0
-                  : `$${this.props.trade.profitLoss.toFixed(2)}`}
+                  : `$${formatCash(this.state.trade.profitLoss.toFixed(2))}`}
               </p>
             </div>
             <div className="tradeDetailsTextContainerRight">
@@ -99,34 +140,34 @@ class TradeDetails extends Component {
                 <span className={`textDescription `}>
                   Name of the security :
                 </span>{" "}
-                {`${this.props.trade.stockName}`}
+                {`${this.state.trade.stockName}`}
               </p>
               <p className="cardField">
                 <span className={`textDescription `}>
                   Ticker of the security :
                 </span>{" "}
-                {`$${this.props.trade.stockTicker}`}
+                {`$${this.state.trade.stockTicker}`}
               </p>
               <p className="cardField">
                 <span className={`textDescription `}>Open Date :</span>{" "}
-                {`${new Date(this.props.trade.openDate).toDateString()}`}
+                {`${new Date(this.state.trade.openDate).toDateString()}`}
               </p>
               <p className="cardField">
                 <span className={`textDescription `}>Close Date :</span>{" "}
                 {`${
-                  !this.props.trade.openTrade
+                  !this.state.trade.openTrade
                     ? " - "
-                    : new Date(this.props.trade.closeDate).toDateString()
+                    : new Date(this.state.trade.closeDate).toDateString()
                 }`}
               </p>
               <p className="cardField">
                 <span className={`textDescription `}>Entry Date :</span>{" "}
-                {`${new Date(this.props.trade.tradeCreatedOn).toDateString()}`}
+                {`${new Date(this.state.trade.tradeCreatedOn).toDateString()}`}
               </p>
             </div>
           </div>
-          <div className="tradeDetailAa"></div>
         </div>
+
         <div
           style={{
             display: "flex",
@@ -135,7 +176,31 @@ class TradeDetails extends Component {
           }}
         >
           <div className="tradeDetailsTextContainer">
-            {this.props.trade.notes}
+            {this.state.trade.notes}
+          </div>
+        </div>
+        <div className="tradeDetailAnalysis marginTop">
+          <div className="tradeDetailAnalysisHeading subHeading">Analysis</div>
+          <div className="tradeDetailAnalysisContainer marginTop">
+            <div className="tradeDetailAnalysisBuying">
+              <div className="bodyCopy tradeDetailAnalysisSubHeading">
+                Buying Analysis
+              </div>
+              {this.renderAnalysis(
+                entryAnalysisFallBack,
+                this.state.trade.entryAnalysis
+              )}
+            </div>
+            <div className="tradeDetailAnalysisSelling tradeDetailAnalysisItem">
+              <div className="bodyCopy tradeDetailAnalysisSubHeading ">
+                Selling Analysis
+              </div>
+
+              {this.renderAnalysis(
+                exitAnalysisFallBack,
+                this.state.trade.exitAnalysis
+              )}
+            </div>
           </div>
         </div>
       </div>

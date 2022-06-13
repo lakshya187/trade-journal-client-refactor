@@ -35,6 +35,8 @@
 }
 .cardField {
   font-size: var(--bodyCopy);
+  color: var(--primaryColor);
+  /* font-weight: bold; */
 }
 .textDescription {
   color: var(--secondaryColor);
@@ -48,4 +50,11 @@
   padding: 50px;
   color: var(--primaryColor);
   box-shadow: var(--shadow);
+}
+.optionDetailGoBack {
+  padding: 10px;
+  color: var(--white);
+}
+.optionDetailGoBack:hover {
+  cursor: pointer;
 }

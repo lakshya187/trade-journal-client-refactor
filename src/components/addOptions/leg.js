@@ -55,7 +55,7 @@ class Leg extends Component {
       quantity: 0,
       strike: 0,
       openDate: "",
-      expiryDate: "",
+      expireDate: "",
     });
     console.log(this.props.preData);
   };
@@ -122,9 +122,9 @@ class Leg extends Component {
             <label className="formFieldLabel">Expiry Date</label>
             <input
               type="date"
-              onChange={(e) => this.setState({ expiryDate: e.target.value })}
+              onChange={(e) => this.setState({ expireDate: e.target.value })}
               align="right"
-              value={this.state.expiryDate}
+              value={this.state.expireDate}
             />
           </div>
           <div className="formField">

@@ -55,7 +55,6 @@ const OptionsDashboard = (props) => {
             <div className="dashboardInsight" style={{ padding: "30px 0px" }}>
               Chart
             </div>
-            {/* ------- */}
             <div className="optionsDashboardOptionsContainer">
               <h1 className="heading">Options Trades</h1>
               {renderOptionsTrades()}

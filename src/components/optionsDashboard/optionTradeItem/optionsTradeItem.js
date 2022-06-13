@@ -64,14 +64,14 @@ const OptionsTradeItem = ({ trade }) => {
                 <br />
                 Lot Size
               </p>
-              {/* <p className=" textMain cardField">
+              <p className=" textMain cardField">
                 <span className="textValue ">
-                  {!en.date
+                  {!en.expireDate
                     ? "Not defined"
-                    : `${new Date(en.date).toDateString()}`}
+                    : `${new Date(en.expireDate).toDateString()}`}
                 </span>
-                <br /> Date
-              </p> */}
+                <br /> Expire Date
+              </p>
             </div>
           </div>
         </div>

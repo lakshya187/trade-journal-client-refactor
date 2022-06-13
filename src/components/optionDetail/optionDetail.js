@@ -1,14 +1,18 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { getSingleOptionsTrade } from "../../actions";
 import { Link } from "react-router-dom";
 
+import history from "../../utils/history";
+import { getSingleOptionsTrade } from "../../actions";
 import formatCash from "../../utils/formatCash";
 import "./optionDetail.css";
 const OptionDetail = ({ trade, match, getSingleOptionsTrade }) => {
   useEffect(() => {
     getSingleOptionsTrade(match.params.id);
   }, []);
+  const goBack = () => {
+    history.push("/options-dashboard");
+  };
   const renderLegs = () => {
     return trade.leg.map((en) => {
       return (
@@ -31,9 +35,17 @@ const OptionDetail = ({ trade, match, getSingleOptionsTrade }) => {
               </p>
               <p className=" textMain cardField">
                 <span className="textValue ">
+                  {!en.expireDate
+                    ? "Not defined"
+                    : `${new Date(en.expireDate).toDateString()}`}
+                </span>
+                <br /> Expire Date
+              </p>
+              <p className=" textMain cardField">
+                <span className="textValue ">
                   {!en.closingPremium
                     ? "Not Closed"
-                    : `${en.closingPremium.toFixed(2)}`}
+                    : `$${en.closingPremium.toFixed(2)}`}
                 </span>
                 <br /> Close Premium
               </p>
@@ -87,6 +99,9 @@ const OptionDetail = ({ trade, match, getSingleOptionsTrade }) => {
   return (
     <div className="optionDetail">
       <div className="optionDetailContainer">
+        <div className="optionDetailGoBack" onClick={(e) => goBack()}>
+          Go back
+        </div>
         <div className="optionDetailStratName">
           <div>{trade.strategyName}</div>
         </div>

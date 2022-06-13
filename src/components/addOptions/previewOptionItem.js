@@ -84,9 +84,9 @@ const PreviewOptionsItem = ({ l, i, trade }) => {
           <label className="formFieldLabel">Expiry Date</label>
           <input
             type="date"
-            onChange={(e) => (trade.leg[i].expiryDate = +e.target.value)}
+            onChange={(e) => (trade.leg[i].expireDate = +e.target.value)}
             align="right"
-            defaultValue={l.expiryDate}
+            defaultValue={l.expireDate}
           />
         </div>
       </div>
