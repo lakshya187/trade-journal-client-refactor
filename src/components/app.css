@@ -15,7 +15,7 @@ body {
   --lightblueColor: #e0e7ea;
   --pinkColor: #e4c0cd;
   --bodyCopy: 15px;
-  --subheading: 24px;
+  --subheading: 18px;
   --heading: 32px;
   --greenColor: #00e08e;
   --redColor: #e10015;
@@ -29,7 +29,7 @@ body {
 }
 .subHeading {
   font-size: var(--subheading);
-  color: var(--secondaryColor);
+  color: var(--primaryColor);
 }
 
 a:hover {
@@ -79,6 +79,14 @@ a:hover {
 }
 
 input:focus {
+  border: solid 1px var(--borderColor);
+  outline: none;
+}
+textarea {
+  border: solid 1px var(--borderColor);
+  border-radius: 5px;
+}
+textarea:focus {
   border: solid 1px var(--borderColor);
   outline: none;
 }

@@ -29,7 +29,7 @@ class TradeDetails extends Component {
           ) : (
             <div
               className={`tradeCardType ${
-                this.props.trade.typeOfTrade === "Long" ? "green" : "red"
+                this.props.trade.typeOfTrade === "Long" ? "black" : "grey"
               }`}
             >
               {this.props.trade.typeOfTrade.toUpperCase()}
@@ -59,13 +59,13 @@ class TradeDetails extends Component {
         >
           <div className="tradeDetailsTextContainer">
             <div className="tradeDetailsTextContainerLeft">
-              <p className=" textMain cardField">
+              <p className="cardField">
                 <span className="textDescription">Enrty price :</span>{" "}
                 {!this.props.trade.openPrice
                   ? "Not defined"
                   : ` $${this.props.trade.openPrice}`}
               </p>
-              <p className=" textMain cardField">
+              <p className="cardField">
                 <span className={`textDescription `}>Closing price :</span>{" "}
                 {`${
                   !this.props.trade.closingPriceCalculated
@@ -73,13 +73,13 @@ class TradeDetails extends Component {
                     : `$${this.props.trade.closingPriceCalculated}`
                 }`}
               </p>
-              <p className=" textMain cardField">
+              <p className="cardField">
                 <span className={`textDescription `}>Trade Quantity :</span>{" "}
                 {!this.props.trade.tradeQuantity
                   ? "not defined"
                   : `${this.props.trade.tradeQuantity}`}
               </p>
-              <p className=" textMain cardField">
+              <p className="cardField">
                 <span className={`textDescription `}>Current holding :</span>{" "}
                 {this.props.trade.currentHoldings}
               </p>
@@ -95,23 +95,23 @@ class TradeDetails extends Component {
               </p>
             </div>
             <div className="tradeDetailsTextContainerRight">
-              <p className=" textMain cardField">
+              <p className="cardField">
                 <span className={`textDescription `}>
                   Name of the security :
                 </span>{" "}
                 {`${this.props.trade.stockName}`}
               </p>
-              <p className=" textMain cardField">
+              <p className="cardField">
                 <span className={`textDescription `}>
                   Ticker of the security :
                 </span>{" "}
                 {`$${this.props.trade.stockTicker}`}
               </p>
-              <p className=" textMain cardField">
+              <p className="cardField">
                 <span className={`textDescription `}>Open Date :</span>{" "}
                 {`${new Date(this.props.trade.openDate).toDateString()}`}
               </p>
-              <p className=" textMain cardField">
+              <p className="cardField">
                 <span className={`textDescription `}>Close Date :</span>{" "}
                 {`${
                   !this.props.trade.openTrade
@@ -119,12 +119,13 @@ class TradeDetails extends Component {
                     : new Date(this.props.trade.closeDate).toDateString()
                 }`}
               </p>
-              <p className=" textMain cardField">
+              <p className="cardField">
                 <span className={`textDescription `}>Entry Date :</span>{" "}
                 {`${new Date(this.props.trade.tradeCreatedOn).toDateString()}`}
               </p>
             </div>
           </div>
+          <div className="tradeDetailAa"></div>
         </div>
         <div
           style={{

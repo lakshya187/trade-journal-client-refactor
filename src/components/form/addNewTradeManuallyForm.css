@@ -1,9 +1,7 @@
 .addTradeForm {
   background-color: white;
-  width: 25%;
-  padding: 20px 40px;
-  border-radius: 10px;
-  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+
+  padding: var(--compPadding);
 }
 .formField {
   display: flex;
@@ -48,4 +46,10 @@
   display: flex;
   justify-content: center;
   margin-top: 20px;
+}
+.addTradeFormContainer {
+  display: flex;
+  /* justify-content: center; */
+  flex-direction: column;
+  align-items: center;
 }
