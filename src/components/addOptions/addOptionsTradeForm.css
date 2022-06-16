@@ -64,5 +64,20 @@
 }
 
 .addLegContainer {
-  padding: var(--compPadding);
+  /* padding: var(--compPadding); */
+}
+.addOptionsTradeLivePreviewContainer {
+  margin-right: 30px;
+  background-color: var(--white);
+}
+.addOptionLeg {
+  display: flex;
+  justify-content: space-around;
+}
+.addOptionLegHeading {
+  /* border-bottom: solid 1px var(--borderColor); */
+  padding-bottom: 20px;
+}
+.addOptionsLegRight {
+  margin-left: 50px;
 }

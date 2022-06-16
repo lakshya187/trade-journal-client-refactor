@@ -1,3 +1,3 @@
-export const server_url = "https://trade-journal-test.herokuapp.com";
+export const server_url = "http://localhost:5000";
 
-// "http://localhost:5000";
+// "https://trade-journal-test.herokuapp.com";
