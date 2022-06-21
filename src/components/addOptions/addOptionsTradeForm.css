@@ -37,10 +37,9 @@
 }
 
 .previewOptionsTrade {
-  padding: var(--compPadding);
   justify-content: center;
   display: flex;
-  background: url(../../assets/images//previewtrade.jpg);
+  /* background: url(../../assets/images//previewtrade.jpg); */
   /* background-color: var(--borderColor); */
   height: 100%;
 }
@@ -49,15 +48,14 @@
   align-items: center;
 }
 .previewOptionsTradeContainer {
-  max-width: 25%;
   height: 100%;
-  padding: 25px 50px;
+  width: 100%;
+  /* padding: 25px 50px; */
   border-radius: 20px;
-  background-color: var(--white);
-  box-shadow: var(--shadow);
+
   display: flex;
   justify-content: center;
-  margin-bottom: 100px;
+  /* align-items: flex-start; */
 }
 .previewOptionsItemContainer {
   justify-content: center;

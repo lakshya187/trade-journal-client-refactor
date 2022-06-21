@@ -12,9 +12,11 @@ const typeOfTrade = [
 ];
 
 const CloseOptionItem = ({ l, i, closeTrade, id }) => {
+  // const currentDate = new Date.now().toDateString();
   const [showLeg, setShowLeg] = useState(false);
   const [price, setPrice] = useState(l.premium);
   const [quantity, setQuantity] = useState(l.currentHoldings / l.lotSize);
+  const [closeDate, setCloseDate] = useState("");
   const strike = +l.strike;
   const optionType = l.optionType;
   const handleSubmit = async (e) => {
@@ -25,8 +27,10 @@ const CloseOptionItem = ({ l, i, closeTrade, id }) => {
       data: {
         premium: price,
         quantity: quantity,
+        date: closeDate,
       },
     };
+    console.log(data);
     try {
       const res = await axios.patch(
         `${server_url}/options/updateClosing/${id}`,
@@ -78,6 +82,16 @@ const CloseOptionItem = ({ l, i, closeTrade, id }) => {
               onChange={(e) => setQuantity(+e.target.value)}
               align="right"
               defaultValue={quantity}
+              // value={quantity}
+            />
+          </div>
+          <div className="formField">
+            <label className="formFieldLabel">Quantity</label>
+            <input
+              type="datetime-local"
+              onChange={(e) => setCloseDate(e.target.value)}
+              align="right"
+              defaultValue={closeDate}
               // value={quantity}
             />
           </div>

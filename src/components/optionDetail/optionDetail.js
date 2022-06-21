@@ -51,6 +51,22 @@ const OptionDetail = ({ trade, match, getSingleOptionsTrade }) => {
               </p>
               <p className=" textMain cardField">
                 <span className="textValue ">
+                  {!en.closeDate
+                    ? "Not closed"
+                    : `${new Date(en.closeDate).toDateString()}`}
+                </span>
+                <br /> Close Date
+              </p>
+              <p className=" textMain cardField">
+                <span className="textValue ">
+                  {!en.openDate
+                    ? "-"
+                    : `${new Date(en.openDate).toDateString()}`}
+                </span>
+                <br /> Open Date
+              </p>
+              <p className=" textMain cardField">
+                <span className="textValue ">
                   {!en.optionType ? "-" : `${en.optionType.toUpperCase()}`}
                 </span>
                 <br />

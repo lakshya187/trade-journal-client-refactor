@@ -72,6 +72,15 @@ const OptionsTradeItem = ({ trade }) => {
                 </span>
                 <br /> Expire Date
               </p>
+              <p className=" textMain cardField">
+                <span className="textValue ">
+                  {!en.closeDate
+                    ? "Not closed"
+                    : `${new Date(en.closeDate).toDateString()}`}
+                </span>
+                <br />
+                Close Date
+              </p>
             </div>
           </div>
         </div>
@@ -112,7 +121,7 @@ const OptionsTradeItem = ({ trade }) => {
               >
                 {!trade.netProfitLoss
                   ? 0
-                  : `$${formatCash(Math.abs(trade.netProfitLoss))}`}
+                  : `$${formatCash(Math.abs(trade.netProfitLoss)).toFixed()}`}
                 <br />
               </span>{" "}
               M - M
