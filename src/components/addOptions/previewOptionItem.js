@@ -12,7 +12,6 @@ const typeOfTrade = [
 ];
 
 const PreviewOptionsItem = ({ l, i, trade }) => {
-  console.log(trade);
   const [showLeg, setShowLeg] = useState(false);
   const renderItems = () => {
     return (
@@ -92,7 +91,6 @@ const PreviewOptionsItem = ({ l, i, trade }) => {
       </div>
     );
   };
-  console.log(trade);
 
   return (
     <div>

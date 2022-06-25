@@ -58,3 +58,17 @@
 .optionDetailGoBack:hover {
   cursor: pointer;
 }
+.tagsContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  align-items: center;
+  color: var(--white);
+}
+.tagsItem {
+  padding: 10px 20px;
+  border: 1px solid var(--white);
+  border-radius: 5px;
+  color: var(--white);
+  margin-left: 20px;
+}

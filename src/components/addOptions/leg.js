@@ -23,8 +23,8 @@ class Leg extends Component {
     optionType: "",
     strike: "",
     typeOfTrade: "",
-    openDate: "",
-    expireDate: "",
+    openDate: this.props.preData.openDate,
+    expireDate: this.props.preData.expireDate,
     formDone: false,
   };
   handleFormSubmit = (e) => {
@@ -34,12 +34,12 @@ class Leg extends Component {
     const legData = { ...this.state };
     this.props.preData.leg.push(legData);
     this.setState({
-      premium: 0,
-      lotSize: 0,
-      quantity: 0,
-      strike: 0,
-      openDate: "",
-      expireDate: "",
+      premium: "",
+      lotSize: "",
+      quantity: "",
+      strike: "",
+      openDate: this.props.preData.openDate,
+      expireDate: this.props.preData.expireDate,
       formDone: true,
     });
 
@@ -57,8 +57,8 @@ class Leg extends Component {
       lotSize: 100,
       quantity: 1,
       strike: "",
-      openDate: "",
-      expireDate: "",
+      openDate: this.props.preData.openDate,
+      expireDate: this.props.preData.expireDate,
     });
     console.log(this.props.preData);
   };
@@ -85,10 +85,28 @@ class Leg extends Component {
   renderPreviewTrade = () => {
     return <PreviewTrade goBack={this.goBack} />;
   };
+  setPremium = (type) => {
+    console.log(type);
+    let pre = this.state.premium;
+    if (type === "short") {
+      pre = -this.state.premium;
+      console.log(pre);
+      this.setState({ premium: pre });
+    }
+    if (type === "long" && this.state.premium < 0) {
+      pre = -1 * this.state.premium;
+      this.setState({ premium: pre });
+    }
+  };
   handleRender = () => {
     return (
       <form>
         <ArrowBackIcon onClick={() => this.props.goBack()} />
+        <div className="addNewLegGenDetails">
+          <div className="bodyCopy">
+            {`${this.props.preData.underlying}-${this.props.preData.strategyName}`}
+          </div>
+        </div>
         <div className="subHeading  addOptionLegHeading  marginTop">
           Add Legs
         </div>
@@ -109,6 +127,7 @@ class Leg extends Component {
                 onChange={(e) => this.setState({ expireDate: e.target.value })}
                 align="right"
                 value={this.state.expireDate}
+                // defaultValue={}
               />
             </div>
             <div className="formField">
@@ -138,7 +157,7 @@ class Leg extends Component {
                 onChange={(e) => this.setState({ openDate: e.target.value })}
                 align="right"
                 value={this.state.openDate}
-                defaultValue={this.props.preData.openDate}
+                // defaultValue={this.props.preData.openDate}
               />
             </div>
 
@@ -146,7 +165,10 @@ class Leg extends Component {
               <label className="formFieldLabel">Type of Trade</label>
               <Select
                 options={typeOfTrade}
-                onChange={(e) => this.setState({ typeOfTrade: e.value })}
+                onChange={(e) => {
+                  this.setState({ typeOfTrade: e.value });
+                  this.setPremium(e.value);
+                }}
                 // defaultInputValue={this.state.typeOfTrade}
               />
             </div>

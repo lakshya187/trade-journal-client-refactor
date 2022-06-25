@@ -4,34 +4,24 @@ import { connect } from "react-redux";
 import { createOptionsTrade } from "../../actions";
 import Leg from "./leg";
 import "./addOptionsTradeForm.css";
+import { optionStrats } from "../../utils/staticData";
+import AddTags from "../addTags/addTags";
 
-const optionStrats = [
-  { value: "Bull Call Spread", label: "Bull Call Spread" },
-  { value: "Orientation", label: "Orientation" },
-  { value: "Bull Put Spread", label: "Bull Put Spread" },
-  { value: "Call Ratio Back Spread", label: "Call Ratio Back Spread" },
-  { value: "Bear Call Ladder", label: "Bear Call Ladder" },
-  { value: "Synthetic Long & Arbitrage", label: "Synthetic Long & Arbitrage" },
-  { value: "Bear Put Spread", label: "Bear Put Spread" },
-  { value: "Bear Call Spread", label: "Bear Call Spread" },
-  { value: "Put Ratio Back spread", label: "Put Ratio Back spread" },
-  { value: "The Long Straddle", label: "The Long Straddle" },
-  { value: "The Short Straddle", label: "The Short Straddle" },
-  { value: "The Long & Short Strangle", label: "The Long & Short Strangle" },
-  { value: "Max Pain & PCR Ratio", label: "Max Pain & PCR Ratio" },
-  { value: "Iron Condor", label: "Iron Condor" },
-];
 class AddOptionsForm extends Component {
   state = {
     ticker: "",
     underlying: "",
     strategyName: "",
-    date: "",
+    openDate: "",
     currentView: "genDetails",
     leg: [],
     updated: false,
+    tags: [],
+    expireDate: "",
   };
   onFormSubmit = () => {
+    // const tags = this.state.tags.map((el) => el.text);
+    // console.log(this.state);
     this.props.createOptionsTrade(this.state);
     this.setState({ currentView: "leg" });
   };
@@ -45,13 +35,32 @@ class AddOptionsForm extends Component {
         ticker: this.props.previousData.ticker,
         underlying: this.props.previousData.underlying,
         strategyName: this.props.previousData.strategyName,
-        date: this.props.previousData.date,
+        openDate: this.props.previousData.date,
       });
     }
+  };
+  updateTags = (obj) => {
+    this.setState({ tags: obj });
+  };
+  renderExpireDate = () => {
+    return (
+      <div className="formField">
+        <label className="formFieldLabel"> Expire Date</label>
+        <input
+          required
+          type="date"
+          onChange={(e) => this.setState({ expireDate: e.target.value })}
+          align="right"
+          value={this.state.expireDate}
+          // disabled={true}
+        />
+      </div>
+    );
   };
   handleRender = () => {
     if (this.state.currentView === "genDetails") {
       this.handleBackAction();
+
       return (
         <form>
           <div className="subHeading marginBottom">Add an Options Trade!</div>
@@ -85,15 +94,27 @@ class AddOptionsForm extends Component {
             />
           </div>
           <div className="formField">
-            <label className="formFieldLabel"> Date</label>
+            <label className="formFieldLabel">Open Date</label>
             <input
               required
               type="datetime-local"
-              onChange={(e) => this.setState({ date: e.target.value })}
+              onChange={(e) => this.setState({ openDate: e.target.value })}
               align="right"
-              value={this.state.date}
+              value={this.state.openDate}
             />
           </div>
+          {this.state.strategyName === "Calendar" ||
+          this.state.strategyName === "Double Calendar"
+            ? null
+            : this.renderExpireDate()}
+
+          <div className="formField">
+            <label className="formFieldLabel">Add Tags</label>
+            <div className="formFiedlAddTags">
+              <AddTags addTags={this.updateTags} />
+            </div>
+          </div>
+
           <div
             className="submitBtnContainer
           "

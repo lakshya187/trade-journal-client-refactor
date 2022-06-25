@@ -79,3 +79,15 @@
 .addOptionsLegRight {
   margin-left: 50px;
 }
+.formFiedlAddTags {
+  display: flex;
+  width: 100%;
+  flex-flow: row wrap;
+}
+.addNewLegGenDetails {
+  display: flex;
+  justify-content: center;
+}
+.addNewLegGenDetails {
+  color: var(--secondaryColor);
+}

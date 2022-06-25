@@ -8,25 +8,10 @@ import { getLocalStorage } from "../../helperFunctions/localstorage";
 import { server_url } from "../../config";
 import history from "../../utils/history";
 import PreviewOptionsItem from "./previewOptionItem";
-
-const optionStrats = [
-  { value: "Bull Call Spread", label: "Bull Call Spread" },
-  { value: "Orientation", label: "Orientation" },
-  { value: "Bull Put Spread", label: "Bull Put Spread" },
-  { value: "Call Ratio Back Spread", label: "Call Ratio Back Spread" },
-  { value: "Bear Call Ladder", label: "Bear Call Ladder" },
-  { value: "Synthetic Long & Arbitrage", label: "Synthetic Long & Arbitrage" },
-  { value: "Bear Put Spread", label: "Bear Put Spread" },
-  { value: "Bear Call Spread", label: "Bear Call Spread" },
-  { value: "Put Ratio Back spread", label: "Put Ratio Back spread" },
-  { value: "The Long Straddle", label: "The Long Straddle" },
-  { value: "The Short Straddle", label: "The Short Straddle" },
-  { value: "The Long & Short Strangle", label: "The Long & Short Strangle" },
-  { value: "Max Pain & PCR Ratio", label: "Max Pain & PCR Ratio" },
-  { value: "Iron Condor", label: "Iron Condor" },
-];
+import { optionStrats } from "../../utils/staticData";
 class PreviewTrade extends Component {
   renderLeg = () => {
+    this.calcStratLevelPremium();
     if (!this.props.trade) {
       history.push("/add-option");
     }
@@ -34,7 +19,17 @@ class PreviewTrade extends Component {
       return <PreviewOptionsItem l={l} i={i} />;
     });
   };
-  // componentDidMount() {}
+  calcStratLevelPremium = () => {
+    let premium = 0;
+    this.props.trade.leg.forEach((l) => {
+      premium += l.premium;
+    });
+    premium < 0
+      ? (this.props.trade.typeOfTrade = "short")
+      : (this.props.trade.typeOfTrade = "long");
+    this.props.trade.netPremium = premium;
+  };
+
   handleFormSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -88,9 +83,11 @@ class PreviewTrade extends Component {
                   <label className="formFieldLabel">Date</label>
                   <input
                     type="datetime-local"
-                    onChange={(e) => (this.props.trade.date = e.target.value)}
+                    onChange={(e) =>
+                      (this.props.trade.openDate = e.target.value)
+                    }
                     align="right"
-                    defaultValue={this.props.trade.date}
+                    defaultValue={this.props.trade.openDate}
                   />
                 </div>
                 <div className="formField">
