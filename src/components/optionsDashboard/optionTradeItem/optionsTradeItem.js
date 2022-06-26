@@ -121,7 +121,7 @@ const OptionsTradeItem = ({ trade }) => {
               >
                 {!trade.netProfitLoss
                   ? 0
-                  : `$${formatCash(Math.abs(trade.netProfitLoss)).toFixed()}`}
+                  : `$${formatCash(Math.abs(trade.netProfitLoss))}`}
                 <br />
               </span>{" "}
               M - M

@@ -20,8 +20,7 @@ class AddOptionsForm extends Component {
     expireDate: "",
   };
   onFormSubmit = () => {
-    // const tags = this.state.tags.map((el) => el.text);
-    // console.log(this.state);
+
     this.props.createOptionsTrade(this.state);
     this.setState({ currentView: "leg" });
   };
