@@ -127,15 +127,13 @@ const OptionDetail = ({ trade, match, getSingleOptionsTrade }) => {
           <div>{trade.strategyName}</div>
         </div>
         <div className="editBtnContainer">
-          <Link to={`/option/close/${trade._id}`} className="btn primaryBtn ">
+          <Link
+            to={`/option/close-strat/${trade._id}`}
+            className="btn primaryBtn "
+          >
             Close Trade
           </Link>
-          <Link
-            //   to={`/${this.props.trade._id}/edit-trade`}
-            className="btn secondryBtn marginleft"
-          >
-            Edit Trade
-          </Link>
+          <Link className="btn secondryBtn marginleft">Edit Trade</Link>
         </div>
         <div className="optionsDEtailsGen">
           <div className="optionsDetailGeneralInfoContainer">

@@ -133,3 +133,9 @@ export const closeOption = (formdata) => {
     payload: formdata,
   };
 };
+export const closeOptionStrat = (data) => {
+  return {
+    type: "CLOSE_OPTION_START",
+    payload: data,
+  };
+};

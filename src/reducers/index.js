@@ -1,6 +1,7 @@
 import { combineReducers } from "redux";
 import { reducer as formReducer } from "redux-form";
 
+import closeOptionStartReducer from "./closeOptionStartReducer";
 import closeOptionReducer from "./closeOptionData";
 import singleOptionsReducer from "./singleOptionReducer";
 import createNewOptionsReducer from "./addNewOption";
@@ -24,4 +25,5 @@ export default combineReducers({
   newOptionTrade: createNewOptionsReducer,
   singleOptiontrade: singleOptionsReducer,
   closeOption: closeOptionReducer,
+  closeOptionStart: closeOptionStartReducer,
 });

@@ -1,0 +1,15 @@
+.closeOptionsStrat{
+    padding: var(--compPadding);
+}
+.closeOptionsStratContainer{
+    width: 50%;
+   
+}
+.closeOptionsStartHeadingContaienr{
+    display: flex;
+    justify-content: center
+}
+.closeOptionsStrat{
+    display: flex;
+    justify-content: center;
+}
