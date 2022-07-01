@@ -21,6 +21,7 @@ const OptionDetail = ({ trade, match, getSingleOptionsTrade }) => {
       return <div className="tagsItem">{el.text}</div>;
     });
   };
+
   const renderLegs = () => {
     return trade.leg.map((en) => {
       return (
@@ -127,12 +128,13 @@ const OptionDetail = ({ trade, match, getSingleOptionsTrade }) => {
   return (
     <div className="optionDetail">
       <div className="optionDetailContainer">
-        <div className="optionDetailGoBack" onClick={(e) => goBack()}>
-          Go back
-        </div>
-
-        <div className="optionDetailStratName">
-          <div>{trade.strategyName}</div>
+        <div className="optionDetailContainerBackground">
+          <div className="optionDetailGoBack" onClick={(e) => goBack()}>
+            Go back
+          </div>
+          <div className="optionDetailStratName">
+            <div>{trade.strategyName}</div>
+          </div>
         </div>
         <div className="editBtnContainer">
           <Link
@@ -161,8 +163,10 @@ const OptionDetail = ({ trade, match, getSingleOptionsTrade }) => {
                 <span className={`textDescription `}>Expire Date :</span>{" "}
                 {new Date(trade.expireDate).toDateString()}
               </p>
+            </div>
+            <div className="tradeDetailsTextContainerRight">
               <p className="  cardField">
-                <span className={`textDescription `}>Net Premium :</span>{" "}
+                <span className={`textDescription `}>Net Premium :</span> $
                 {trade.netPremium}
               </p>
               <p className="  cardField">
@@ -174,7 +178,7 @@ const OptionDetail = ({ trade, match, getSingleOptionsTrade }) => {
                   trade.netProfitLoss > 0 ? "colorGreen" : "colorRed"
                 } cardFieldtextValue textMain cardField`}
               >
-                <span className={`textDescription  `}>MTM :</span>{" "}
+                <span className={`textDescription  `}>MTM :</span> $
                 {trade.netProfitLoss}
               </p>
               <p className="  cardField">
@@ -187,7 +191,7 @@ const OptionDetail = ({ trade, match, getSingleOptionsTrade }) => {
         <div className={"tagsContainer"}>Tags : {renderTags()}</div>
       </div>
 
-      <div className="subHeading marginTop " style={{ textAlign: "center" }}>
+      <div className="subHeading " style={{ textAlign: "center" }}>
         All the legs
         <div>{renderLegs()}</div>
       </div>

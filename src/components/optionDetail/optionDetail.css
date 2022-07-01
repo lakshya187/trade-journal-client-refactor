@@ -1,11 +1,14 @@
 .optionDetailContainer {
   padding: var(--compPadding);
-  background: linear-gradient(to right, #50c9c3, #96deda);
+  
   /* background: linear-gradient(to right, #4b6cb7, #182848); */
   padding-bottom: 50px;
   /* margin-top: 300px; */
 }
-.optionDetail {
+.optionDetailContainerBackground{
+  background: var(--secondaryColor);
+  margin-top: -50px;
+  padding: 20px 0px;
 }
 .optionDetailStratName {
   display: flex;
@@ -22,12 +25,14 @@
 }
 .optionsDetailGeneralInfoContainer {
   background-color: var(--white);
-  padding: 20px 10px;
-  width: 25%;
+  padding: 50px 20px;
+  width: 50%;
   display: flex;
   justify-content: center;
   box-shadow: var(--shadow);
-  border-radius: 5px;
+  border-radius: 10px;
+  /* width: 100; */
+
 }
 .optionsDEtailsGen {
   justify-content: center;
