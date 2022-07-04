@@ -48,14 +48,13 @@ class TradeDetails extends Component {
         },
       }
     );
-    console.log(response);
+
     this.setState({ trade: response.data.data.trade });
   };
   render() {
     if (!this.state.trade) {
       return <LinearProgress />;
     }
-    console.log(this.state.trade);
 
     return (
       <div className="tradeDetail">

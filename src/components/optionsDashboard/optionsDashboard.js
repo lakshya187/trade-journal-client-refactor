@@ -31,7 +31,7 @@ const OptionsDashboard = (props) => {
     }
     return <h1 className="heading">Hello, {props.user.name}</h1>;
   };
-  console.log(new Date(172860000));
+
   return (
     <div className="optionsDashboard">
       <div className="optionsDashboardContainer">

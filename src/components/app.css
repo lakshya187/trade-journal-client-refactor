@@ -31,7 +31,9 @@ body {
   font-size: var(--subheading);
   color: var(--primaryColor);
 }
-
+a {
+  text-decoration: none;
+}
 a:hover {
   color: var(--primaryColor);
 }

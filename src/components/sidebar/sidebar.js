@@ -18,10 +18,10 @@ const Sidebar = () => {
           <img src={options} />
           <p>Options</p>
         </Link>
-        <div className="sidebarItem ">
+        <Link to={"/option-analytics"} className="sidebarItem ">
           <img src={reports} />
-          <p>Reports</p>
-        </div>
+          <p>Analytics</p>
+        </Link>
       </div>
     </div>
   );

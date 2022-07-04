@@ -16,114 +16,48 @@ const OptionDetail = ({ trade, match, getSingleOptionsTrade }) => {
     history.push("/options-dashboard");
   };
   const renderTags = () => {
-    console.log(trade.tags);
     return trade.tags.map((el) => {
       return <div className="tagsItem">{el.text}</div>;
     });
   };
-
-  const renderLegs = () => {
+  const renderTable = () => {
     return trade.leg.map((en) => {
+      console.log(en);
       return (
-        <div>
-          {" "}
-          <div className="closeEntries">
-            <div className="closeEntriesContainer">
-              <p className=" textMain cardField">
-                <span className="textValue ">
-                  {!en.premium ? "Not defined" : ` $${formatCash(en.premium)}`}
-                </span>
-                <br /> Premium
-              </p>
-
-              <p className=" textMain cardField">
-                <span className="textValue ">
-                  {!en.quantity ? "Not defined" : `${en.quantity}`}
-                </span>
-                <br /> Quantity
-              </p>
-              <p className=" textMain cardField">
-                <span className="textValue ">
-                  {!en.expireDate
-                    ? "Not defined"
-                    : `${new Date(en.expireDate).toDateString()}`}
-                </span>
-                <br /> Expire Date
-              </p>
-              <p className=" textMain cardField">
-                <span className="textValue ">
-                  {!en.closingPremium
-                    ? "Not Closed"
-                    : `$${en.closingPremium.toFixed(2)}`}
-                </span>
-                <br /> Close Premium
-              </p>
-              <p className=" textMain cardField">
-                <span className="textValue ">
-                  {!en.closeDate
-                    ? "Not closed"
-                    : `${new Date(en.closeDate).toDateString()}`}
-                </span>
-                <br /> Close Date
-              </p>
-              <p className=" textMain cardField">
-                <span className="textValue ">
-                  {!en.openDate
-                    ? "-"
-                    : `${new Date(en.openDate).toDateString()}`}
-                </span>
-                <br /> Open Date
-              </p>
-              <p className=" textMain cardField">
-                <span className="textValue ">
-                  {!en.optionType ? "-" : `${en.optionType.toUpperCase()}`}
-                </span>
-                <br />
-                Option Type
-              </p>
-              <p className=" textMain cardField">
-                <span className="textValue ">
-                  {!en.strike ? "-" : `${en.strike}`}
-                </span>
-                <br />
-                Strike
-              </p>
-              <p className=" textMain cardField">
-                <span className="textValue ">
-                  {!en.typeOfTrade ? "-" : `${en.typeOfTrade.toUpperCase()}`}
-                </span>
-                <br />
-                Type of Trade
-              </p>
-              <p className=" textMain cardField">
-                <span className="textValue ">
-                  {!en.lotSize ? "-" : `${en.lotSize}`}
-                </span>
-                <br />
-                Lot Size
-              </p>
-              <p className=" textMain cardField">
-                <span
-                  className={`${
-                    en.profitLoss > 0 ? "colorGreen" : "colorRed"
-                  } cardFieldtextValue textMain cardField`}
-                >
-                  ${!en.profitLoss ? "-" : `${en.profitLoss}`}
-                </span>
-                <br />
-                MTM
-              </p>
+        <tr>
+          <td>{en.optionType.toUpperCase()}</td>
+          <td>{en.strike}</td>
+          <td>{new Date(en.closeDate).toDateString()}</td>
+          <td>${formatCash(en.premium)}</td>
+          <td>${en.closingPremium}</td>
+          <td>{en.quantity}</td>
+          <td>{en.lotSize}</td>
+          <td>{en.typeOfTrade.toUpperCase()}</td>
+          <td
+            className={`${
+              en.profitLoss > 0 ? "colorGreen" : "colorRed"
+            } cardFieldtextValue textMain cardField`}
+          >
+            ${formatCash(en.profitLoss)}
+          </td>
+          <td>{new Date(en.closeDate).toDateString()}</td>
+          <td>{new Date(en.openDate).toDateString()}</td>
+          <td>
+            {en.currentHoldings === 0 ? (
+              "Closed leg"
+            ) : (
               <CloseLegModal
                 updatedTrade={setUpdatedTrade}
                 leg={en}
                 trade={trade._id}
               />
-            </div>
-          </div>
-        </div>
+            )}
+          </td>
+        </tr>
       );
     });
   };
+
   if (!trade) return <div>Loading</div>;
   return (
     <div className="optionDetail">
@@ -193,7 +127,25 @@ const OptionDetail = ({ trade, match, getSingleOptionsTrade }) => {
 
       <div className="subHeading " style={{ textAlign: "center" }}>
         All the legs
-        <div>{renderLegs()}</div>
+        <div>
+          <table className="optionLegTable">
+            <tr>
+              <th className="optionsTableHeading">Option Type</th>
+              <th className="optionsTableHeading">Strike</th>
+              <th className="optionsTableHeading">Expire Date</th>
+              <th className="optionsTableHeading">Open Premium</th>
+              <th className="optionsTableHeading">Close Premium</th>
+              <th className="optionsTableHeading">Quantity</th>
+              <th className="optionsTableHeading">Lot Size</th>
+              <th className="optionsTableHeading">Type Of Trade</th>
+              <th className="optionsTableHeading">Profit Loss</th>
+              <th className="optionsTableHeading">Close Date</th>
+              <th className="optionsTableHeading">Open Date</th>
+              <th className="optionsTableHeading">Actions</th>
+            </tr>
+            {renderTable()}
+          </table>
+        </div>
       </div>
       <div className="optionDetailNotesContainer marginTop marginBottom">
         <div>{trade.notes}</div>

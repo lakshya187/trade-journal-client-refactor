@@ -2,6 +2,7 @@ import React from "react";
 import Header from "./header/header";
 import { Router, Route, Switch } from "react-router-dom";
 
+import OptionAnalytics from "./optionAnalytics/optionAnalytics";
 import CloseOptionsStrat from "./closeOptionsStrat/closeOptionsStrat";
 import CloseOptions from "./closeOptions/closeOptions";
 import OptionDetail from "./optionDetail/optionDetail";
@@ -63,6 +64,11 @@ const App = () => {
             path={"/option/close-strat/:id"}
             exact
             component={CloseOptionsStrat}
+          ></Route>
+          <Route
+            path={"/option-analytics"}
+            exact
+            component={OptionAnalytics}
           ></Route>
         </Switch>
       </Router>

@@ -20,7 +20,6 @@ const authorizeUser = async () => {
       }
     );
     authorizedUser(response.data.user);
-    console.log(response);
   } catch (err) {
     history.push("/login");
   }

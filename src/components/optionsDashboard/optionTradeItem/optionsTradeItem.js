@@ -5,11 +5,9 @@ import ArrowDropDownCircleIcon from "@mui/icons-material/ArrowDropDownCircle";
 import "./optionsTradeItem.css";
 import formatCash from "../../../utils/formatCash";
 const OptionsTradeItem = ({ trade }) => {
-  console.log(trade);
   const [showLegs, setShowLegs] = useState(false);
   const renderLegs = () => {
     return trade.leg.map((en) => {
-      console.log(en);
       return (
         <div>
           {" "}
@@ -17,69 +15,10 @@ const OptionsTradeItem = ({ trade }) => {
             <div className="closeEntriesContainer">
               <p className=" textMain cardField">
                 <span className="textValue ">
-                  {!en.premium ? "Not defined" : ` $${formatCash(en.premium)}`}
+                  {`${
+                    en.strike
+                  }  ${en.typeOfTrade.toUpperCase()} ${en.optionType.toUpperCase()} `}
                 </span>
-                <br /> Premium
-              </p>
-
-              <p className=" textMain cardField">
-                <span className="textValue ">
-                  {!en.quantity ? "Not defined" : `${en.quantity}`}
-                </span>
-                <br /> Quantity
-              </p>
-              <p className=" textMain cardField">
-                <span className="textValue ">
-                  {!en.closingPremium
-                    ? "Not Closed"
-                    : `${en.closingPremium.toFixed(2)}`}
-                </span>
-                <br /> Close Premium
-              </p>
-              <p className=" textMain cardField">
-                <span className="textValue ">
-                  {!en.optionType ? "-" : `${en.optionType.toUpperCase()}`}
-                </span>
-                <br />
-                Option Type
-              </p>
-              <p className=" textMain cardField">
-                <span className="textValue ">
-                  {!en.strike ? "-" : `${en.strike}`}
-                </span>
-                <br />
-                Strike
-              </p>
-              <p className=" textMain cardField">
-                <span className="textValue ">
-                  {!en.typeOfTrade ? "-" : `${en.typeOfTrade.toUpperCase()}`}
-                </span>
-                <br />
-                Type of Trade
-              </p>
-              <p className=" textMain cardField">
-                <span className="textValue ">
-                  {!en.lotSize ? "-" : `${en.lotSize}`}
-                </span>
-                <br />
-                Lot Size
-              </p>
-              <p className=" textMain cardField">
-                <span className="textValue ">
-                  {!en.expireDate
-                    ? "Not defined"
-                    : `${new Date(en.expireDate).toDateString()}`}
-                </span>
-                <br /> Expire Date
-              </p>
-              <p className=" textMain cardField">
-                <span className="textValue ">
-                  {!en.closeDate
-                    ? "Not closed"
-                    : `${new Date(en.closeDate).toDateString()}`}
-                </span>
-                <br />
-                Close Date
               </p>
             </div>
           </div>
@@ -87,6 +26,7 @@ const OptionsTradeItem = ({ trade }) => {
       );
     });
   };
+
   return (
     <div key={trade._id}>
       <div className="tradeCard">
@@ -104,9 +44,26 @@ const OptionsTradeItem = ({ trade }) => {
             </p>
             <p className=" textMain cardField">
               <span className={`textValue `}>
-                {`${!trade.underlying ? " " : trade.underlying}`} <br />
+                {`${!trade.strategyName ? " " : trade.strategyName}`} <br />
               </span>{" "}
-              Underlying security
+              Strategy Name
+            </p>
+            <p className=" textMain cardField">
+              <span className={`textValue `}>
+                {`${
+                  !trade.expireDate
+                    ? " "
+                    : new Date(trade.expireDate).toDateString()
+                }`}{" "}
+                <br />
+              </span>{" "}
+              Expire Date
+            </p>
+            <p className=" textMain cardField">
+              <span className={`textValue `}>
+                {`${!trade.netPremium ? " " : trade.netPremium}`} <br />
+              </span>{" "}
+              Premium
             </p>
 
             <p className=" textMain cardField">
@@ -140,9 +97,8 @@ const OptionsTradeItem = ({ trade }) => {
             </div>
           </div>
         </div>
-        <div className="tradeItemCloseEntriesShow"></div>
 
-        <div>{!showLegs ? "" : renderLegs()}</div>
+        <div className="marginBottom">{!showLegs ? "" : renderLegs()}</div>
       </div>
     </div>
   );

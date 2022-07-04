@@ -60,7 +60,6 @@ class AddNewtradeForm extends Component {
           },
         }
       );
-      console.log(res);
     } catch (e) {
       console.log(e);
     }

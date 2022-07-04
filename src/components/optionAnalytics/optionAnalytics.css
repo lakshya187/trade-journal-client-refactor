@@ -1,0 +1,7 @@
+.optionAnalytics{
+    padding: var(--compPadding);
+}
+
+.optionAnalyticsContainer{
+    display: flex;
+}

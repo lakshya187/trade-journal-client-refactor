@@ -24,7 +24,7 @@ class CloseTrade extends Component {
           data: { ...this.state },
         }
       );
-      console.log(updatedTrade);
+
       history.push("/");
     } catch (err) {
       console.log(err);

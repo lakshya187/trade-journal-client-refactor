@@ -37,7 +37,6 @@ class MainDashboard extends React.Component {
     });
   };
   renderStats = () => {
-    console.log(this.props.stats);
     if (!this.props.stats) {
       return <CircularProgress />;
     }
@@ -119,8 +118,6 @@ class MainDashboard extends React.Component {
     return str;
   };
   render() {
-    console.log(this.props.stats);
-    console.log(this.props.trades);
     if (!this.props.trades) {
       return <LinearProgress color="inherit" />;
     }

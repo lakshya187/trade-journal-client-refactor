@@ -77,3 +77,25 @@
   color: var(--white);
   margin-left: 20px;
 }
+.optionLegTable th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: var(--secondaryColor);
+  color: white;
+}
+
+.optionLegTable {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.optionLegTable td, .optionLegTable th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+.optionLegTable th{
+  font-size: var(--bodyCopy);
+  font-weight: normal;
+}
