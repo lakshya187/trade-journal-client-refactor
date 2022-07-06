@@ -5,3 +5,51 @@
 .optionAnalyticsContainer{
     display: flex;
 }
+
+.optionAnalyticsLeft{
+    flex: .1;
+}
+.optionAnalyticsCenter{
+    flex :.7;
+}
+.optionAnalyticsRight{
+    flex: .2;
+}
+
+.optionAnalyticsField {
+    /* display: flex; */
+    /* justify-content: space-between; */
+    margin-top: 20px;
+    /* align-items: center; */
+}
+.optionAnalyticsField input {
+    border: 1px solid #c0c0c0;
+    border-radius: 5px;
+    padding: 10px;
+    margin-left: 20px;
+  }
+
+.optionAnalyticsFieldsContainer{
+    display: flex;
+    flex-direction: column;
+
+}
+.optionAnalyticsFieldContainer{
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    margin-top: 10px;
+    /* margin-left: 20px; */
+    
+}
+.renderChartContainer{
+    width: 70%;
+}
+.chartButtonContainer{
+    display: flex;
+
+}
+.chartButtonContainer button{
+    margin-left: 5px;
+
+}

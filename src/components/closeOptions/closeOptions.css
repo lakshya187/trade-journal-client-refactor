@@ -13,8 +13,7 @@
   font-size: var(--bodyCopy);
   margin-top: 20px;
 }
-.formFieldIdentifyOptionContainer div span {
-}
+
 .textDescription {
   color: var(--secondaryColor);
 }
