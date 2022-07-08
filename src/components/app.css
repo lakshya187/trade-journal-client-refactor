@@ -144,3 +144,9 @@ textarea:focus {
   background-color: var(--white);
   color: var(--secondaryColor);
 }
+
+hr {
+  color: var(--borderColor);
+  margin-top: 20px;
+  margin-bottom: 20px;
+}

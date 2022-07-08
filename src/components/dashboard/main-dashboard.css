@@ -8,10 +8,10 @@
 }
 .dashboardCenter {
   padding: 0 30px;
-  flex: 0.7;
+  flex: 0.60;
 }
 .dashboardRight {
-  flex: 0.2;
+  flex: 0.3;
 }
 .dashboardGreeting {
   font-size: var(--heading);

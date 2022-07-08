@@ -20,6 +20,9 @@
     /* display: flex; */
     /* justify-content: space-between; */
     margin-top: 20px;
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* align-items: center; */
     /* align-items: center; */
 }
 .optionAnalyticsField input {
@@ -31,7 +34,8 @@
 
 .optionAnalyticsFieldsContainer{
     display: flex;
-    flex-direction: column;
+    /* flex-direction: column; */
+    align-items: center;
 
 }
 .optionAnalyticsFieldContainer{
@@ -52,4 +56,29 @@
 .chartButtonContainer button{
     margin-left: 5px;
 
+}
+
+.optionsAnalyticsStatsContainer {
+    background-color: var(--lightWhiteColor);
+    padding: 10px 20px;
+    /* height: 500px; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border-radius: 10px;
+    /* position: fixed; */
+    /* width: 100%; */
+}
+.optionAnalysisResult{
+    font: var(--subheading);
+    color: var(--primaryColor);
+    margin-left: 20px;
+    padding: 20px;
+    border: 1px solid var(--borderColor);
+    border-radius: 5px;
+}
+.optionAnalyticsHeadingContainer{
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
 }

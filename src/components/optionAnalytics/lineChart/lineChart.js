@@ -17,7 +17,6 @@ const data = {
 };
 
 const LineChart = ({ labels, data }) => {
-  console.log(labels, data);
   const renderChartData = () => {
     return {
       labels: labels,
@@ -38,11 +37,5 @@ const LineChart = ({ labels, data }) => {
     </div>
   );
 };
-// export default function LineChart() {
-//   return (
-//     <div className="App">
-//       <Line data={data} />
-//     </div>
-//   );
-// }
+
 export default LineChart;

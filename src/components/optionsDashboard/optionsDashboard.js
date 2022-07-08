@@ -25,6 +25,7 @@ const OptionsDashboard = (props) => {
       return <OptionsTradeItem trade={t} key={t._id} />;
     });
   };
+
   const renderGreeting = () => {
     if (!props.user) {
       return <CircularProgress />;
