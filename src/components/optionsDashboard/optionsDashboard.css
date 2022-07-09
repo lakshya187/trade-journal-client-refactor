@@ -14,3 +14,15 @@
 .optionsDashbardRight {
   flex: 0.1;
 }
+.optionsDashboardHeadingContainer{
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px
+}
+.optionsDashboardHeadingContainer button {
+  margin-left: 20px;
+}
+.dashboardFiltersContainer{
+  display: flex;
+  align-items: center;
+}

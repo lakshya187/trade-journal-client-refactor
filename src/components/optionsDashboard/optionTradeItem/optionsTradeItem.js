@@ -32,7 +32,7 @@ const OptionsTradeItem = ({ trade }) => {
       <div className="tradeCard">
         <div className="tradeCardContainer">
           <div className={`tradeCardTypeStrategy `}>
-            {trade.strategyName.toUpperCase()}
+            {trade.typeOfTrade.toUpperCase()}
           </div>
           <div className="dashboardCardText">
             <p className=" textMain cardField tickerName">

@@ -20,7 +20,6 @@ class AddOptionsForm extends Component {
     expireDate: "",
   };
   onFormSubmit = () => {
-
     this.props.createOptionsTrade(this.state);
     this.setState({ currentView: "leg" });
   };
@@ -79,7 +78,6 @@ class AddOptionsForm extends Component {
               required
               options={optionStrats}
               onChange={(e) => this.setState({ strategyName: e.value })}
-              // value={this.state.strategyName}
             />
           </div>
           <div className="formField">

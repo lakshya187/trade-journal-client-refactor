@@ -106,6 +106,24 @@ export const getAllOptions = () => {
     });
   };
 };
+export const queryFilters = (endpoint, query) => {
+  return async (dispatch) => {
+    const { data } = await axios.post(
+      `${server_url}/options/${endpoint}`,
+      query,
+      {
+        headers: {
+          Authorization: `Bearer ${getLocalStorage()}`,
+        },
+      }
+    );
+    dispatch({
+      type: "GET_ALL_OPTIONS",
+      payload: data.data,
+    });
+    console.log(data);
+  };
+};
 export const createOptionsTrade = (formData) => {
   return {
     type: "OPTIONS_DATA",
