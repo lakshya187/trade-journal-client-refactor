@@ -1,6 +1,7 @@
 import React from "react";
-
+import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import { Link } from "react-router-dom";
+
 import "./sidebar.css";
 import reports from "./../../assets/icons/sidebar/reports.svg";
 import options from "./../../assets/icons/sidebar/options.svg";
@@ -21,6 +22,9 @@ const Sidebar = () => {
         <Link to={"/option-analytics"} className="sidebarItem ">
           <img src={reports} />
           <p>Analytics</p>
+        </Link>
+        <Link className="sidebarItem " to={"/user-profile"}>
+          <PersonOutlineIcon /> Profile{" "}
         </Link>
       </div>
     </div>

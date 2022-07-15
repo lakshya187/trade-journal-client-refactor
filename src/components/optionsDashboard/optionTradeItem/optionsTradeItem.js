@@ -2,15 +2,13 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import ArrowDropDownCircleIcon from "@mui/icons-material/ArrowDropDownCircle";
 
-import { Redirect } from "react-router-dom";
-import { server_url } from "../../../config";
-import axios from "axios";
+import TweetTrade from "./tweetModal";
+
 import "./optionsTradeItem.css";
 import formatCash from "../../../utils/formatCash";
 const OptionsTradeItem = ({ trade }) => {
   const [showLegs, setShowLegs] = useState(false);
-  const [redirect, setRedirect] = useState(false);
-  const [redirectUrl, setRedirectUrl] = useState("");
+
   const renderLegs = () => {
     return trade.leg.map((en) => {
       return (
@@ -30,23 +28,6 @@ const OptionsTradeItem = ({ trade }) => {
         </div>
       );
     });
-  };
-  const handleOauthGetToken = async () => {
-    try {
-      const { data } = await axios.post(
-        `${server_url}/oAuth/generateSignature`,
-        null
-      );
-      console.log(data);
-      // return <Redirect push to={data.oauthString} />;
-      setRedirectUrl(data.oauthString);
-      setRedirect(true);
-    } catch (e) {
-      console.log(e);
-    }
-  };
-  const redirectUser = () => {
-    console.log(redirectUrl);
   };
 
   return (
@@ -117,13 +98,13 @@ const OptionsTradeItem = ({ trade }) => {
               <div>Legs</div>
               <ArrowDropDownCircleIcon className={`closeEntriesShow `} />
             </div>
-            <div onClick={() => handleOauthGetToken()}>Twitter</div>
           </div>
         </div>
+        <div className="textMain">Share this trade!</div>
+        <TweetTrade id={trade._id} />
 
         <div className="marginBottom">{!showLegs ? "" : renderLegs()}</div>
       </div>
-      {redirect ? redirectUser() : null}
     </div>
   );
 };

@@ -163,3 +163,6 @@ hr {
 .searchBtn:hover{
   box-shadow: var(--shadow);
 }
+.authenticationSuccess{
+  padding: var(--compPadding);
+}

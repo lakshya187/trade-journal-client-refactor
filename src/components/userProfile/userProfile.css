@@ -1,0 +1,6 @@
+.userProfile{
+    padding: var(--compPadding);
+}
+.userProfileContainer{
+    display: flex;
+}

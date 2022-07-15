@@ -2,6 +2,8 @@ import React from "react";
 import Header from "./header/header";
 import { Router, Route, Switch } from "react-router-dom";
 
+import AuthenticationSuccess from "./authSuccess/authenticationSuccess";
+import UserProfile from "./userProfile/userProfile";
 import OptionAnalytics from "./optionAnalytics/optionAnalytics";
 import CloseOptionsStrat from "./closeOptionsStrat/closeOptionsStrat";
 import CloseOptions from "./closeOptions/closeOptions";
@@ -20,6 +22,7 @@ import Login from "./login/login";
 import AddNewTradesExcel from "./addNewTradeExcel/addNewTradesExcel";
 import OptionsDashboard from "./optionsDashboard/optionsDashboard";
 import "./app.css";
+
 const App = () => {
   return (
     <div>
@@ -69,6 +72,12 @@ const App = () => {
             path={"/option-analytics"}
             exact
             component={OptionAnalytics}
+          ></Route>
+          <Route path={"/user-profile"} exact component={UserProfile}></Route>
+          <Route
+            path={"/authenticated"}
+            exact
+            component={AuthenticationSuccess}
           ></Route>
         </Switch>
       </Router>
