@@ -6,10 +6,10 @@ import { getTweeterToken } from "../../../helperFunctions/localstorage";
 import { getTweeterVerifier } from "../../../helperFunctions/localstorage";
 import RedirectModal from "./redirectUrlModal";
 import { Redirect } from "react-router-dom";
-import { server_url } from "../../../config";
+import { tweetServer } from "../../../config";
 import axios from "axios";
 
-const TweetTrade = ({ id }) => {
+const TweetTrade = ({ trade }) => {
   //Modal State visabilty
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -20,10 +20,10 @@ const TweetTrade = ({ id }) => {
       const token = getTweeterToken();
       const verifier = getTweeterVerifier();
       console.log(token, verifier);
-      const response = await axios.post(`${server_url}/oAuth/tweetImage`, {
+      const response = await axios.post(`${tweetServer}/tweet`, {
         token,
         verifier,
-        id,
+        trade,
         message,
       });
       console.log(response);
@@ -31,6 +31,7 @@ const TweetTrade = ({ id }) => {
       console.log(e);
     }
   };
+  console.log(trade);
   return (
     <>
       <Button

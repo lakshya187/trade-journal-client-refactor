@@ -101,7 +101,7 @@ const OptionsTradeItem = ({ trade }) => {
           </div>
         </div>
         <div className="textMain">Share this trade!</div>
-        <TweetTrade id={trade._id} />
+        <TweetTrade trade={trade} />
 
         <div className="marginBottom">{!showLegs ? "" : renderLegs()}</div>
       </div>

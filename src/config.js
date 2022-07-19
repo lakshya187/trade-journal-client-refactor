@@ -1,4 +1,5 @@
 export const server_url = "http://localhost:5000";
+export const tweetServer = "http://localhost:5001";
 
 //Development
 // "http://localhost:5000";
