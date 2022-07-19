@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 import { Modal } from "react-bootstrap";
+import { Alert } from "@mui/material";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import { getTweeterToken } from "../../../helperFunctions/localstorage";
 import { getTweeterVerifier } from "../../../helperFunctions/localstorage";
@@ -15,6 +16,7 @@ const TweetTrade = ({ trade }) => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const [message, setMessage] = useState("");
+  const [status, setStatus] = useState(null);
   const handleTweet = async () => {
     try {
       const token = getTweeterToken();
@@ -26,12 +28,21 @@ const TweetTrade = ({ trade }) => {
         trade,
         message,
       });
+
       console.log(response);
+      setStatus("Your trade has been tweeted! You can close this window now");
     } catch (e) {
+      setStatus(
+        "An error occured, make sure to authorize Trade journal on your twitter account and try again!"
+      );
       console.log(e);
     }
   };
-  console.log(trade);
+  const renderMessage = () => {
+    if (!status) return;
+    return <Alert severity="info">{status}</Alert>;
+  };
+
   return (
     <>
       <Button
@@ -50,6 +61,7 @@ const TweetTrade = ({ trade }) => {
           <Modal.Title>Tweet!</Modal.Title>
         </Modal.Header>
         <Modal.Body>
+          {renderMessage()}
           <form>
             {" "}
             <div className="formField">
