@@ -1,5 +1,4 @@
-export const server_url =
-  "https://trade-journal-server-version-1.herokuapp.com";
+export const server_url = "http://localhost:5000";
 export const tweetServer = "https://trade-journal-tweet.herokuapp.com";
 
 //Development

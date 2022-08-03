@@ -59,6 +59,7 @@ class Leg extends Component {
       strike: "",
       openDate: this.props.preData.openDate,
       expireDate: this.props.preData.expireDate,
+      typeOfTrade: "",
     });
     console.log(this.props.preData);
   };
@@ -98,6 +99,7 @@ class Leg extends Component {
       this.setState({ premium: pre });
     }
   };
+
   handleRender = () => {
     return (
       <form>
@@ -120,16 +122,7 @@ class Leg extends Component {
                 // placeholder={this.state.typeOfTrade}
               />
             </div>
-            <div className="formField">
-              <label className="formFieldLabel">Expiry Date</label>
-              <input
-                type="date"
-                onChange={(e) => this.setState({ expireDate: e.target.value })}
-                align="right"
-                value={this.state.expireDate}
-                // defaultValue={}
-              />
-            </div>
+
             <div className="formField">
               <label className="formFieldLabel">Premium</label>
               <input
@@ -137,6 +130,19 @@ class Leg extends Component {
                 align="right"
                 onChange={(e) => this.setState({ premium: +e.target.value })}
                 value={this.state.premium}
+              />
+            </div>
+            <div className="formField">
+              <label className="formFieldLabel">Type of Trade</label>
+              <Select
+                value={this.state.typeOfTrade}
+                placeholder={this.state.typeOfTrade}
+                options={typeOfTrade}
+                onChange={(e) => {
+                  this.setState({ typeOfTrade: e.value });
+                }}
+                // defaultInputValue={this.state.typeOfTrade}
+                // inputValue={this.state.typeOfTrade}
               />
             </div>
             <div className="formField">
@@ -160,18 +166,17 @@ class Leg extends Component {
                 // defaultValue={this.props.preData.openDate}
               />
             </div>
-
             <div className="formField">
-              <label className="formFieldLabel">Type of Trade</label>
-              <Select
-                options={typeOfTrade}
-                onChange={(e) => {
-                  this.setState({ typeOfTrade: e.value });
-                  this.setPremium(e.value);
-                }}
-                // defaultInputValue={this.state.typeOfTrade}
+              <label className="formFieldLabel">Expiry Date</label>
+              <input
+                type="date"
+                onChange={(e) => this.setState({ expireDate: e.target.value })}
+                align="right"
+                value={this.state.expireDate}
+                // defaultValue={}
               />
             </div>
+
             <div className="formField">
               <label className="formFieldLabel">Quantity</label>
               <input
@@ -217,6 +222,7 @@ class Leg extends Component {
     );
   };
   render() {
+    console.log(this.state);
     return (
       <div className="addLegContainer">
         {!this.state.formDone ? this.handleRender() : this.renderPreviewTrade()}

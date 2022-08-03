@@ -5,20 +5,30 @@
   padding: 15px 60px 15px 20px;
   color: var(--primaryColor);
   border-radius: 5px;
+  color: var(--secondaryColor);
+  /* width: 100%; */
+
+ 
+
 }
 .sidebarContainer {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  background-color: var(--aboveSurface);
+  height: 100vh;
+  width: 200px;
+  position: fixed;
+  
 }
 .sidebarItem:hover {
-  background-color: var(--secondaryColor);
+  background-color: var(--surfaceColor);
+  color: var(--white);
+
   cursor: pointer;
+  color: var(--white);
 }
 .sidebarItem p {
   margin-left: 40px;
   font-size: var(--breadCrums);
-}
-.sidebarItem img {
-  width: 20%;
 }
