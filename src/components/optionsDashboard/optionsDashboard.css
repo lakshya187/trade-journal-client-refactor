@@ -8,12 +8,11 @@
   flex: 0.1;
 }
 .optionsDashbardCenter {
-  flex: 0.7;
-  padding: 0px 30px;
+  flex: 0.9;
+  padding: 10px 80px;
+
 }
-.optionsDashbardRight {
-  flex: 0.1;
-}
+
 .optionsDashboardHeadingContainer{
   display: flex;
   align-items: center;
@@ -25,4 +24,42 @@
 .dashboardFiltersContainer{
   display: flex;
   align-items: center;
+}
+
+.optionsTable{
+  width: 100%;
+}
+.optionsTableHeading{
+  padding: 8px;
+  color: var(--secondaryColor);
+}
+
+.optionsTableRowContainer td {
+  padding: 8px;
+  color: var(--primaryColor);
+  font-size: var(--bodyCopy);
+}
+
+.optionsTableRowContainer {
+  margin-top: 100px;
+}
+.dashboardChartContainer{
+  padding:  50px 0px;
+}
+
+.optionsDashboardOptionsContainer{
+  margin-top: 100px;
+}
+.reactSelect__value-container{
+  /* min-height: 200px!important;
+  background-color: black; */
+  padding: 15px 50px 15px 5px;
+  background-color: var(--aboveSurface);
+  border: none;
+  
+}
+.reactSelect__dropdownIndicator { 
+  border: none;
+  background-color: var(--aboveSurface);
+  color: black;
 }

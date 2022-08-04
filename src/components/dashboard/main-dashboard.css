@@ -9,6 +9,7 @@
 .dashboardCenter {
   padding: 0 30px;
   flex: 0.60;
+  padding: 10px 80px;
 }
 .dashboardRight {
   flex: 0.3;

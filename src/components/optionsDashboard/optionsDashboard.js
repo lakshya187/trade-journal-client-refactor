@@ -16,13 +16,48 @@ import { getLocalStorage } from "../../helperFunctions/localstorage";
 import { server_url } from "../../config";
 
 const OptionsDashboard = (props) => {
-  const [underlying, setUnderlying] = useState(null);
-  const [strategy, setStrategy] = useState(null);
+  const [underlying, setUnderlying] = useState("");
+  const [strategy, setStrategy] = useState("");
+  const [chartData, setChartData] = useState(null);
 
   useEffect(() => {
     props.getAllOptions();
     getStratFilters();
+    getChartData();
   }, []);
+  const getChartData = async () => {
+    const { data } = await axios.get(`${server_url}/options/profitLoss`, {
+      headers: {
+        Authorization: `Bearer ${getLocalStorage()}`,
+      },
+    });
+    setChartData(data.data[0]);
+    try {
+    } catch (e) {
+      console.log(e);
+    }
+  };
+  const renderChart = () => {
+    if (!chartData) return <div className="loader">No data found</div>;
+    const profit = chartData.profit;
+    const loss = chartData.loss;
+    const profitLoss = [profit, loss];
+    const chart = {
+      labels: ["Profit", "Loss"],
+      datasets: [
+        {
+          label: "Profit and loss",
+          backgroundColor: ["#00DF8D", "#FA447F"],
+          // hoverBackgroundColor: ["#0A0A0A", "#E2E2E2"],
+          borderColor: "none",
+          data: profitLoss,
+          borderWidth: 0,
+          cutout: 80,
+        },
+      ],
+    };
+    return <PieChart data={chart} />;
+  };
   const renderOptionsTrades = () => {
     if (!props.options || props.options.length === 0) {
       return (
@@ -93,7 +128,7 @@ const OptionsDashboard = (props) => {
         </div>
         <div className="optionsDashbardCenter">
           <div className="dashboardMainContainer">
-            <h1 className="dashboardGreeting heading">{renderGreeting()}</h1>
+            {/* <h1 className="dashboardGreeting heading">{renderGreeting()}</h1> */}
             <div className="dashboardFiltersContainer">
               <form>
                 <input
@@ -113,19 +148,24 @@ const OptionsDashboard = (props) => {
               </form>
 
               <Select
+                // styles={{ minHeight: "250px" }}
+                classNamePrefix="reactSelect"
                 className="btn  marginleft"
                 onChange={(e) => handleChangeStrat(e.value)}
                 options={strategy}
                 placeholder={"Filter with Strategy"}
               />
 
-              <Link className="btn primaryBtn marginleft" to="/add-option">
+              {/* <Link className="btn primaryBtn marginleft" to="/add-option">
                 Add new Trade +
-              </Link>
+              </Link> */}
             </div>
 
-            <div className="dashboardInsight" style={{ padding: "30px 0px" }}>
-              Chart
+            <div
+              className="dashboardInsight dashboardChartContainer"
+              // style={{ padding: "30px 0px" }}
+            >
+              {renderChart()}
             </div>
             <div className="optionsDashboardOptionsContainer">
               <div className="optionsDashboardHeadingContainer">
@@ -140,7 +180,23 @@ const OptionsDashboard = (props) => {
                   Show All Trades
                 </button>
               </div>
-              {renderOptionsTrades()}
+              <div className="optionsTableContainer">
+                <table className="optionsTable">
+                  <thead>
+                    <tr className="optionsTableRowContainer">
+                      <th className="optionsTableHeading">Type of Trade</th>
+                      <th className="optionsTableHeading">Stock Ticker</th>
+                      <th className="optionsTableHeading">Strategy Name</th>
+                      <th className="optionsTableHeading">Expire Date</th>
+                      <th className="optionsTableHeading">Net Premium</th>
+                      <th className="optionsTableHeading">Number of Legs</th>
+                      <th className="optionsTableHeading">MTM</th>
+                      <th className="optionsTableHeading">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>{renderOptionsTrades()}</tbody>
+                </table>
+              </div>
             </div>
           </div>
         </div>

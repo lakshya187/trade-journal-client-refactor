@@ -10,11 +10,9 @@ import user from "../../assets/icons/sidebar/user.svg";
 const Sidebar = () => {
   return (
     <div>
-      {" "}
       <div className="sidebarContainer">
         <Link to={"/"} className="sidebarItem ">
           <svg
-            className="sideBarIcon"
             xmlns="http://www.w3.org/2000/svg"
             width="12.102"
             height="13.964"
@@ -26,11 +24,11 @@ const Sidebar = () => {
               d="M247.316,164.233a.463.463,0,0,1,.467-.465h4.652a.465.465,0,0,1,.467.465v3.26a.463.463,0,0,1-.467.464h-4.652a.466.466,0,0,1-.467-.464Zm0-9.776a.463.463,0,0,1,.467-.463h4.652a.466.466,0,0,1,.467.463v7.918a.463.463,0,0,1-.467.463h-4.652a.467.467,0,0,1-.467-.463Zm-6.516,5.12a.463.463,0,0,1,.467-.463h4.652a.467.467,0,0,1,.467.463v7.918a.463.463,0,0,1-.467.463h-4.652a.467.467,0,0,1-.467-.463Zm0-5.119a.463.463,0,0,1,.467-.464h4.652a.466.466,0,0,1,.467.464v3.26a.463.463,0,0,1-.467.465h-4.652a.465.465,0,0,1-.467-.465Z"
               transform="translate(-240.8 -153.994)"
               fill="silver"
-              fill-rule="evenodd"
+              fillRule="evenodd"
             />
           </svg>
 
-          <p>Dashboard</p>
+          <p>Dashboad</p>
         </Link>
         <Link to={"/"} className="sidebarItem ">
           <svg

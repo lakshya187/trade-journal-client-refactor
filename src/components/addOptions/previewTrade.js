@@ -19,16 +19,6 @@ class PreviewTrade extends Component {
       return <PreviewOptionsItem l={l} i={i} />;
     });
   };
-  // calcStratLevelPremium = () => {
-  //   let premium = 0;
-  //   this.props.trade.leg.forEach((l) => {
-  //     premium += l.premium;
-  //   });
-  //   premium < 0
-  //     ? (this.props.trade.typeOfTrade = "short")
-  //     : (this.props.trade.typeOfTrade = "long");
-  //   this.props.trade.netPremium = premium;
-  // };
 
   handleFormSubmit = async (e) => {
     e.preventDefault();

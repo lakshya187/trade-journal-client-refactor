@@ -11,6 +11,7 @@
 }
 .optionAnalyticsCenter{
     flex :.7;
+    padding: 0px 50px;
 }
 .optionAnalyticsRight{
     flex: .2;

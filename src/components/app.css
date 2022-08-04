@@ -10,17 +10,17 @@
 }
 body {
   --surfaceColor : #101734;
-  --primaryColor: #2d2d2d;
+  --primaryColor: #fff;
   --secondaryColor: #B2B2B2;
   --aboveSurface : #151F43;
   --bodyCopy: 15px;
   --subheading: 18px;
   --heading: 32px;
-  --greenColor: #00e08e;
-  --redColor: #e10015;
+  --greenColor: #00E08E;
+  --redColor: #FF4682;
   --lightWhiteColor: #f7f7f7;
   --borderColor: #c0c0c0;
-  --btnpadding: 15px 30px;
+  --btnpadding: 10px 20px;
   --shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
   --breadCrums: 14px;
   --white: #ffffff;
@@ -48,19 +48,19 @@ a:hover {
   border-radius: 5px;
 }
 .primaryBtn {
-  background: var(--primaryColor);
-  color: white;
+  background: var(--babyBlue);
+  color: var(--surfaceColor);
   border: none;
   cursor: pointer;
   text-align: center;
   font-size: var(--bodyCopy);
-  border: 1px solid var(--primaryColor);
+
 }
 .secondryBtn {
-  border: 1px solid var(--borderColor);
+  border: 2px solid var(--babyBlue);
   cursor: pointer;
   color: var(--primaryColor);
-  background-color: transparent;
+  background-color: transparent!important;
   text-align: center;
   display: flex;
   justify-content: center;
@@ -72,19 +72,24 @@ a:hover {
 }
 .primaryBtn:hover {
   color: var(--primaryColor);
-  background: var(--white);
-  border: 1px solid var(--borderColor);
+  background: transparent!important;
+  box-shadow: 0px 3px 98px rgba(66, 230, 255, .40)!important;
   transition: 100ms;
   text-align: center;
   /* box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1); */
 }
 .secondryBtn:hover {
   color: var(--primaryColor);
-  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+  background: transparent!important;
+  box-shadow: 0px 3px 98px rgba(66, 230, 255, .40)!important;
+  transition: 100ms;
+  text-align: center;
+
 }
 .mainValue {
   font-weight: bold;
 }
+
 
 input:focus {
   border: solid 1px var(--borderColor);
@@ -99,19 +104,23 @@ textarea:focus {
   outline: none;
 }
 .tertiaryBtn {
-  background: transparent;
-  color: white;
-  border: 1px solid #c0c0c0;
+  background: var(--aboveSurface)!important;
+  color: var(--secondaryColor)!important;
+  border: none!important
 }
 .tertiaryBtn:hover {
-  color: #2c2c2c;
+  color: var(--primaryColor)!important;
   cursor: pointer;
-  background-color: white;
+  /* background-color: white; */
 }
 .input {
   padding: 15px 50px 15px 5px;
-  border: solid 1px var(--borderColor);
-  border-radius: 5px;
+  border: none;
+  border-radius: 10px;
+  color: var(--primaryColor);
+  background-color: var(--aboveSurface);
+  /* border: 2px solid var(--babyBlue); */
+
 }
 .black {
   background-color: var(--primaryColor);
@@ -156,16 +165,61 @@ hr {
 .searchBtn{
   padding:15px 5px ;
   border-radius: 0px 5px 5px 0px;
-  border-right: 1px solid var(--borderColor);
-  border-top: 1px solid var(--borderColor);
-  border-bottom: 1px solid var(--borderColor);
+  border-left: 1px solid var(--surfaceColor) !important;
+  /* border-right: 1px solid var(--borderColor); */
+  /* border-top: 1px solid var(--borderColor); */
+  /* border-bottom: 1px solid var(--borderColor); */
   border-left:none;
-  background-color: var(--white );
+  background-color: var(--aboveSurface);
+  /* border: 2px solid var(--babyBlue); */
   /* color: wheat; */
+  border: none;
+  color: var(--primaryColor);
 }
 .searchBtn:hover{
   box-shadow: var(--shadow);
 }
 .authenticationSuccess{
   padding: var(--compPadding);
+}
+
+.normal {
+  background-color: var(--aboveSurface) ;
+}
+.backgroundColorGreen { 
+  background-color: var(--greenColor);
+}
+.backgroundColorRed { 
+  background-color: var(--redColor);
+}
+
+.loader{
+  color: var(--secondaryColor);
+}
+
+.headerMarker{
+  height: 20px;
+  width: 15px;
+  border-radius: 5px;
+  background: var(--babyBlue);
+  margin-right: 20px;
+
+}
+.headerContainer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}
+.customModal{
+  background-color: var(--aboveSurface)!important;
+  color: var(--primaryColor);
+  border: none!important;
+  /* border-radius: 20px; */
+}
+.modal-content{
+  border: none!important;
+  background-color: var(--aboveSurface)!important;
+  color: var(--primaryColor);
+  border-radius: 20px!important;
 }

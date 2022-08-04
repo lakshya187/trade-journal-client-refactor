@@ -6,31 +6,33 @@
   /* margin-top: 300px; */
 }
 .optionDetailContainerBackground{
-  background: var(--secondaryColor);
+  background: url(./../../assets/images/trade-detaills-background.svg);
   margin-top: -50px;
-  padding: 20px 0px;
+  padding: 100px 0px;
 }
 .optionDetailStratName {
   display: flex;
   justify-content: center;
 }
 .optionDetailStratName div {
-  padding: 40px;
+  padding: 60px;
   color: var(--white);
-  background-color: var(--primaryColor);
+  background-color: var(--surfaceColor);
   border-radius: 10px;
-  font-size: var(--bodyCopy);
+  font-size: var(--heading);
   font-weight: bold;
   text-transform: uppercase;
+
 }
 .optionsDetailGeneralInfoContainer {
-  background-color: var(--white);
+  background-color: var(--aboveSurface);
   padding: 50px 20px;
-  width: 50%;
+  width: 40%;
   display: flex;
   justify-content: center;
   box-shadow: var(--shadow);
   border-radius: 10px;
+
   /* width: 100; */
 
 }
@@ -81,21 +83,37 @@
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: left;
-  background-color: var(--secondaryColor);
+  background-color: var(--aboveSurface);
   color: white;
 }
 
 .optionLegTable {
-  font-family: Arial, Helvetica, sans-serif;
+ 
   border-collapse: collapse;
   width: 100%;
+  margin-top: 50px;
 }
 
 .optionLegTable td, .optionLegTable th {
-  border: 1px solid #ddd;
+
   padding: 8px;
 }
 .optionLegTable th{
   font-size: var(--bodyCopy);
   font-weight: normal;
+color: var(--secondaryColor);
+}
+
+.winTrade {
+color: var(--greenColor)!important;
+  box-shadow: 0px 3px 99px rgba(0, 224, 142, .57)!important;
+  background-color: var(--surfaceColor);
+  /* color: var(--colorGreen); */
+}
+.loseTrade {
+color: var(--redColor)!important;
+  box-shadow: 0px 3px 99px rgba(225, 70, 130, .57)!important;
+  background-color: var(--surfaceColor);
+  /* color:  var(--colorRed); */
+
 }

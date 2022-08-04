@@ -1,15 +1,12 @@
 .sidebarItem {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-between;
   padding: 15px 60px 15px 20px;
   color: var(--primaryColor);
   border-radius: 5px;
   color: var(--secondaryColor);
-  /* width: 100%; */
-
- 
-
+  width: 100%;
 }
 .sidebarContainer {
   display: flex;
@@ -17,7 +14,7 @@
   align-items: flex-start;
   background-color: var(--aboveSurface);
   height: 100vh;
-  width: 200px;
+  width: 220px;
   position: fixed;
   
 }
@@ -29,6 +26,6 @@
   color: var(--white);
 }
 .sidebarItem p {
-  margin-left: 40px;
+  margin-left: 50px;
   font-size: var(--breadCrums);
 }
