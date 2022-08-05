@@ -5,15 +5,22 @@
 }
 .formField {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  /* justify-content: space-between; */
   margin-top: 20px;
-  align-items: center;
+  /* align-items: center; */
+  color:  var(--secondaryColor);
+  border: none!important;
 }
 .formField input {
-  border: 1px solid #c0c0c0;
+  border: none!important;
+  background-color: var(--aboveSurface);
   border-radius: 5px;
   padding: 10px;
-  margin-left: 20px;
+  /* margin-left: 20px; */
+  color: var(--primaryColor);
+
+
 }
 .submitButton {
   padding: 15px 30px;
@@ -52,4 +59,14 @@
   /* justify-content: center; */
   flex-direction: column;
   align-items: center;
+  width: 100%;
 }
+.mainText{
+  color: var(--babyBlue);
+  font-weight: bold;
+}
+/* .formFieldAddTragsContainer{
+  justify-content: space-between!important;
+  display: flex!important;
+  width: 100%!;
+} */

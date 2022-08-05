@@ -151,6 +151,7 @@ textarea:focus {
 }
 .bodyCopy {
   font-size: var(--bodyCopy);
+  color: var(--secondaryColor);
 }
 .disabledBtn {
   background-color: var(--white);
@@ -222,4 +223,38 @@ hr {
   background-color: var(--aboveSurface)!important;
   color: var(--primaryColor);
   border-radius: 20px!important;
+}
+
+.ReactTags__selected span.ReactTags__tag{
+  background-color: var(--aboveSurface)!important;
+}
+.css-1s2u09g-control{
+  background-color: var(--aboveSurface)!important;
+  border: none!important;
+  color: var(--secondaryColor);
+}
+.ReactTags__tagInput{
+  border: none;
+}
+.css-1pahdxg-control{
+  background-color: var(--aboveSurface)!important;
+  border: none!important;
+ 
+}
+.css-2613qy-menu{
+  background-color: var(--aboveSurface)!important;
+  border: none!important;
+  color: var(--primaryColor);
+}
+.ReactTags__tagInputField{
+  padding: 25px 30px!important;
+  width: 400px!important;
+
+}
+.css-qc6sy-singleValue{
+  color:white!important;
+}
+.btnContainer{
+  display: flex;
+  justify-content: space-evenly;
 }

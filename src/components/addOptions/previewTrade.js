@@ -39,67 +39,86 @@ class PreviewTrade extends Component {
     if (!this.props.trade) {
       history.push("/add-option");
     }
-    console.log(this.props.trade);
 
     return (
       <div className="previewOptionsTrade">
         <div className="previewOptionsTradeContainer">
           <form>
-            <h1 className="subHeading ">Preview Your Trade</h1>
-            <ArrowBackIcon />
-            <div className="previewOptionsTradeFormContainer">
-              <div>
-                <div className="formField">
-                  <label className="formFieldLabel">Underlying</label>
-                  <input
-                    type="text"
-                    onChange={(e) =>
-                      (this.props.trade.underlying = e.target.value)
-                    }
-                    align="right"
-                    defaultValue={this.props.trade.underlying}
-                  />
-                </div>
-                <div className="formField">
-                  <label className="formFieldLabel">Ticker</label>
-                  <input
-                    type="text"
-                    onChange={(e) => (this.props.trade.ticker = e.target.value)}
-                    align="right"
-                    defaultValue={this.props.trade.ticker}
-                  />
-                </div>
-                <div className="formField">
-                  <label className="formFieldLabel">Date</label>
-                  <input
-                    type="datetime-local"
-                    onChange={(e) =>
-                      (this.props.trade.openDate = e.target.value)
-                    }
-                    align="right"
-                    defaultValue={this.props.trade.openDate}
-                  />
-                </div>
-                <div className="formField">
-                  <label className="formFieldLabel">Strategy name</label>
-                  <Select
-                    required
-                    options={optionStrats}
-                    onChange={(e) => (this.props.trade.strategyName = e.value)}
-                    placeholder={this.props.trade.strategyName}
-                  />
+            <h1 className="subHeading ">
+              Preview Your<span className="mainText"> Trade </span>
+            </h1>
+
+            <div className="previewOptionsContainer">
+              <div className="previewOptionsLeft">
+                <div className="previewOptionsTradeFormContainer">
+                  <div>
+                    <div className="formField">
+                      <label className="formFieldLabel">Underlying</label>
+                      <input
+                        type="text"
+                        onChange={(e) =>
+                          (this.props.trade.underlying = e.target.value)
+                        }
+                        align="right"
+                        defaultValue={this.props.trade.underlying}
+                      />
+                    </div>
+                    <div className="formField">
+                      <label className="formFieldLabel">Ticker</label>
+                      <input
+                        type="text"
+                        onChange={(e) =>
+                          (this.props.trade.ticker = e.target.value)
+                        }
+                        align="right"
+                        defaultValue={this.props.trade.ticker}
+                      />
+                    </div>
+                    <div className="formField">
+                      <label className="formFieldLabel">Date</label>
+                      <input
+                        type="datetime-local"
+                        onChange={(e) =>
+                          (this.props.trade.openDate = e.target.value)
+                        }
+                        align="right"
+                        defaultValue={this.props.trade.openDate}
+                      />
+                    </div>
+                    <div className="formField">
+                      <label className="formFieldLabel">Strategy name</label>
+                      <Select
+                        required
+                        options={optionStrats}
+                        onChange={(e) =>
+                          (this.props.trade.strategyName = e.value)
+                        }
+                        placeholder={this.props.trade.strategyName}
+                      />
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div className="previewOptionsLegContainer marginTop">
-                <div>{this.renderLeg()}</div>
+              <div className="previewOptionsRight">
+                <div className="previewOptionsLegContainer marginTop">
+                  <div>{this.renderLeg()}</div>
+                </div>
               </div>
             </div>
-            <button
-              className={"btn primaryBtn marginTop"}
-              onClick={this.handleFormSubmit}
-            >
-              Submit
-            </button>
+            <div className="btnContainer">
+              <button
+                className={"btn secondryBtn marginTop"}
+                onClick={() => history.push("/options-dashboard")}
+              >
+                Cancel
+              </button>
+              <button
+                className={"btn primaryBtn marginTop"}
+                onClick={this.handleFormSubmit}
+              >
+                Submit
+              </button>
+            </div>
           </form>
         </div>
         <div className="previewTradeDirections"></div>

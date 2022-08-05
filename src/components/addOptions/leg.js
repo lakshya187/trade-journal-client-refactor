@@ -28,7 +28,7 @@ class Leg extends Component {
     formDone: false,
   };
   handleFormSubmit = (e) => {
-    if (this.props.preData.leg.length === 3) {
+    if (this.props.preData.leg.length === 4) {
       return;
     }
     const legData = { ...this.state };
@@ -47,7 +47,7 @@ class Leg extends Component {
   };
 
   handleAddNewLeg = () => {
-    if (this.props.preData.leg.length === 3) {
+    if (this.props.preData.leg.length === 4) {
       return;
     }
     const legData = { ...this.state };

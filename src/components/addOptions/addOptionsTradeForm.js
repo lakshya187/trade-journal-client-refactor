@@ -55,13 +55,19 @@ class AddOptionsForm extends Component {
       </div>
     );
   };
+
   handleRender = () => {
     if (this.state.currentView === "genDetails") {
       this.handleBackAction();
 
       return (
         <form>
-          <div className="subHeading marginBottom">Add an Options Trade!</div>
+          <div className="subHeading marginBottom">
+            Add an <span className="mainText"> Options Trade!</span>
+            <p className="bodyCopy marginTop">
+              Lets start with overall details of the trade
+            </p>
+          </div>
           <div className="formField">
             <label className="formFieldLabel">Underlying</label>
             <input
@@ -105,7 +111,7 @@ class AddOptionsForm extends Component {
             ? null
             : this.renderExpireDate()}
 
-          <div className="formField">
+          <div className="formField formFieldAddTragsContainer">
             <label className="formFieldLabel">Add Tags</label>
             <div className="formFiedlAddTags">
               <AddTags addTags={this.updateTags} />

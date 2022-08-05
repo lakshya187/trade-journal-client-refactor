@@ -9,7 +9,7 @@
 }
 .optionsDashbardCenter {
   flex: 0.9;
-  padding: 10px 80px;
+  padding: 10px 150px;
 
 }
 
@@ -28,6 +28,9 @@
 
 .optionsTable{
   width: 100%;
+  border-collapse: separate;
+  border-spacing: 0px 25px
+
 }
 .optionsTableHeading{
   padding: 8px;
@@ -38,10 +41,11 @@
   padding: 8px;
   color: var(--primaryColor);
   font-size: var(--bodyCopy);
+  margin-top: 150px!important;
 }
 
 .optionsTableRowContainer {
-  margin-top: 100px;
+  margin-top: 150px!important;
 }
 .dashboardChartContainer{
   padding:  50px 0px;

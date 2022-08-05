@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import ArrowDropDownCircleIcon from "@mui/icons-material/ArrowDropDownCircle";
+// import ArrowDropDownCircleIcon from "@mui/icons-material/ArrowDropDownCircle";
+import EditIcon from "@mui/icons-material/Edit";
 import { connect } from "react-redux";
 import Select from "react-select";
 const options = [
@@ -16,7 +17,7 @@ const PreviewOptionsItem = ({ l, i, trade }) => {
   const renderItems = () => {
     return (
       <div className="previewOptionsItemContainer">
-        <div className="formField">
+        <div className="formFieldPreview">
           <label className="formFieldLabel">Option Type</label>
           <Select
             required
@@ -25,7 +26,7 @@ const PreviewOptionsItem = ({ l, i, trade }) => {
             placeholder={l.optionType}
           />
         </div>
-        <div className="formField">
+        <div className="formFieldPreview">
           <label className="formFieldLabel">Type of Trade</label>
           <Select
             required
@@ -34,7 +35,7 @@ const PreviewOptionsItem = ({ l, i, trade }) => {
             placeholder={l.typeOfTrade}
           />
         </div>
-        <div className="formField">
+        <div className="formFieldPreview">
           <label className="formFieldLabel">Strike</label>
           <input
             type="number"
@@ -43,7 +44,7 @@ const PreviewOptionsItem = ({ l, i, trade }) => {
             defaultValue={l.strike}
           />
         </div>
-        <div className="formField">
+        <div className="formFieldPreview">
           <label className="formFieldLabel">Premium</label>
           <input
             type="number"
@@ -52,7 +53,7 @@ const PreviewOptionsItem = ({ l, i, trade }) => {
             defaultValue={l.premium}
           />
         </div>
-        <div className="formField">
+        <div className="formFieldPreview">
           <label className="formFieldLabel">Quantity</label>
           <input
             type="number"
@@ -61,7 +62,7 @@ const PreviewOptionsItem = ({ l, i, trade }) => {
             defaultValue={l.quantity}
           />
         </div>
-        <div className="formField">
+        <div className="formFieldPreview">
           <label className="formFieldLabel">Lot Size</label>
           <input
             type="number"
@@ -70,7 +71,7 @@ const PreviewOptionsItem = ({ l, i, trade }) => {
             defaultValue={l.lotSize}
           />
         </div>
-        <div className="formField">
+        <div className="formFieldPreview">
           <label className="formFieldLabel">Open Date</label>
           <input
             type="datetime-local"
@@ -79,7 +80,7 @@ const PreviewOptionsItem = ({ l, i, trade }) => {
             defaultValue={l.openDate}
           />
         </div>
-        <div className="formField">
+        <div className="formFieldPreview">
           <label className="formFieldLabel">Expiry Date</label>
           <input
             type="date"
@@ -95,10 +96,11 @@ const PreviewOptionsItem = ({ l, i, trade }) => {
   return (
     <div>
       <div
-        className="previewOptionHeadContainer marginTop btn secondryBtn"
+        className="previewOptionHeadContainer marginTop previewBtn secondryBtn"
         onClick={() => setShowLeg(!showLeg)}
       >
-        <span>Leg {i + 1}</span> <ArrowDropDownCircleIcon />
+        <span>Leg {i + 1}</span>{" "}
+        <EditIcon style={{ color: "#42E6FF", marginLeft: "20px" }} />
       </div>
       {showLeg ? renderItems() : ""}
     </div>
