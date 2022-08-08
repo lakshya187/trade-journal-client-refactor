@@ -104,12 +104,12 @@ class OptionAnalytics extends Component {
           </div>
         </div>
         <tr>
-          <th className="optionsTableHeading">Days Held</th>
+          <th className="optionsTableHeading">Days to expire</th>
           <th className="optionsTableHeading">Profit Loss</th>
         </tr>
         {this.state.daysToExpire.map((el) => {
           return (
-            <tr>
+            <tr className="optionsTableRowContainer">
               <td>{el._id}</td>
               <td>${el.profitLoss}</td>
             </tr>
@@ -123,46 +123,38 @@ class OptionAnalytics extends Component {
     return (
       <div className="optionsAnalyticsStatsContainer">
         <div className="dashboardStatsItem">
-          <div className="dashboardStatsBullet"></div>
+          <div className="headerMarker"></div>
           <div className="dashboardStatsDescription">Total Trades: </div>
           <div className="dashboardStatsValue">
             {this.state.overView.totalTrades}
           </div>
         </div>
         <div className="dashboardStatsItem">
-          <div className="dashboardStatsBullet"></div>
-          <div className="dashboardStatsDescription">
-            Net Profit or Loss Daily:{" "}
-          </div>
+          <div className="headerMarker"></div>
+          <div className="dashboardStatsDescription">Daily Returns:</div>
           <div className="dashboardStatsValue ">
             ${formatCash(this.state.overView.profitLossDay)}
           </div>
         </div>
         <div className="dashboardStatsItem">
-          <div className="dashboardStatsBullet"></div>
-          <div className="dashboardStatsDescription">
-            {" "}
-            Net Profit or Loss Weekly :{" "}
-          </div>
+          <div className="headerMarker"></div>
+          <div className="dashboardStatsDescription"> Weekly Returns:</div>
           <div className="dashboardStatsValue">
             ${formatCash(Math.abs(this.state.overView.profitLossWeek))}
           </div>
         </div>
         <div className="dashboardStatsItem">
-          <div className="dashboardStatsBullet"></div>
-          <div className="dashboardStatsDescription">
-            {" "}
-            Net Profit or Loss Monthly:
-          </div>
+          <div className="headerMarker"></div>
+          <div className="dashboardStatsDescription"> Monthly Returns :</div>
           <div className="dashboardStatsValue">
             ${formatCash(Math.abs(this.state.overView.netPLMonth))}
           </div>
         </div>
         <div className="dashboardStatsItem">
-          <div className="dashboardStatsBullet"></div>
+          <div className="headerMarker"></div>
           <div className="dashboardStatsDescription">
             {" "}
-            Net Profit or Loss Half Yearly:{" "}
+            Half Yearly Returns :
           </div>
           <div className="dashboardStatsValue">
             ${formatCash(Math.abs(this.state.overView.netPLSixMonths))}
@@ -173,9 +165,9 @@ class OptionAnalytics extends Component {
           "Loading"
         ) : (
           <div className="dashboardStatsItem">
-            <div className="dashboardStatsBullet"></div>
+            <div className="headerMarker"></div>
             <div className="dashboardStatsDescription">
-              Net Profit or Loss Long Trades:
+              Returns on Long Trades:
             </div>
             <div className="dashboardStatsValue">
               ${formatCash(this.state.profitLossTypeofTradeStart[0].profitLoss)}
@@ -186,9 +178,9 @@ class OptionAnalytics extends Component {
           "Loading"
         ) : (
           <div className="dashboardStatsItem">
-            <div className="dashboardStatsBullet"></div>
+            <div className="headerMarker"></div>
             <div className="dashboardStatsDescription">
-              Net Profit or Loss Short Trades:
+              Returns on Short Trades:
             </div>
             <div className="dashboardStatsValue">
               ${formatCash(this.state.profitLossTypeofTradeStart[1].profitLoss)}{" "}
@@ -199,10 +191,8 @@ class OptionAnalytics extends Component {
           "Loading"
         ) : (
           <div className="dashboardStatsItem">
-            <div className="dashboardStatsBullet"></div>
-            <div className="dashboardStatsDescription">
-              Net Profit or Loss Call:
-            </div>
+            <div className="headerMarker"></div>
+            <div className="dashboardStatsDescription">Returns on Call:</div>
             <div className="dashboardStatsValue">
               ${formatCash(this.state.optionType[0].profitLoss)}{" "}
             </div>
@@ -212,10 +202,8 @@ class OptionAnalytics extends Component {
           "Loading"
         ) : (
           <div className="dashboardStatsItem">
-            <div className="dashboardStatsBullet"></div>
-            <div className="dashboardStatsDescription">
-              Net Profit or Loss Put:
-            </div>
+            <div className="headerMarker"></div>
+            <div className="dashboardStatsDescription">Returns on Put:</div>
             <div className="dashboardStatsValue">
               ${formatCash(this.state.optionType[1].profitLoss)}{" "}
             </div>
@@ -229,7 +217,7 @@ class OptionAnalytics extends Component {
       <div>
         <AnalyticsField
           url={`${server_url}/options/getProfitLossPremiumStrat`}
-          label={"Net Profit Loss based on entered Premium"}
+          label={"Returns based on premium"}
         />
         <hr className="divider" />
       </div>

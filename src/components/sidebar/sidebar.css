@@ -16,6 +16,7 @@
   height: 100vh;
   width: 220px;
   position: fixed;
+
   
 }
 .sidebarItem:hover {
@@ -28,4 +29,10 @@
 .sidebarItem p {
   margin-left: 50px;
   font-size: var(--breadCrums);
+}
+.sideBarItemsContainer {
+  transition: 300ms;
+}
+.class-that-animates {
+  transform: translateX(10%);
 }

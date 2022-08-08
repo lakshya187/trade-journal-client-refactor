@@ -27,7 +27,7 @@ const AnalyticsField = ({ label, url }) => {
   return (
     <form className="optionAnalyticsField ">
       <div className="optionAnalyticsHeadingContainer">
-        <div className="dashboardStatsBullet"></div>
+        <div className="headerMarker"></div>
         <div className="dashboardStatsDescription">{label}</div>
       </div>
       <div className="optionAnalyticsFieldsContainer">
@@ -37,6 +37,7 @@ const AnalyticsField = ({ label, url }) => {
             type="number"
             onChange={(e) => setMinimum(+e.target.value)}
             value={gt}
+            className="formFieldAnalytics"
           />
         </div>
         <div className="optionAnalyticsFieldContainer">

@@ -4,17 +4,19 @@
 
 .optionAnalyticsContainer{
     display: flex;
+   
 }
 
 .optionAnalyticsLeft{
     flex: .1;
 }
 .optionAnalyticsCenter{
-    flex :.7;
-    padding: 0px 50px;
+    flex :.65;
+
+    padding: 10px 0px 10px 150px;
 }
 .optionAnalyticsRight{
-    flex: .2;
+    flex: .25;
 }
 
 .optionAnalyticsField {
@@ -27,10 +29,12 @@
     /* align-items: center; */
 }
 .optionAnalyticsField input {
-    border: 1px solid #c0c0c0;
+    border:none;
     border-radius: 5px;
     padding: 10px;
     margin-left: 20px;
+    background-color: var(--aboveSurface);
+    color: var(--primaryColor);
   }
 
 .optionAnalyticsFieldsContainer{
@@ -60,7 +64,7 @@
 }
 
 .optionsAnalyticsStatsContainer {
-    background-color: var(--lightWhiteColor);
+    background-color: var(--aboveSurface);
     padding: 10px 20px;
     /* height: 500px; */
     display: flex;

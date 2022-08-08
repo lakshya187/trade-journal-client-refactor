@@ -101,9 +101,11 @@ class MainDashboard extends React.Component {
       datasets: [
         {
           label: "Profit and loss",
-          backgroundColor: ["#2D2D2D", "#C0C0C0"],
-          hoverBackgroundColor: ["#0A0A0A", "#E2E2E2"],
+          backgroundColor: ["#00DF8D", "#FA447F"],
+          // hoverBackgroundColor: ["#0A0A0A", "#E2E2E2"],
           data: profitLoss,
+          borderWidth: 0,
+          cutout: 80,
         },
       ],
     };
@@ -121,6 +123,7 @@ class MainDashboard extends React.Component {
     if (!this.props.trades) {
       return <LinearProgress color="inherit" />;
     }
+    console.log(this.props.trades);
     return (
       <div className="dashboard">
         <div className="dashboardContainer">
@@ -139,9 +142,9 @@ class MainDashboard extends React.Component {
                   placeholder="Search for trades"
                 />
                 <button className="btn secondryBtn marginleft">Sort by</button>
-                <Link className="btn primaryBtn marginleft" to="/add-new-trade">
+                {/* <Link className="btn primaryBtn marginleft" to="/add-new-trade">
                   Add new Trade +
-                </Link>
+                </Link> */}
               </div>
               <div className="dashboardInsight" style={{ padding: "30px 0px" }}>
                 {this.renderChart()}
@@ -152,13 +155,30 @@ class MainDashboard extends React.Component {
                 style={{ marginTop: "50px" }}
               >
                 <h1 className="heading">Trades</h1>
-                {this.renderTradeCards()}
+                <div className="optionsTableContainer">
+                  <table className="optionsTable">
+                    <thead>
+                      <tr className="optionsTableRowContainer">
+                        <th className="optionsTableHeading">Type of Trade</th>
+                        <th className="optionsTableHeading">Stock Ticker</th>
+                        <th className="optionsTableHeading">Open Price</th>
+                        <th className="optionsTableHeading">Close Price</th>
+                        <th className="optionsTableHeading">
+                          Currently Holding
+                        </th>
+                        <th className="optionsTableHeading">MTM</th>
+                        <th className="optionsTableHeading">Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody> {this.renderTradeCards()}</tbody>
+                  </table>
+                </div>
               </div>
             </div>
           </div>
           <div className="dashboardRight">
-            <h1 className="heading">Statistics</h1>
-            {this.renderStats()}
+            {/* <h1 className="heading">Statistics</h1> */}
+            {/* {this.renderStats()} */}
           </div>
         </div>
       </div>

@@ -6,6 +6,7 @@ import Leg from "./leg";
 import "./addOptionsTradeForm.css";
 import { optionStrats } from "../../utils/staticData";
 import AddTags from "../addTags/addTags";
+import { Link } from "react-router-dom";
 
 class AddOptionsForm extends Component {
   state = {
@@ -118,19 +119,19 @@ class AddOptionsForm extends Component {
             </div>
           </div>
 
-          <div
-            className="submitBtnContainer
-          "
-          >
+          <div className="btnContainer btn">
             <button
               onClick={(e) => {
                 e.preventDefault();
                 this.onFormSubmit();
               }}
-              className={"primaryBtn btn"}
+              className={"primaryBtn btn "}
             >
               Add a leg
             </button>
+            <Link to={"/options-dashboard"} className="secondryBtn btn">
+              Cancel
+            </Link>
           </div>
         </form>
       );

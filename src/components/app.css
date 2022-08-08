@@ -25,7 +25,8 @@ body {
   --breadCrums: 14px;
   --white: #ffffff;
   --compPadding: 100px 0 0 0;
-  --babyBlue : #42E6FF
+  --babyBlue : #42E6FF;
+  --speed : 500ms
 }
 body { 
 background-color: var(--surfaceColor)!important;
@@ -92,7 +93,7 @@ a:hover {
 
 
 input:focus {
-  border: solid 1px var(--borderColor);
+  /* border: solid 1px var(--borderColor); */
   outline: none;
 }
 textarea {
@@ -142,6 +143,7 @@ textarea:focus {
 }
 .formFieldLabel {
   font-size: var(--bodyCopy);
+  color: var(--secondaryColor);
 }
 .marginBottom {
   margin-bottom: 50px;

@@ -38,84 +38,37 @@ const TradeItem = ({ trade }) => {
     });
   };
   return (
-    <div key={trade._id}>
-      <div className="tradeCard">
-        <div className="tradeCardContainer">
-          <div
-            className={`tradeCardType ${
-              trade.typeOfTrade === "Long" ? "black" : "grey"
-            }`}
-          >
-            {trade.typeOfTrade.toUpperCase()}
-          </div>
-          <div className="dashboardCardText">
-            <p className=" textMain cardField tickerName">
-              <span className={`textValue `}>
-                {`${trade.stockTicker}`}
-                <br />
-              </span>{" "}
-              Stock Ticker
-            </p>
-
-            <p className=" textMain cardField">
-              <span className="textValue ">
-                {!trade.openPrice ? "Not defined" : ` $${trade.openPrice}`}
-              </span>
-              <br /> Open price
-            </p>
-            <p className=" textMain cardField">
-              <span className={`textValue `}>
-                {`$${
-                  !trade.closingPriceCalculated
-                    ? " "
-                    : trade.closingPriceCalculated
-                }`}{" "}
-                <br />
-              </span>{" "}
-              Net Closing price
-            </p>
-            <p className=" textMain cardField">
-              <span className={`textValue `}>
-                {trade.currentHoldings} <br />
-              </span>{" "}
-              Current holdings
-            </p>
-            <p className="textMain">
-              <span
-                className={`${
-                  trade.profitLoss > 0 ? "colorGreen" : "colorRed"
-                } cardFieldtextValue textMain`}
-              >
-                {!trade.profitLoss
-                  ? 0
-                  : `$${formatCash(Math.abs(trade.profitLoss))}`}
-                <br />
-              </span>{" "}
-              P/L
-            </p>
-          </div>
-          <div className="tradeItemBtnContainer">
-            <Link to={`/trade/${trade._id}`} className="btn primaryBtn">
-              View Trade
-            </Link>
-            <div
-              className="tradeItemCloseEntriesContainer btn secondryBtn"
-              onClick={() => setCloseEntries(!showCloseEntires)}
-            >
-              <div>Closing Entries</div>
-              <ArrowDropDownCircleIcon
-                className={`closeEntriesShow ${
-                  !showCloseEntires ? "arrowDropDownRight" : ""
-                }`}
-              />
-            </div>
-          </div>
+    <tr className="optionsTableRowContainer">
+      <td>
+        <div
+          className={`tradeCardTypeStrategy ${
+            trade.profitLoss > 0 ? "backgroundColorGreen" : "backgroundColorRed"
+          }  `}
+        >
+          {trade.typeOfTrade.toUpperCase()}
         </div>
-        <div className="tradeItemCloseEntriesShow"></div>
+      </td>
+      <td>{trade.stockName}</td>
+      <td>{trade.openPrice}</td>
+      <td>{trade.closingPriceCalculated}</td>
+      <td>{trade.currentHoldings}</td>
 
-        <div>{showCloseEntires ? renderCloseEntries() : ""}</div>
-      </div>
-    </div>
+      <td>
+        <div
+          className={`${
+            trade.profitLoss > 0 ? "colorGreen" : "colorRed"
+          } cardFieldtextValue textMain`}
+        >
+          {!trade.profitLoss ? 0 : `$${formatCash(Math.abs(trade.profitLoss))}`}
+          <br />
+        </div>
+      </td>
+      <td>
+        <Link to={`/trade/${trade._id}`} className="btn secondryBtn">
+          View Trade
+        </Link>
+      </td>
+    </tr>
   );
 };
 export default TradeItem;

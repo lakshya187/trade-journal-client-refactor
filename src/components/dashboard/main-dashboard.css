@@ -8,12 +8,13 @@
 }
 .dashboardCenter {
   padding: 0 30px;
-  flex: 0.60;
+  flex: 0.90;
   padding: 10px 80px;
+  padding: 10px 150px;
 }
-.dashboardRight {
-  flex: 0.3;
-}
+/* .dashboardRight {
+  /* flex: 0.3; */
+/* }  */
 .dashboardGreeting {
   font-size: var(--heading);
   color: var(--primaryColor);
@@ -101,10 +102,11 @@
 }
 .dashboardStatsItem {
   display: flex;
-  padding: 10px 0px 10px 30px;
-  margin-top: 20px;
-  background-color: var(--white);
+  padding: 20px 0px 20px 30px;
+  margin-top: 40px;
+  background-color: var(--surfaceColor);
   align-items: center;
+  border-radius: 5px;
 }
 .dashboardStatsBullet {
   height: 10px;
