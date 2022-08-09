@@ -89,3 +89,8 @@
 .tradeDetailAnalysisFallback {
   width: 10%;
 }
+.equityTable{
+  display: flex!important;
+  justify-content: space-around !important;
+  /* width: 50%; */
+}

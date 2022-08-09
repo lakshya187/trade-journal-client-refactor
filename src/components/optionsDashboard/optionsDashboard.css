@@ -67,3 +67,7 @@
   background-color: var(--aboveSurface);
   color: black;
 }
+.tableTD{
+  color: var(--primaryColor);
+  font-size: var(--bodyCopy);
+}
