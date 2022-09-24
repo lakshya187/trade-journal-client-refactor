@@ -9,13 +9,17 @@ import { getSingleOptionsTrade } from "../../actions";
 import formatCash from "../../utils/formatCash";
 import "./optionDetail.css";
 import axios from "axios";
+import ShareIcon from "@mui/icons-material/Share";
 import { server_url } from "../../config";
+import TweetTrade from "../optionsDashboard/optionTradeItem/tweetModal";
 const OptionDetail = ({ trade, match, getSingleOptionsTrade }) => {
+  const [updatedTrade, setUpdatedTrade] = useState(null);
   useEffect(() => {
     getSingleOptionsTrade(match.params.id);
   }, []);
-  const [updatedTrade, setUpdatedTrade] = useState(null);
-  // const deleteUrl = `${server_url}/options/${trade._id}`;
+  useEffect(() => {
+    getSingleOptionsTrade(match.params.id);
+  }, [updatedTrade]);
   const goBack = () => {
     history.push("/options-dashboard");
   };
@@ -24,7 +28,6 @@ const OptionDetail = ({ trade, match, getSingleOptionsTrade }) => {
       return <div className="tagsItem">{el.text}</div>;
     });
   };
-  console.log(trade);
   const renderTable = () => {
     return trade.leg.map((en) => {
       return (
@@ -63,7 +66,7 @@ const OptionDetail = ({ trade, match, getSingleOptionsTrade }) => {
       );
     });
   };
-
+  console.log(trade);
   if (!trade) return <div>Loading</div>;
   return (
     <div className="optionDetail">
@@ -84,13 +87,17 @@ const OptionDetail = ({ trade, match, getSingleOptionsTrade }) => {
           <div className="editBtnContainer">
             <Link
               to={`/option/close-strat/${trade._id}`}
-              className="btn primaryBtn "
+              className="btn primaryBtn"
             >
               Close Trade
             </Link>
             <Link className="btn secondryBtn marginleft">Edit Trade</Link>
-
+          </div>
+          <div className="editBtnContainer">
             <DeleteModal id={trade._id} />
+            <div className=" marginleft">
+              <TweetTrade trade={trade} />
+            </div>
           </div>
         </div>
 

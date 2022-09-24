@@ -35,8 +35,9 @@
 .editBtnContainer {
   display: flex;
   justify-content: center;
-  padding: 40px;
+  /* padding: 40px; */
   max-width: inherit;
+  margin : 10px 0px;
 }
 .goBackButton {
   color: white;

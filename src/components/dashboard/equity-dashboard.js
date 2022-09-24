@@ -16,7 +16,7 @@ import "./main-dashboard.css";
 import { getStats } from "../../actions";
 import { CircularProgress } from "@mui/material";
 
-class MainDashboard extends React.Component {
+class EquityDashboard extends React.Component {
   state = {};
   componentDidMount() {
     this.props.getTrades();
@@ -193,4 +193,6 @@ const mapStateToProps = (state) => {
     stats: state.stats,
   };
 };
-export default connect(mapStateToProps, { getTrades, getStats })(MainDashboard);
+export default connect(mapStateToProps, { getTrades, getStats })(
+  EquityDashboard
+);

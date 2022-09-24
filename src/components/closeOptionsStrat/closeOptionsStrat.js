@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useEffect, useState } from "react";
 import { server_url } from "../../config";
 import axios from "axios";
 import "./closeOptionsStrat.css";
@@ -10,18 +10,16 @@ import history from "../../utils/history";
 
 import CloseOptionsItem from "./closeOptionsItem";
 
-class CloseOptionsStrat extends Component {
-  state = {
-    trade: null,
-  };
-  handleSubmit = async (e) => {
+const CloseOptionsStrat = ({ t, closeOptionStrat, match }) => {
+  const [trade, setTrade] = useState(null);
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const data = {
-      data: this.props.t,
+      data: t,
     };
-    // console.log(this.props.t);
+
     const res = await axios.patch(
-      `${server_url}/options/updateClosingStrat/${this.props.match.params.id}`,
+      `${server_url}/options/updateClosingStrat/${match.params.id}`,
       data,
       {
         headers: {
@@ -32,21 +30,25 @@ class CloseOptionsStrat extends Component {
     console.log(res);
     history.push("/options-dashboard");
   };
-  updateLegData = (i, p) => {
-    this.props.t[i].data.premium = p;
+  const updateLegData = (i, p) => {
+    t[i].data.premium = p;
   };
 
-  loadData = async () => {
+  const loadData = async () => {
     const { data } = await axios.get(
-      `${server_url}/options/${this.props.match.params.id}`,
+      `${server_url}/options/${match.params.id}`,
       {
         headers: {
           Authorization: `Bearer ${getLocalStorage()}`,
         },
       }
     );
-    this.setState({ trade: data.data });
-    const closeStart = this.state.trade.leg.map((l) => {
+    console.log(data.data);
+    // this.setState({ trade: data.data });
+    setTrade(data.data);
+    console.log(trade);
+    const closeStart = trade.leg.map((l) => {
+      console.log("destructuring ...");
       return {
         strike: l.strike,
         optionType: l.optionType,
@@ -57,40 +59,39 @@ class CloseOptionsStrat extends Component {
         },
       };
     });
-    // console.log
-    this.props.closeOptionStrat(closeStart);
+
+    console.log({ closeStart });
+    closeOptionStrat(closeStart);
   };
-  componentDidMount() {
-    this.loadData();
-  }
-  renderFields = () => {
-    if (!this.state.trade)
-      return <div style={{ marginTop: "100px" }}> Loading</div>;
-    return this.state.trade.leg.map((l, i) => {
-      return (
-        <CloseOptionsItem l={l} i={i} id={i} updateLeg={this.updateLegData} />
-      );
+
+  useEffect(() => {
+    loadData();
+  }, []);
+  const renderFields = () => {
+    if (!trade)
+      return <div style={{ marginTop: "100px", color: "#fff" }}> Loading</div>;
+    return trade.leg.map((l, i) => {
+      return <CloseOptionsItem l={l} i={i} id={i} updateLeg={updateLegData} />;
     });
   };
-  render() {
-    if (!this.state.trade) return <CircularProgress />;
-    return (
-      <div className="closeOptionsStrat">
-        <div className="closeOptionsStratContainer">
-          <form>
-            {this.renderFields()}
-            <button
-              className="btn primaryBtn marginTop marginBottom"
-              onClick={(e) => this.handleSubmit(e)}
-            >
-              Submit
-            </button>
-          </form>
-        </div>
+  if (!trade) return <CircularProgress />;
+
+  return (
+    <div className="closeOptionsStrat">
+      <div className="closeOptionsStratContainer">
+        <form>
+          {renderFields()}
+          <button
+            className="btn primaryBtn marginTop marginBottom"
+            onClick={(e) => handleSubmit(e)}
+          >
+            Submit
+          </button>
+        </form>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 const mapPropsToState = (state) => {
   return {

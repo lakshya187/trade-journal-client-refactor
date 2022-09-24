@@ -34,11 +34,15 @@ const AuthenticationSuccess = (props) => {
   return (
     <div className="authenticationSuccess">
       {isVerified ? (
-        <div>
+        <div style={{ color: "#fff" }}>
           {" "}
           You have successfuly authorized Trade journal with your Twitter
           account. Click
-          <Link to={"/"}> Here </Link> to go back
+          <Link to={"/"} style={{ fontWeight: "bold" }}>
+            {" "}
+            Here{" "}
+          </Link>{" "}
+          to go back
         </div>
       ) : (
         <div>Verification under progress</div>

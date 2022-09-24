@@ -12,6 +12,7 @@ import Select from "react-select";
 import { storage } from "../../firebase";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import { connect } from "react-redux";
+
 const typeOfTrade = [
   { value: "short", label: "Short" },
   { value: "long", label: "Long" },
@@ -31,6 +32,8 @@ class AddNewtradeForm extends Component {
     entryObj: null,
     exitPro: 0,
     exitObj: null,
+    message: "",
+    submitted: false,
   };
   constructor(props) {
     super(props);
@@ -39,6 +42,7 @@ class AddNewtradeForm extends Component {
   }
   handleSubmit = async (e) => {
     e.preventDefault();
+    this.setState({ submitted: true });
     const trade = {
       stockTicker: this.state.stockTicker,
       stockName: this.state.stockName,
@@ -60,11 +64,21 @@ class AddNewtradeForm extends Component {
           },
         }
       );
+      this.setState({
+        message: "Trade created Succesfully! redirecting shortly.",
+      });
+      setTimeout(() => {
+        history.push("/equity-dashboard");
+      }, 5000);
     } catch (e) {
       console.log(e);
     }
   };
+  renderMessage = () => {
+    if (!this.state.message) return;
 
+    return <Alert severity="info">{this.state.message}</Alert>;
+  };
   handleExitUpload = (e) => {
     e.preventDefault();
     if (!this.state.exitObj) return;
@@ -128,6 +142,7 @@ class AddNewtradeForm extends Component {
       <div className="addTradeForm">
         <div className="addTradeFormContainer">
           <div className="addtradeFormHeading subHeading">Add a new trade</div>
+          {this.renderMessage()}
           <form>
             <div className="formField">
               <label className="formFieldLabel">Stock Ticker</label>
@@ -177,7 +192,7 @@ class AddNewtradeForm extends Component {
                 ref={this.entryAnalysis}
                 onChange={(e) => this.setState({ entryObj: e.target.files[0] })}
                 accept="image/*"
-                style={{ width: "20%" }}
+                // style={{ width: "20%" }}
               />
               <button
                 className="uploadImageBtn btn secondryBtn "
@@ -195,7 +210,7 @@ class AddNewtradeForm extends Component {
                 ref={this.exitAnalysis}
                 onChange={(e) => this.setState({ exitObj: e.target.files[0] })}
                 accept="image/*"
-                style={{ width: "20%" }}
+                // style={{ width: "20%" }}
               />
               <button
                 className="btn secondryBtn uploadImageBtn"
@@ -233,11 +248,13 @@ class AddNewtradeForm extends Component {
                 align="right"
                 onChange={(e) => this.setState({ notes: e.target.value })}
                 value={this.state.notes}
+                className="textArea"
               />
             </div>
             <button
               className="btn primaryBtn marginTop"
               onClick={this.handleSubmit}
+              disabled={this.state.submitted}
             >
               Submit
             </button>

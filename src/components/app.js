@@ -2,6 +2,7 @@ import React from "react";
 import Header from "./header/header";
 import { Router, Route, Switch } from "react-router-dom";
 
+import MainDashboard from "./mainDashboard/mainDashboard";
 import AuthenticationSuccess from "./authSuccess/authenticationSuccess";
 import UserProfile from "./userProfile/userProfile";
 import OptionAnalytics from "./optionAnalytics/optionAnalytics";
@@ -14,7 +15,7 @@ import CloseTrade from "./closeTrade/closeTrade";
 import EditTrade from "./editTrade/editTrade";
 import AddNewTrade from "./addNewTrade/addNewTrade";
 import TradeDetails from "./../components/tradeDetails/tradeDetail";
-import MainDashboard from "./dashboard/main-dashboard";
+import EquityDashboard from "./dashboard/equity-dashboard";
 import history from "../utils/history";
 import AddTradeManually from "./addNewTradeManually/addNewTradeManually";
 import Signup from "./signup/signup";
@@ -29,15 +30,24 @@ const App = () => {
       <Router history={history}>
         <Header />
         <Switch>
-          <Route path="/" exact component={MainDashboard}></Route>
+          <Route
+            path="/equity-dashboard"
+            exact
+            component={EquityDashboard}
+          ></Route>
           <Route path="/trade/:id" exact component={TradeDetails}></Route>
-          <Route path="/add-new-trade" exact component={AddNewTrade}></Route>
+          <Route
+            path="/add-new-equity-trade"
+            exact
+            component={AddNewTrade}
+          ></Route>
           <Route
             path="/add-manually"
             exact
             component={AddTradeManually}
           ></Route>
           <Route path={"/:id/edit-trade"} exact component={EditTrade}></Route>
+          <Route path={"/"} exact component={MainDashboard}></Route>
           <Route path={"/:id/close-trade"} exact component={CloseTrade}></Route>
           <Route path={"/login"} exact component={Login}></Route>
           <Route path={"/signup"} exact component={Signup}></Route>

@@ -12,24 +12,43 @@ import "./sidebar.css";
 
 const Sidebar = () => {
   const [curretView, setCurrentView] = useState("main");
-
   const handleRender = () => {
     if (curretView === "main") {
       return (
-        <motion.div className="sidebarContainer">
-          <Link to={"/"} className="sidebarItem ">
+        <motion.div className="sidebarContainer ">
+          <Link
+            to={"/"}
+            className={`sidebarItem ${
+              window.location.pathname === "/" ? "sideBarActive" : null
+            } `}
+          >
             <DashboardIcon />
 
             <p>Dashboad</p>
           </Link>
-          <Link to={"/"} className="sidebarItem ">
+          <div
+            onClick={() => setCurrentView("equity")}
+            className={`sidebarItem ${
+              window.location.pathname === "/equity-dashboard"
+                ? "sideBarActive"
+                : null
+            } `}
+          >
             <SummarizeIcon />
 
             <p>Equity</p>
-          </Link>
+          </div>
           <div
             onClick={() => setCurrentView("options")}
-            className="sidebarItem "
+            className={`sidebarItem ${
+              window.location.pathname === "/options-dashboard"
+                ? "sideBarActive"
+                : null
+            }  ${
+              window.location.pathname === "/option-analytics"
+                ? "sideBarActive"
+                : null
+            }`}
           >
             <AssessmentIcon />
 
@@ -61,6 +80,28 @@ const Sidebar = () => {
             <AssessmentIcon />
 
             <p>Analytics</p>
+          </Link>
+        </div>
+      );
+    }
+    if (curretView === "equity") {
+      return (
+        <div className="sidebarContainer sideBarItemsContainer  ">
+          <div className="sideBarContainerItems ">
+            <ArrowBackIcon
+              onClick={() => setCurrentView("main")}
+              style={{ color: "#fff" }}
+            />
+          </div>
+          <Link to={"/add-new-equity-trade"} className="sidebarItem ">
+            <AddIcon />
+
+            <p>Add new </p>
+          </Link>
+          <Link to={"/equity-dashboard"} className="sidebarItem ">
+            <DashboardIcon />
+
+            <p>Dashboard</p>
           </Link>
         </div>
       );

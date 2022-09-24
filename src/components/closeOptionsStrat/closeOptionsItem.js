@@ -3,19 +3,17 @@ import { connect } from "react-redux";
 
 const CloseOptionItem = ({ l, i, trade, updateLeg }) => {
   const formatYmd = (date) => date.toISOString().slice(0, 10);
-
   const [premium, setPremium] = useState(l.premium);
   const { strike } = l;
   const { optionType } = l;
   const date = formatYmd(new Date());
   const { quantity } = l;
 
-  if (!trade) return <div>Loading</div>;
-
+  if (!l) return <div>Loading</div>;
   return (
     <div className="marginTop" id="i">
       <div className="closeOptionsStartHeadingContaienr">
-        <div>Leg {i + 1}</div>
+        <div className="value">Leg {i + 1}</div>
       </div>
       <div className="formField" id={i}>
         <label className="formFieldLabel">Premium</label>
@@ -28,6 +26,7 @@ const CloseOptionItem = ({ l, i, trade, updateLeg }) => {
             trade[i].premium = +e.target.value;
             updateLeg(i, +e.target.value);
           }}
+          // disabled={`${l.currentHoldings === 0 ? true : false}`}
         />
       </div>
       <div className="formField" id={i}>

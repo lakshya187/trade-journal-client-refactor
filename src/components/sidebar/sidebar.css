@@ -36,3 +36,7 @@
 .class-that-animates {
   transform: translateX(10%);
 }
+.sideBarActive{
+  background-color: var(--surfaceColor)!important;
+  color: var(--white)!important;
+}

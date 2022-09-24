@@ -1,0 +1,50 @@
+.mainDashboard{
+    padding: var(--compPadding);
+}
+.mainDashboardContainer{
+    display: flex;
+}
+.mainDashboardLeft{
+    flex: .1;
+}
+.mainDashboardCenter {
+    flex: .6;
+    padding: 20px 20px 10px 150px ;
+}
+.mainDashboardRight {
+    flex: .3;
+    padding: 20px;
+
+
+}
+.mainDashboardHeading{
+display: flex;
+}
+.maindashboardAggregateReturnsContainer{
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
+}
+.maindashboardAggItemContainer{
+    width: 200px;
+    height: 200px;
+    background-color: var(--aboveSurface);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: 0px 3px 30px rgba(0, 0, 0, .2);
+}
+.returnsValue{
+    font-size: var(--heading);
+    font-weight: bold;
+    color: var(--primaryColor);
+    ;
+}
+.stackedBarChartContainer{
+background-color: var(--aboveSurface);
+padding: 50px;
+margin-top: 50px;
+border-radius: 20px;
+}

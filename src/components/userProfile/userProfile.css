@@ -4,3 +4,9 @@
 .userProfileContainer{
     display: flex;
 }
+.userProfileLeft{
+    flex: .2;
+}
+.userProfileRight{
+    flex: .8;
+}

@@ -54,14 +54,6 @@ class Header extends Component {
     this.props.logout();
     history.push("/login");
   };
-  renderGreetText = () => {
-    if (!this.props.user) {
-      return <div></div>;
-    } else
-      return (
-        <div className="welcomeText">Welcome, {this.props.user.name}🙂</div>
-      );
-  };
 
   render() {
     return (
@@ -83,11 +75,13 @@ class Header extends Component {
               Sign In
             </Link>
           ) : (
-            <div>
+            <Link to="/user-profile">
               <div className="headerAvatar">
-                <div>{this.props.user.name.split(" ")[0].slice(0, 1)}</div>
+                <div>
+                  {this.props.user.name.split(" ").map((el) => el.slice(0, 1))}
+                </div>
               </div>
-            </div>
+            </Link>
           )}
         </div>
       </div>

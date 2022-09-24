@@ -49,7 +49,7 @@ const CloseLegModal = ({ leg, trade, updatedTrade }) => {
   };
   return (
     <>
-      <Button className="btn " onClick={handleShow}>
+      <Button className="btn secondryBtn" onClick={handleShow}>
         Close Leg
       </Button>
 

@@ -19,6 +19,7 @@
 .header-center div {
   margin-left: 20px;
   font-size: var(--bodyCopy);
+  color: var(--primaryColor);
 }
 .header-center span {
   margin-left: 30px;
@@ -43,7 +44,7 @@
   z-index: 10;
 }
 .headerAvatar {
-  background-color: var(--primaryColor);
+  background-color: var(--orangeColor);
   width: 50px;
   height: 50px;
   color: var(--white);

@@ -157,3 +157,84 @@ export const closeOptionStrat = (data) => {
     payload: data,
   };
 };
+
+export const getDashboardStats = () => {
+  return async (dispatch) => {
+    const { data } = await axios.get(`${server_url}/combined/getReturns`, {
+      headers: {
+        Authorization: `Bearer ${getLocalStorage()}`,
+      },
+    });
+
+    dispatch({
+      type: "DASHBOARD_TOTAL_RETURNS",
+      payload: data.returns,
+    });
+  };
+};
+
+export const getChartDataOptions = () => {
+  return async (dispatch) => {
+    const { data } = await axios.post(
+      `${server_url}/options/getDataMonthly`,
+      null,
+      {
+        headers: {
+          Authorization: `Bearer ${getLocalStorage()}`,
+        },
+      }
+    );
+    dispatch({
+      type: "OPTIONS_MONTHLY_RETURNS",
+      payload: data.modData,
+    });
+  };
+};
+
+export const getChartDataEquity = () => {
+  return async (dispatch) => {
+    const { data } = await axios.get(
+      `${server_url}/combined/getEquityReturns`,
+      {
+        headers: {
+          Authorization: `Bearer ${getLocalStorage()}`,
+        },
+      }
+    );
+    dispatch({
+      type: "EQUITY_MONTHLY_RETURNS",
+      payload: data.modData,
+    });
+  };
+};
+
+export const getMainDashboardStats = () => {
+  return async (dispatch) => {
+    const { data } = await axios.get(
+      `${server_url}/combined/getAggregateStats`,
+      {
+        headers: {
+          Authorization: `Bearer ${getLocalStorage()}`,
+        },
+      }
+    );
+    dispatch({
+      type: "MAINDASHBOARD_STATS",
+      payload: data.data,
+    });
+  };
+};
+
+export const getRiskRewardRatio = () => {
+  return async (dispatch) => {
+    const { data } = await axios.get(`${server_url}/combined/getAggregateRiskReward`, {
+      headers: {
+        Authorization: `Bearer ${getLocalStorage()}`
+      }
+    })
+    dispatch({
+      type: 'RISK_REWARD',
+      payload: data.data
+    })
+  }
+}

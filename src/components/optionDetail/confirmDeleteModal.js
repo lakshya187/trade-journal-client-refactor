@@ -6,6 +6,7 @@ import { Alert } from "@mui/material";
 import history from "../../utils/history";
 import { server_url } from "../../config";
 import { getLocalStorage } from "../../helperFunctions/localstorage";
+import DeleteIcon from "@mui/icons-material/Delete";
 const DeleteModal = ({ id }) => {
   //Modal State visabilty
   const [show, setShow] = useState(false);
@@ -39,7 +40,7 @@ const DeleteModal = ({ id }) => {
         style={{ marginLeft: "20px" }}
         onClick={handleShow}
       >
-        Delete Trade
+        <DeleteIcon />
       </Button>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header className="customModal" closeButton>

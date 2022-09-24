@@ -3,12 +3,13 @@
   justify-content: space-around;
   align-items: center;
   margin-top: 40px;
+  background-color: var(--surface)!important;
 }
 
 .addNewTradeContainer {
   display: flex;
 
-  background-color: white;
+  background-color: var(--surface);
   border-radius: 10px;
   padding: 0 20px 20px 20px;
 }
@@ -41,6 +42,7 @@
 }
 .addNewTradeContainerMain {
   padding: var(--compPadding);
+
 }
 .goBack {
   padding: 10px;

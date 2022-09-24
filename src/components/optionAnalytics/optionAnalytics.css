@@ -65,11 +65,11 @@
 
 .optionsAnalyticsStatsContainer {
     background-color: var(--aboveSurface);
-    padding: 10px 20px;
+    padding: 30px 20px;
     /* height: 500px; */
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-between;
     border-radius: 10px;
     /* position: fixed; */
     /* width: 100%; */

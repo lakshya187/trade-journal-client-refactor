@@ -1,5 +1,5 @@
 .addTradeForm {
-  background-color: white;
+  background-color: var(--surface);
 
   padding: var(--compPadding);
 }
@@ -17,10 +17,15 @@
   background-color: var(--aboveSurface);
   border-radius: 5px;
   padding: 10px;
+  color: var(--primaryColor);
+}
+.textArea {
+  border: none!important;
+  background-color: var(--aboveSurface);
+  border-radius: 5px;
+  padding: 10px;
   /* margin-left: 20px; */
   color: var(--primaryColor);
-
-
 }
 .submitButton {
   padding: 15px 30px;
@@ -70,3 +75,6 @@
   display: flex!important;
   width: 100%!;
 } */
+.addTradeManuallyForm{
+  display: flex;
+}

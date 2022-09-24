@@ -26,26 +26,30 @@
   /* padding: var(--compPadding); */
 }
 .dashboardAddNewTradesItem {
-  height: 150px;
-  width: 180px;
   display: flex;
+  align-items: center;
   flex-direction: column;
-  /* justify-content: ; */
-  justify-content: space-around;
-  align-items: flex-start;
+  /* width: 300px; */
+  background-color: var(--aboveSurface);
   padding: 20px;
-  border-radius: 5px;
+  width: 300px;
+  border-radius: 10px;
+
+}
+
+.dashboardAddNewTradesItem p{
+  color: var(--secondaryColor);
+  font-size: var(--bodyCopy);
+  text-align: center;
+  margin-top: 30px;
+  
+}
+.dashboardAddNewTradesItem div {
   color: var(--primaryColor);
-  /* margin-left: 20px; */
+  font-size: var(--bodyCopy);
+  margin-top: 30px;
 }
-.dashboardAddNewTradesItem img {
-  width: 20%;
-}
-.dashboardAddNewTradesItem:hover {
-  cursor: pointer;
-  box-shadow: var(--shadow);
-  color: var(--primaryColor);
-}
+
 .dashboardTradesEquityContainer h1 {
   font-size: var(--heading);
   color: var(--primaryColor);

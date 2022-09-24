@@ -38,6 +38,7 @@ const TweetTrade = ({ trade }) => {
       console.log(e);
     }
   };
+  console.log(trade);
   const renderMessage = () => {
     if (!status) return;
     return <Alert severity="info">{status}</Alert>;
@@ -45,16 +46,8 @@ const TweetTrade = ({ trade }) => {
 
   return (
     <>
-      <Button
-        style={{
-          padding: "10px",
-          marginTop: "20px",
-          background: "#fff",
-          border: "none",
-        }}
-        onClick={handleShow}
-      >
-        <TwitterIcon style={{ color: "#2d2d2d" }} />
+      <Button className="btn tertiaryBtn" onClick={handleShow}>
+        <TwitterIcon />
       </Button>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>

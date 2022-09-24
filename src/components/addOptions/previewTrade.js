@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import Select from "react-select";
 import axios from "axios";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import { Alert } from "@mui/material";
 
 import { getLocalStorage } from "../../helperFunctions/localstorage";
 import { server_url } from "../../config";
@@ -10,6 +11,10 @@ import history from "../../utils/history";
 import PreviewOptionsItem from "./previewOptionItem";
 import { optionStrats } from "../../utils/staticData";
 class PreviewTrade extends Component {
+  state = {
+    submitted: false,
+    message: "",
+  };
   renderLeg = () => {
     // this.calcStratLevelPremium();
     if (!this.props.trade) {
@@ -22,6 +27,7 @@ class PreviewTrade extends Component {
 
   handleFormSubmit = async (e) => {
     e.preventDefault();
+    this.setState({ submitted: true });
     try {
       const res = await axios.post(`${server_url}/options`, this.props.trade, {
         headers: {
@@ -29,10 +35,19 @@ class PreviewTrade extends Component {
         },
       });
       console.log(res);
-      history.push("/options-dashboard");
+      this.setState({
+        message: "Trade created successfully! redirecting shortly.",
+      });
+      setTimeout(() => {
+        history.push("/options-dashboard");
+      }, 5000);
     } catch (e) {
       console.log(e);
     }
+  };
+  renderMessage = () => {
+    if (!this.state.message) return null;
+    return <Alert severity="info">{this.state.message}</Alert>;
   };
 
   render() {
@@ -47,7 +62,7 @@ class PreviewTrade extends Component {
             <h1 className="subHeading ">
               Preview Your<span className="mainText"> Trade </span>
             </h1>
-
+            {this.renderMessage()}
             <div className="previewOptionsContainer">
               <div className="previewOptionsLeft">
                 <div className="previewOptionsTradeFormContainer">
@@ -115,6 +130,7 @@ class PreviewTrade extends Component {
               <button
                 className={"btn primaryBtn marginTop"}
                 onClick={this.handleFormSubmit}
+                disabled={this.state.submitted}
               >
                 Submit
               </button>
